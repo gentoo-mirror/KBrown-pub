@@ -1,0 +1,53 @@
+diff -Naur dbmail-2.0.4.org/auth/Makefile.in dbmail-2.0.4/auth/Makefile.in
+--- dbmail-2.0.4.org/auth/Makefile.in	2005-01-19 22:48:51.000000000 +0000
++++ dbmail-2.0.4/auth/Makefile.in	2005-04-09 01:38:11.000000000 +0000
+@@ -136,7 +136,7 @@
+ libauthdbmail_la_LIBADD = 
+ @LDAP_TRUE@libauthdbmail_la_OBJECTS =  authldap.lo
+ @LDAP_FALSE@libauthdbmail_la_OBJECTS =  authsql.lo
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -fPIC
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+diff -Naur dbmail-2.0.4.org/mysql/Makefile.in dbmail-2.0.4/mysql/Makefile.in
+--- dbmail-2.0.4.org/mysql/Makefile.in	2005-01-19 22:48:51.000000000 +0000
++++ dbmail-2.0.4/mysql/Makefile.in	2005-04-09 01:39:06.000000000 +0000
+@@ -135,7 +135,7 @@
+ libmysqldbmail_la_LDFLAGS = 
+ libmysqldbmail_la_LIBADD = 
+ @MYSQL_TRUE@libmysqldbmail_la_OBJECTS =  dbmysql.lo
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -fPIC
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+diff -Naur dbmail-2.0.4.org/pgsql/Makefile.in dbmail-2.0.4/pgsql/Makefile.in
+--- dbmail-2.0.4.org/pgsql/Makefile.in	2005-01-19 22:48:51.000000000 +0000
++++ dbmail-2.0.4/pgsql/Makefile.in	2005-04-09 01:38:11.000000000 +0000
+@@ -135,7 +135,7 @@
+ libpgsqldbmail_la_LDFLAGS = 
+ libpgsqldbmail_la_LIBADD = 
+ @PGSQL_TRUE@libpgsqldbmail_la_OBJECTS =  dbpgsql.lo
+-CFLAGS = @CFLAGS@
++CFLAGS = @CFLAGS@ -fPIC
+ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+diff -Naur dbmail-2.0.4.org/sort/Makefile.in dbmail-2.0.4/sort/Makefile.in
+--- dbmail-2.0.4.org/sort/Makefile.in	2005-01-19 22:48:51.000000000 +0000
++++ dbmail-2.0.4/sort/Makefile.in	2005-04-09 01:38:11.000000000 +0000
+@@ -136,10 +136,10 @@
+ @SIEVE_FALSE@libsortdbmail_la_OBJECTS =  sort.lo
+ @SIEVE_TRUE@libsortdbmail_la_OBJECTS =  sort.lo sortsieve.lo
+ CFLAGS = @CFLAGS@
+-COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+-LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
++COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -fPIC
++LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -fPIC
+ CCLD = $(CC)
+-LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
++LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) -fPIC $(LDFLAGS) -o $@
+ DIST_COMMON =  Makefile.am Makefile.in
+ 
+ 

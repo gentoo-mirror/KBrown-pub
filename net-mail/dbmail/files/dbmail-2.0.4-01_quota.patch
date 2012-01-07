@@ -1,0 +1,158 @@
+diff -Naur dbmail-2.0.4.org/pipe.c dbmail-2.0.4/pipe.c
+--- dbmail-2.0.4.org/pipe.c	2005-03-14 11:54:00.000000000 +0000
++++ dbmail-2.0.4/pipe.c	2005-04-09 00:50:11.000000000 +0000
+@@ -553,12 +553,11 @@
+ 	}
+ 
+ 	/* Loop through the users list. */
+-	for (element = list_getstart(dsnusers); element != NULL;
+-	     element = element->nextnode) {
++	for (element = list_getstart(dsnusers); element != NULL; element = element->nextnode) {
+ 		struct element *userid_elem;
+ 		int has_2 = 0, has_4 = 0, has_5 = 0, has_5_2 = 0;
+-		deliver_to_user_t *delivery =
+-		    (deliver_to_user_t *) element->data;
++		deliver_to_user_t *delivery = (deliver_to_user_t *) element->data;
++		dsn_class_t dsn_result;
+ 
+ 		/* If there was already an error during resolving,
+ 		 * let's skip this delivery. */
+@@ -571,37 +570,36 @@
+ 		     userid_elem != NULL;
+ 		     userid_elem = userid_elem->nextnode) {
+ 			u64_t useridnr = *(u64_t *) userid_elem->data;
++			
+ 			trace(TRACE_DEBUG,
+ 			      "%s, %s: calling sort_and_deliver for useridnr [%llu]",
+ 			      __FILE__, __func__, useridnr);
+ 
+-			switch (sort_and_deliver(tmpmsgidnr,
+-						 header, headersize,
+-						 msgsize, rfcsize,
+-						 useridnr,
+-						 delivery->mailbox)) {
+-			case SORT_SUCCESS:
++			dsn_result = sort_and_deliver(tmpmsgidnr, msgsize, useridnr, delivery->mailbox);
++
++			switch (dsn_result) {
++			case DSN_CLASS_OK:
+ 				/* Indicate success. */
+ 				trace(TRACE_DEBUG,
+ 				      "%s, %s: successful sort_and_deliver for useridnr [%llu]",
+ 				      __FILE__, __func__, useridnr);
+ 				has_2 = 1;
+ 				break;
+-			case SORT_FAILURE:
++			case DSN_CLASS_FAIL:
+ 				/* Indicate permanent failure. */
+ 				trace(TRACE_ERROR,
+ 				      "%s, %s: permanent failure sort_and_deliver for useridnr [%llu]",
+ 				      __FILE__, __func__, useridnr);
+ 				has_5 = 1;
+ 				break;
+-			case SORT_OVER_QUOTA:
++			case DSN_CLASS_QUOTA:
+ 				/* Indicate over quota. */
+ 				trace(TRACE_ERROR,
+ 				      "%s, %s: temporary failure sort_and_deliver for useridnr [%llu]",
+ 				      __FILE__, __func__, useridnr);
+ 				has_5_2 = 1;
+ 				break;
+-			case SORT_WEIRD_ERROR:
++			case DSN_CLASS_TEMP:
+ 			default:
+ 				/* Assume a temporary failure */
+ 				trace(TRACE_ERROR,
+diff -Naur dbmail-2.0.4.org/sort/sort.c dbmail-2.0.4/sort/sort.c
+--- dbmail-2.0.4.org/sort/sort.c	2005-03-14 11:54:00.000000000 +0000
++++ dbmail-2.0.4/sort/sort.c	2005-04-09 00:58:54.000000000 +0000
+@@ -46,61 +46,40 @@
+ #include <unistd.h>
+ #include "dbmd5.h"
+ #include "misc.h"
++#include "dsn.h"
+ 
+ #ifdef SIEVE
+ #include "sortsieve.h"
+ #endif
+ 
+-/* Run the user's sorting rules on this message
+- * Retrieve the action list as either
+- * a linked list of things to do, or a 
+- * single thing to do. Not sure yet...
+- *
+- * Then do it!
+- * */
+-dsn_class_t sort_and_deliver(u64_t msgidnr,
+-		const char *header UNUSED, 
+-		u64_t headersize UNUSED, 
+-		u64_t totalmsgsize, 
+-		u64_t totalrfcsize UNUSED, 
+-		u64_t useridnr UNUSED, 
+-		const char *mailbox)
++dsn_class_t sort_and_deliver(u64_t msgidnr, u64_t msgsize, u64_t useridnr, const char *mailbox)
+ {
+ 	u64_t mboxidnr, newmsgidnr;
+ 
+ 	if (mailbox == NULL)
+ 		mailbox = "INBOX";
+ 
+-	/* There used to be code that handled the result
+-	 * actions of a Sieve script. Since it wasn't being
+-	 * used as of DBMail 2.0.3, I pulled it out.
+-	 * Aaron Stone, 21 Jan 2005. */
+-
+-	/* Did we fail to create the mailbox? */
+ 	if (db_find_create_mailbox(mailbox, useridnr, &mboxidnr) != 0) {
+-		/* Serious failure situation! */
+ 		trace(TRACE_ERROR, "sort_and_deliver(): INBOX not found and could not be created.");
+-		return SORT_FAILURE;
++		return DSN_CLASS_FAIL;
+ 	} else {
+ 		switch (db_copymsg(msgidnr, mboxidnr, useridnr, &newmsgidnr)) {
+ 		case -2:
+-			/* Couldn't deliver because the quotum is exceeded. */
+ 			trace(TRACE_MESSAGE, "%s, %s: error copying message to user [%llu],"
+ 					"maxmail exceeded", 
+ 					__FILE__, __func__, 
+ 					useridnr);
+-			return SORT_OVER_QUOTA;
++			return DSN_CLASS_QUOTA;
+ 		case -1:
+-			/* Couldn't deliver because something something went wrong. */
+ 			trace(TRACE_ERROR, "%s, %s: error copying message to user [%llu]", 
+ 					__FILE__, __func__, 
+ 					useridnr);
+-			return SORT_WEIRD_ERROR;
++			return DSN_CLASS_TEMP;
+ 		default:
+ 			trace(TRACE_MESSAGE, "%s, %s: message id=%llu, size=%llu is inserted", 
+ 					__FILE__, __func__, 
+-					newmsgidnr, totalmsgsize);
+-			return SORT_SUCCESS;
++					newmsgidnr, msgsize);
++			return DSN_CLASS_OK;
+ 		}
+ 	}
+ }
+diff -Naur dbmail-2.0.4.org/sort.h dbmail-2.0.4/sort.h
+--- dbmail-2.0.4.org/sort.h	2005-03-14 11:54:00.000000000 +0000
++++ dbmail-2.0.4/sort.h	2005-04-09 01:01:14.000000000 +0000
+@@ -46,16 +46,6 @@
+ 	char *message;
+ } sort_action_t;
+ 
+-typedef enum {
+-	SORT_SUCCESS = 0,
+-	SORT_OVER_QUOTA,
+-	SORT_WEIRD_ERROR,
+-	SORT_FAILURE
+-} sort_result_t;
+-
+-sort_result_t sort_and_deliver(u64_t msgidnr,
+-			     const char *header, u64_t headersize,
+-			     u64_t msgsize, u64_t rfcsize,
+-			     u64_t useridnr, const char *mailbox);
++dsn_class_t sort_and_deliver(u64_t msgidnr, u64_t msgsize, u64_t useridnr, const char *mailbox);
+ 
+ #endif				/* #ifndef _SORTING_H */

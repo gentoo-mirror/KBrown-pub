@@ -1,0 +1,384 @@
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/conf.d/dbmail-imapd dbmail-2.0.1/contrib/startup-scripts/gentoo/conf.d/dbmail-imapd
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/conf.d/dbmail-imapd	1970-01-01 00:00:00.000000000 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/conf.d/dbmail-imapd	2004-12-11 21:12:47.966278656 +0000
+@@ -0,0 +1,19 @@
++# dbmail-imapd configuration file
++
++# Other options for dbmail daemon
++DBMAIL_OPTS=""
++
++# this is the dbmail daemon executable
++DBMAIL_PROG="dbmail-imapd"
++DBMAIL_EXEC="/usr/sbin/${DBMAIL_PROG}"
++
++# User to run dbmail daemon as
++#DBMAIL_USER="dbmail"
++DBMAIL_USER="root"
++
++# this is where dbmail will store its pid file
++DBMAIL_PIDFILE="/var/run/dbmail/${DBMAIL_PROG}.pid"
++
++# this is where the config file is located
++DBMAIL_CONFIG="/etc/dbmail.conf"
++
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/conf.d/dbmail-lmtpd dbmail-2.0.1/contrib/startup-scripts/gentoo/conf.d/dbmail-lmtpd
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/conf.d/dbmail-lmtpd	1970-01-01 00:00:00.000000000 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/conf.d/dbmail-lmtpd	2004-12-11 21:15:02.579814288 +0000
+@@ -0,0 +1,19 @@
++# dbmail-lmtpd configuration file
++
++# Other options for dbmail daemon
++DBMAIL_OPTS=""
++
++# this is the dbmail daemon executable
++DBMAIL_PROG="dbmail-lmtpd"
++DBMAIL_EXEC="/usr/sbin/${DBMAIL_PROG}"
++
++# User to run dbmail daemon as
++#DBMAIL_USER="dbmail"
++DBMAIL_USER="root"
++
++# this is where dbmail will store its pid file
++DBMAIL_PIDFILE="/var/run/dbmail/${DBMAIL_PROG}.pid"
++
++# this is where the config file is located
++DBMAIL_CONFIG="/etc/dbmail.conf"
++
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/conf.d/dbmail-pop3d dbmail-2.0.1/contrib/startup-scripts/gentoo/conf.d/dbmail-pop3d
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/conf.d/dbmail-pop3d	1970-01-01 00:00:00.000000000 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/conf.d/dbmail-pop3d	2004-12-11 21:15:40.716016704 +0000
+@@ -0,0 +1,19 @@
++# dbmail-pop3d configuration file
++
++# Other options for dbmail daemon
++DBMAIL_OPTS=""
++
++# this is the dbmail daemon executable
++DBMAIL_PROG="dbmail-pop3d"
++DBMAIL_EXEC="/usr/sbin/${DBMAIL_PROG}"
++
++# User to run dbmail daemon as
++#DBMAIL_USER="dbmail"
++DBMAIL_USER="root"
++
++# this is where dbmail will store its pid file
++DBMAIL_PIDFILE="/var/run/dbmail/${DBMAIL_PROG}.pid"
++
++# this is where the config file is located
++DBMAIL_CONFIG="/etc/dbmail.conf"
++
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/dbmail-imapd dbmail-2.0.1/contrib/startup-scripts/gentoo/dbmail-imapd
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/dbmail-imapd	2004-12-11 21:08:51.411240488 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/dbmail-imapd	1970-01-01 00:00:00.000000000 +0000
+@@ -1,55 +0,0 @@
+-#!/sbin/runscript
+-#
+-# chkconfig: - 91 35
+-# description: Starts and stops the dbmail-imapd daemon
+-#
+-
+-# Where are the binaries located?
+-PROGRAM=dbmail-imapd
+-BIN_DIR=/usr/local/sbin
+-
+-PID_DIR=/var/run
+-PID=pid
+-
+-# Where is the dbmail.conf file located?
+-CONFIG=/etc/dbmail.conf
+-
+-# opts="${opts} reload"
+-
+-depend() {
+-	need net
+-	# This won't cause a hard failure if neither is installed, however.
+-	use mysql
+-	use pgsql
+-	after mta
+-}
+-
+-initService() {
+-    # Avoid using root's TMPDIR
+-    unset TMPDIR
+-
+-    # Check that config file exists.
+-    [ -f $CONFIG ] || exit 0
+-
+-    RETVAL=0
+-}
+-
+-start() {
+-	initService
+-	ebegin "Starting DBMail IMAP daemon ($PROGRAM)"
+-	    start-stop-daemon --start --quiet \
+-		--pidfile $PID_DIR/$PROGRAM.$PID \
+-		--exec $BIN_DIR/$PROGRAM \
+-		--name $PROGRAM \
+-		-- -f $CONFIG -p $PID_DIR/$PROGRAM.$PID 2>&1
+-	eend $?
+-}	
+-
+-stop() {
+-	initService
+-	ebegin "Stopping DBMail IMAP daemon ($PROGRAM)"
+-	    start-stop-daemon --stop --quiet --retry 5 \
+-		--pidfile $PID_DIR/$PROGRAM.$PID
+-	eend $?
+-}	
+-
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/dbmail-lmtpd dbmail-2.0.1/contrib/startup-scripts/gentoo/dbmail-lmtpd
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/dbmail-lmtpd	2004-12-11 21:08:51.411240488 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/dbmail-lmtpd	1970-01-01 00:00:00.000000000 +0000
+@@ -1,55 +0,0 @@
+-#!/sbin/runscript
+-#
+-# chkconfig: - 91 35
+-# description: Starts and stops the dbmail-lmtpd daemon
+-#
+-
+-# Where are the binaries located?
+-PROGRAM=dbmail-lmtpd
+-BIN_DIR=/usr/local/sbin
+-
+-PID_DIR=/var/run
+-PID=pid
+-
+-# Where is the dbmail.conf file located?
+-CONFIG=/etc/dbmail.conf
+-
+-# opts="${opts} reload"
+-
+-depend() {
+-	need net
+-	# This won't cause a hard failure if neither is installed, however.
+-	use mysql
+-	use pgsql
+-	after mta
+-}
+-
+-initService() {
+-    # Avoid using root's TMPDIR
+-    unset TMPDIR
+-
+-    # Check that config file exists.
+-    [ -f $CONFIG ] || exit 0
+-
+-    RETVAL=0
+-}
+-
+-start() {
+-	initService
+-	ebegin "Starting DBMail LMTP daemon ($PROGRAM)"
+-	    start-stop-daemon --start --quiet \
+-		--pidfile $PID_DIR/$PROGRAM.$PID \
+-		--exec $BIN_DIR/$PROGRAM \
+-		--name $PROGRAM \
+-		-- -f $CONFIG -p $PID_DIR/$PROGRAM.$PID 2>&1
+-	eend $?
+-}	
+-
+-stop() {
+-	initService
+-	ebegin "Stopping DBMail LMTP daemon ($PROGRAM)"
+-	    start-stop-daemon --stop --quiet --retry 5 \
+-		--pidfile $PID_DIR/$PROGRAM.$PID
+-	eend $?
+-}	
+-
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/dbmail-pop3d dbmail-2.0.1/contrib/startup-scripts/gentoo/dbmail-pop3d
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/dbmail-pop3d	2004-12-11 21:08:51.412240336 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/dbmail-pop3d	1970-01-01 00:00:00.000000000 +0000
+@@ -1,55 +0,0 @@
+-#!/sbin/runscript
+-#
+-# chkconfig: - 91 35
+-# description: Starts and stops the dbmail-pop3d daemon
+-#
+-
+-# Where are the binaries located?
+-PROGRAM=dbmail-pop3d
+-BIN_DIR=/usr/local/sbin
+-
+-PID_DIR=/var/run
+-PID=pid
+-
+-# Where is the dbmail.conf file located?
+-CONFIG=/etc/dbmail.conf
+-
+-# opts="${opts} reload"
+-
+-depend() {
+-	need net
+-	# This won't cause a hard failure if neither is installed, however.
+-	use mysql
+-	use pgsql
+-	after mta
+-}
+-
+-initService() {
+-    # Avoid using root's TMPDIR
+-    unset TMPDIR
+-
+-    # Check that config file exists.
+-    [ -f $CONFIG ] || exit 0
+-
+-    RETVAL=0
+-}
+-
+-start() {
+-	initService
+-	ebegin "Starting DBMail POP3 daemon ($PROGRAM)"
+-	    start-stop-daemon --start --quiet \
+-		--pidfile $PID_DIR/$PROGRAM.$PID \
+-		--exec $BIN_DIR/$PROGRAM \
+-		--name $PROGRAM \
+-		-- -f $CONFIG -p $PID_DIR/$PROGRAM.$PID 2>&1
+-	eend $?
+-}	
+-
+-stop() {
+-	initService
+-	ebegin "Stopping DBMail POP3 daemon ($PROGRAM)"
+-	    start-stop-daemon --stop --quiet --retry 5 \
+-		--pidfile $PID_DIR/$PROGRAM.$PID
+-	eend $?
+-}	
+-
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/init.d/dbmail-imapd dbmail-2.0.1/contrib/startup-scripts/gentoo/init.d/dbmail-imapd
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/init.d/dbmail-imapd	1970-01-01 00:00:00.000000000 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/init.d/dbmail-imapd	2004-12-11 21:18:35.773403936 +0000
+@@ -0,0 +1,42 @@
++#!/sbin/runscript
++
++depend() {
++	need net
++	# This won't cause a hard failure if neither is installed, however.
++	use mysql
++	use pgsql
++	after mta
++}
++
++start() {
++	ebegin "Performing dbmail checks"
++	dbmail-util -a >/dev/null 2>&1
++	ret=$?
++	if [ $ret -ne 0 ]; then
++		eerror "There was a problem performing the dbmail checks"
++		eerror "Run dbmail-util -a to determine the problem"
++		return 1
++	fi
++	
++	if [ ! -f $DBMAIL_CONFIG ]; then
++		eerror "configuration file $DBMAIL_CONFIG Not found"
++		return 1
++	fi
++	
++	ebegin "Starting DBMail daemon ($DBMAIL_PROG)"
++	start-stop-daemon --start --quiet \
++		--chuid $DBMAIL_USER \
++		--pidfile $DBMAIL_PIDFILE \
++		--exec $DBMAIL_EXEC \
++		--name $DBMAIL_PROG \
++		-- -f $DBMAIL_CONFIG -p $DBMAIL_PIDFILE $DBMAIL_OPTS 2>&1
++	eend $?
++}	
++
++stop() {
++	ebegin "Stopping DBMail daemon ($DBMAIL_PROG)"
++	    start-stop-daemon --stop --quiet --retry 5 \
++		--chuid $DBMAIL_USER \
++		--pidfile $DBMAIL_PIDFILE
++	eend $?
++}	
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/init.d/dbmail-lmtpd dbmail-2.0.1/contrib/startup-scripts/gentoo/init.d/dbmail-lmtpd
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/init.d/dbmail-lmtpd	1970-01-01 00:00:00.000000000 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/init.d/dbmail-lmtpd	2004-12-11 21:19:30.990009736 +0000
+@@ -0,0 +1,42 @@
++#!/sbin/runscript
++
++depend() {
++	need net
++	# This won't cause a hard failure if neither is installed, however.
++	use mysql
++	use pgsql
++	after mta
++}
++
++start() {
++	ebegin "Performing dbmail checks"
++	dbmail-util -a >/dev/null 2>&1
++	ret=$?
++	if [ $ret -ne 0 ]; then
++		eerror "There was a problem performing the dbmail checks"
++		eerror "Run dbmail-util -a to determine the problem"
++		return 1
++	fi
++	
++	if [ ! -f $DBMAIL_CONFIG ]; then
++		eerror "configuration file $DBMAIL_CONFIG Not found"
++		return 1
++	fi
++	
++	ebegin "Starting DBMail daemon ($DBMAIL_PROG)"
++	start-stop-daemon --start --quiet \
++		--chuid $DBMAIL_USER \
++		--pidfile $DBMAIL_PIDFILE \
++		--exec $DBMAIL_EXEC \
++		--name $DBMAIL_PROG \
++		-- -f $DBMAIL_CONFIG -p $DBMAIL_PIDFILE $DBMAIL_OPTS 2>&1
++	eend $?
++}	
++
++stop() {
++	ebegin "Stopping DBMail daemon ($DBMAIL_PROG)"
++	    start-stop-daemon --stop --quiet --retry 5 \
++		--chuid $DBMAIL_USER \
++		--pidfile $DBMAIL_PIDFILE
++	eend $?
++}	
+diff -Nru dbmail-2.0.1.org/contrib/startup-scripts/gentoo/init.d/dbmail-pop3d dbmail-2.0.1/contrib/startup-scripts/gentoo/init.d/dbmail-pop3d
+--- dbmail-2.0.1.org/contrib/startup-scripts/gentoo/init.d/dbmail-pop3d	1970-01-01 00:00:00.000000000 +0000
++++ dbmail-2.0.1/contrib/startup-scripts/gentoo/init.d/dbmail-pop3d	2004-12-11 21:19:33.973556168 +0000
+@@ -0,0 +1,42 @@
++#!/sbin/runscript
++
++depend() {
++	need net
++	# This won't cause a hard failure if neither is installed, however.
++	use mysql
++	use pgsql
++	after mta
++}
++
++start() {
++	ebegin "Performing dbmail checks"
++	dbmail-util -a >/dev/null 2>&1
++	ret=$?
++	if [ $ret -ne 0 ]; then
++		eerror "There was a problem performing the dbmail checks"
++		eerror "Run dbmail-util -a to determine the problem"
++		return 1
++	fi
++	
++	if [ ! -f $DBMAIL_CONFIG ]; then
++		eerror "configuration file $DBMAIL_CONFIG Not found"
++		return 1
++	fi
++	
++	ebegin "Starting DBMail daemon ($DBMAIL_PROG)"
++	start-stop-daemon --start --quiet \
++		--chuid $DBMAIL_USER \
++		--pidfile $DBMAIL_PIDFILE \
++		--exec $DBMAIL_EXEC \
++		--name $DBMAIL_PROG \
++		-- -f $DBMAIL_CONFIG -p $DBMAIL_PIDFILE $DBMAIL_OPTS 2>&1
++	eend $?
++}	
++
++stop() {
++	ebegin "Stopping DBMail daemon ($DBMAIL_PROG)"
++	    start-stop-daemon --stop --quiet --retry 5 \
++		--chuid $DBMAIL_USER \
++		--pidfile $DBMAIL_PIDFILE
++	eend $?
++}	
