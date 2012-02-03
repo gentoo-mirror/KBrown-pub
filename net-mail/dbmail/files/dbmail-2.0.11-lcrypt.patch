@@ -1,0 +1,13 @@
+Binary files dbmail-2.0.11.orig//.acinclude.m4.swp and dbmail-2.0.11/.acinclude.m4.swp differ
+diff -uriN dbmail-2.0.11.orig//acinclude.m4 dbmail-2.0.11/acinclude.m4
+--- dbmail-2.0.11.orig//acinclude.m4	2005-12-22 02:50:07.000000000 -0600
++++ dbmail-2.0.11/acinclude.m4	2012-01-15 15:05:08.000000000 -0600
+@@ -92,7 +92,7 @@
+ 	AC_MSG_RESULT([$PGSQLINC])
+         AC_MSG_CHECKING([PostgreSQL libraries])
+         PGLIBDIR=`${pgsqlconfig} --libdir`
+-        SQLLIB="-L$PGLIBDIR -lpq"
++        SQLLIB="-L$PGLIBDIR -lpq -lcrypt"
+         SQLALIB="pgsql/.libs/libpgsqldbmail.a"
+ 	SQLLTLIB="pgsql/libpgsqldbmail.la"
+         AC_MSG_RESULT([$SQLLIB])

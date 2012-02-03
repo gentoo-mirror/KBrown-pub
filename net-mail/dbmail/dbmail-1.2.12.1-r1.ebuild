@@ -12,7 +12,7 @@ SRC_URI="http://www.dbmail.org/download/1.2/${P}.tgz"
 DEPEND="ssl? ( dev-libs/openssl )
 	postgres? ( >=dev-db/postgresql-base-7.4 )"
 
-RDEPEND=" postgres? ( dev-db/postgresql-base )"
+RDEPEND=" postgres? ( <dev-db/postgresql-base-8.2 )"
 
 SLOT="0"
 LICENSE="gpl-2"
