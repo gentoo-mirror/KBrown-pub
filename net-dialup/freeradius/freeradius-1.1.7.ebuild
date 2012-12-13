@@ -107,6 +107,11 @@ src_compile() {
 		myconf="${myconf} --enable-heimdal-krb5"
 	fi
 
+	#Fix compile bug (older libtool) 
+	#	undefined reference to `lt__PROGRAM__LTX_preloaded_symbols'
+	#http://fedoraproject.org/wiki/Libtool2
+		myconf="${myconf} --with-system-libtool"
+
 	econf --with-large-files --disable-ltdl-install --with-pic \
 		 --localstatedir=/var ${myconf} || die "econf failed"
 
