@@ -1,0 +1,52 @@
+Only in dbmail-3.0.2/src: .dbmailtypes.h.swp
+Binary files dbmail-3.0.2.orig/src/.dm_db.c.swp and dbmail-3.0.2/src/.dm_db.c.swp differ
+Only in dbmail-3.0.2.orig/src: .strtoll.c.swp
+diff -uri dbmail-3.0.2.orig/src/dm_db.c dbmail-3.0.2/src/dm_db.c
+--- dbmail-3.0.2.orig/src/dm_db.c	2013-07-20 01:47:11.000000000 -0500
++++ dbmail-3.0.2/src/dm_db.c	2013-07-20 02:47:38.000000000 -0500
+@@ -483,16 +483,43 @@
+ 	assert(r);
+ 	db_result_next(r);
+ 
++	/* In PostgreSQL 9.1 lastRowId is _not_ always zero
++	 *
++dbmail=# INSERT INTO dbmail_physmessage (internal_date) VALUES 
++dbmail-# (TO_TIMESTAMP('2013-07-20 07:22:34'::text, 'YYYY-MM-DD HH24:MI:SS')) RETURNING id;
++    id    
++----------
++ 29196224
++(1 row)
++
++INSERT 0 1
++dbmail=# INSERT INTO dbmail_messages(mailbox_idnr, physmessage_id, unique_id,recent_flag, status) VALUES (10993, 29196223, 'acc98da420bfe6d3dc2c707a9863001c', 1, 5) RETURNING message_idnr;
++ message_idnr 
++--------------
++     36650725
++(1 row)
++
++INSERT 82105867 1
++	 *
++	 * Connection_lastRowId(c) is returning the OID instead of 
++	 * the message_idnr we are expecting.
++	 * However, we are expecting only one row to be returned so 
++	 * we should always use db_result_get_u64(r, 0);
++	 */
++	if (_db_params.db_driver == DM_DRIVER_POSTGRESQL) {
++		id = db_result_get_u64(r, 0); // postgresql
++	}
++
+ 	// lastRowId is always zero for pgsql tables without OIDs
+ 	// or possibly for sqlite after calling executeQuery but 
+ 	// before calling db_result_next
+ 
+-	if ((id = (u64_t )Connection_lastRowId(c)) == 0) { // mysql
++	else if ((id = (u64_t )Connection_lastRowId(c)) == 0) { // mysql
+ 		// but if we're using 'RETURNING id' clauses on inserts
+ 		// or we're using the sqlite backend, we can do this
+ 
+ 		if ((id = (u64_t )Connection_lastRowId(c)) == 0) // sqlite
+-			id = db_result_get_u64(r, 0); // postgresql
++			id = db_result_get_u64(r, 0); // postgresql - should not happen
+ 	}
+ 	assert(id);
+ 	return id;

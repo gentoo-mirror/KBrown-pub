@@ -1,0 +1,60 @@
+Only in dbmail-3.0.2/src: .dm_db.c.swp
+Only in dbmail-3.0.2/src: 3.0-header_cache_perf.patch
+diff -uri dbmail-3.0.2.orig/src/dbmail-message.c dbmail-3.0.2/src/dbmail-message.c
+--- dbmail-3.0.2.orig/src/dbmail-message.c	2012-03-11 02:02:30.000000000 -0600
++++ dbmail-3.0.2/src/dbmail-message.c	2013-07-16 02:15:28.000000000 -0500
+@@ -1621,7 +1621,7 @@
+ 	unsigned char *raw;
+ 	unsigned i;
+ 	time_t date;
+-	volatile gboolean isaddr = 0, isdate = 0, issubject = 0;
++	volatile gboolean isaddr = 0, isdate = 0, issubject = 0, isblacklist = 0;
+ 	const char *charset = dbmail_message_get_charset(self);
+ 	gchar *sortfield = NULL, *datefield = NULL;
+ 	InternetAddressList *emaillist;
+@@ -1652,6 +1652,20 @@
+ 		issubject=1;
+ 	else if (g_ascii_strcasecmp(header,"Date")==0)
+ 		isdate=1;
++	else if (g_ascii_strcasecmp(header,"received")==0)
++		isblacklist=1;
++	else if (g_ascii_strcasecmp(header,"content-type")==0)
++		isblacklist=1;
++	else if (g_ascii_strcasecmp(header,"x-spam-status")==0)
++		isblacklist=1;
++	else if (g_ascii_strcasecmp(header,"x-spam-score")==0)
++		isblacklist=1;
++	else if (g_ascii_strcasecmp(header,"dkim-signature")==0)
++		isblacklist=1;
++	else if (g_ascii_strcasecmp(header,"domainkey-signature")==0)
++		isblacklist=1;
++	else if (g_ascii_strcasecmp(header,"authentication-results")==0)
++		isblacklist=1;
+ 
+ 	values = g_relation_select(self->headers,header,0);
+ 
+@@ -1666,6 +1682,11 @@
+ 			if (value) g_free(value);
+ 			continue;
+ 		}
++
++		if (isblacklist == 1) {
++			if (value) g_free(value);
++			continue;
++		}
+ 
+ 		// Generate additional fields for SORT optimization
+ 		if(isaddr) {
+diff -uri dbmail-3.0.2.orig/src/dm_db.c dbmail-3.0.2/src/dm_db.c
+--- dbmail-3.0.2.orig/src/dm_db.c	2012-03-11 02:02:30.000000000 -0600
++++ dbmail-3.0.2/src/dm_db.c	2013-07-16 02:29:17.000000000 -0500
+@@ -1480,7 +1480,8 @@
+ 		r = db_query(c, "SELECT p.id "
+ 			"FROM %sphysmessage p "
+ 			"LEFT JOIN %sheader h ON p.id = h.physmessage_id "
+-			"WHERE h.physmessage_id IS NULL", DBPFX, DBPFX);
++			"WHERE h.physmessage_id IS NULL "
++			"ORDER BY p.id DESC", DBPFX, DBPFX);
+ 		while (db_result_next(r)) {
+ 			id = g_new0(u64_t,1);
+ 			*id = db_result_get_u64(r, 0);
