@@ -299,7 +299,7 @@ src_install() {
 	fi
 
 	# Don't hide classes
-	rm lib/ct.sym || die
+	rm lib/ct.sym # || die # Don't die
 
 	#402507
 	mkdir jre/.systemPrefs || die
