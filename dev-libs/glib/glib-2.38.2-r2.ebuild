@@ -191,7 +191,8 @@ multilib_src_configure() {
 	# Building with --disable-debug highly unrecommended.  It will build glib in
 	# an unusable form as it disables some commonly used API.  Please do not
 	# convert this to the use_enable form, as it results in a broken build.
-	use debug && myconf="--enable-debug"
+	#use debug && myconf="--enable-debug"
+	myconf="--enable-debug=no"
 
 	# Only used by the gresource bin
 	multilib_is_native_abi || myconf="${myconf} --disable-libelf"
@@ -215,6 +216,11 @@ multilib_src_configure() {
 		--enable-man \
 		--with-pcre=internal \
 		--with-xml-catalog="${EPREFIX}/etc/xml/catalog"
+#	sed -i  "s/G_DISABLE_CAST_CHECKS/G_DISABLE_CAST_CHECKS -DG_DISABLE_CHECKS/" Makefile || die
+#	find . -name Makefile -exec sed -i  "s/G_DISABLE_CAST_CHECKS/G_DISABLE_CAST_CHECKS -DG_DISABLE_CHECKS/" {} \; -print
+	find . -name Makefile -print
+	grep -r G_DISABLE_CHECKS .
+
 }
 
 multilib_src_install_all() {
