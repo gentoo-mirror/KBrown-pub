@@ -287,6 +287,7 @@ src_install() {
 	local dest="/usr/$(get_libdir)/icedtea${SLOT}"
 	local ddest="${ED}/${dest}"
 	dodir "${dest}"
+	VMHANDLE="icedtea-${SLOT}"
 
 	dodoc README NEWS AUTHORS
 	dosym /usr/share/doc/${PF} /usr/share/doc/${PN}${SLOT}
@@ -299,10 +300,11 @@ src_install() {
 	fi
 
 	# Don't hide classes
-	rm lib/ct.sym # || die # Don't die
+	[ -f lib/ct.sym ] && rm lib/ct.sym # || die # Don't die
 
 	#402507
-	mkdir jre/.systemPrefs || die
+	[ -d jre/.systemPrefs ] || mkdir jre/.systemPrefs # || die # Don't die
+
 	touch jre/.systemPrefs/.system.lock || die
 	touch jre/.systemPrefs/.systemRootModFile || die
 
@@ -344,10 +346,11 @@ src_install() {
 
 	# OpenJDK7 should be able to use fontconfig instead, but wont hurt to
 	# install it anyway. Bug 390663
-	cp "${FILESDIR}"/fontconfig.Gentoo.properties.src "${T}"/fontconfig.Gentoo.properties || die
+	cp "${FILESDIR}"/fontconfig.Gentoo.properties.src "${T}"/fontconfig.Gentoo.properties #|| die
 	eprefixify "${T}"/fontconfig.Gentoo.properties
 	insinto "${dest}"/jre/lib
 	doins "${T}"/fontconfig.Gentoo.properties
+
 
 	set_java_env "${FILESDIR}/icedtea.env"
 	if ! use X || ! use alsa || ! use cups; then
