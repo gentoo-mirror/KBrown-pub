@@ -441,12 +441,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ "$ROOT" = "/" ] && [ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ] ; then
+#	if [ "$ROOT" = "/" ] && [ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
-		"/usr/$(get_libdir)/vlc/vlc-cache-gen" -f "/usr/$(get_libdir)/vlc/plugins/"
-	else
-		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
-		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
-		ewarn "If you do not do it, vlc will take a long time to load."
-	fi
+#		"/usr/$(get_libdir)/vlc/vlc-cache-gen" -f "/usr/$(get_libdir)/vlc/plugins/"
+#	else
+#		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
+#		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"
+#		ewarn "If you do not do it, vlc will take a long time to load."
+#	fi
 }
