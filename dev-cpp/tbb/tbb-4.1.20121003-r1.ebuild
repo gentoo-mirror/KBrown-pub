@@ -30,12 +30,12 @@ src_prepare() {
 	# use fully qualified gcc compilers. do not force march/mcpu
 	# not tested with icc
 	# order in sed expressions is important
-	 sed -i -e "s/g++/$(tc-getCXX)/g" build/*.gcc.inc || die
-	 sed -i -e "s/gcc/$(tc-getCC)/g" build/*.gcc.inc || die
+	 #sed -i -e "s/g++/$(tc-getCXX)/g" build/*.gcc.inc || die
+	 #sed -i -e "s/gcc/$(tc-getCC)/g" build/*.gcc.inc || die
 	 sed -i -e 's/-m\(arch\|cpu\)=*[[:space:]]//g' build/*.gcc.inc || die
 	 sed -i -e 's/-\(m\|-\)\(64\|32\)//g' build/*.gcc.inc || die
 	 sed -i -e 's/-O2/$(CXXFLAGS)/g' build/*.gcc.inc || die
-	 sed -i -e "/^ASM/s/as/$(tc-getAS)/g" build/*.gcc.inc || die
+	 #sed -i -e "/^ASM/s/as/$(tc-getAS)/g" build/*.gcc.inc || die
 
 	# force 64bit where applicable, 32bit where applicable... 
 	# built-in detection is based on running kernel, which messes up
@@ -81,13 +81,13 @@ src_prepare() {
 }
 
 src_compile() {
-	if [[ $(tc-getCXX) == *g++* ]]; then
+	#if [[ $(tc-getCXX) == *g++* ]]; then
 		comp="gcc"
-	elif [[ $(tc-getCXX) == *ic*c ]]; then
-		comp="icc"
-	else
-		die "compiler $(tc-getCXX) not supported by build system"
-	fi
+	#elif [[ $(tc-getCXX) == *ic*c ]]; then
+	#	comp="icc"
+	#else
+	#	die "compiler $(tc-getCXX) not supported by build system"
+	#fi
 	emake compiler=${comp} tbb tbbmalloc
 }
 
