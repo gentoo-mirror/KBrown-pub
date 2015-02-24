@@ -157,9 +157,9 @@ icedtea_check_requirements() {
 	local CHECKREQS_DISK_BUILD
 
 	if use doc; then
-		CHECKREQS_DISK_BUILD="9000M"
+		CHECKREQS_DISK_BUILD="5000M"
 	else
-		CHECKREQS_DISK_BUILD="8500M"
+		CHECKREQS_DISK_BUILD="4500M"
 	fi
 
 	check-reqs_pkg_${EBUILD_PHASE}
@@ -325,10 +325,10 @@ src_install() {
 	fi
 
 	# Don't hide classes
-	rm lib/ct.sym || die
+	[ -f lib/ct.sym ] && rm lib/ct.sym # || die # Don't die
 
 	#402507
-	mkdir jre/.systemPrefs || die
+	[ -d jre/.systemPrefs ] || mkdir jre/.systemPrefs # || die # Don't die
 	touch jre/.systemPrefs/.system.lock || die
 	touch jre/.systemPrefs/.systemRootModFile || die
 
