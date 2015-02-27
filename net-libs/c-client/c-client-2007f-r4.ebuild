@@ -64,10 +64,10 @@ src_prepare() {
 
 	# Respect LDFLAGS
 	epatch "${FILESDIR}"/${PN}-2007f-ldflags.patch
-	sed -e "s/CC=cc/CC=$(tc-getCC)/" \
-		-e "s/ARRC=ar/ARRC=$(tc-getAR)/" \
-		-e "s/RANLIB=ranlib/RANLIB=$(tc-getRANLIB)/" \
-		-i src/osdep/unix/Makefile || die "Respecting build flags"
+#	sed -e "s/CC=cc/CC=$(tc-getCC)/" \
+#		-e "s/ARRC=ar/ARRC=$(tc-getAR)/" \
+#		-e "s/RANLIB=ranlib/RANLIB=$(tc-getRANLIB)/" \
+#		-i src/osdep/unix/Makefile || die "Respecting build flags"
 
 	use topal && epatch "${FILESDIR}/${P}-topal.patch"
 	use chappa && epatch "${DISTDIR}/${P}-chappa-${CHAPPA_PL}-all.patch.gz"
