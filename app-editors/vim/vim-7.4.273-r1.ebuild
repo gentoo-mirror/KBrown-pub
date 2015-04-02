@@ -55,7 +55,7 @@ RDEPEND="
 	X? ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}
-	>=app-admin/eselect-vi-1.1
+	>=app-eselect/eselect-vi-1.1
 	sys-devel/autoconf
 	>=sys-libs/ncurses-5.2-r2
 	nls? ( sys-devel/gettext )
