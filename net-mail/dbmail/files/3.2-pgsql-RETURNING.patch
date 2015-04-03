@@ -1,9 +1,9 @@
-diff -uri dbmail-3.0.2.orig/src/dm_db.c dbmail-3.0.2/src/dm_db.c
---- dbmail-3.0.2.orig/src/dm_db.c	2013-07-20 01:47:11.000000000 -0500
-+++ dbmail-3.0.2/src/dm_db.c	2013-07-20 02:47:38.000000000 -0500
-@@ -483,16 +483,43 @@
- 	assert(r);
- 	db_result_next(r);
+diff -uriN dbmail-3.2.2.orig/src/dm_db.c dbmail-3.2.2/src/dm_db.c
+--- dbmail-3.2.2.orig/src/dm_db.c	2014-12-20 16:32:38.000000000 -0600
++++ dbmail-3.2.2/src/dm_db.c	2015-04-03 17:32:19.000000000 -0600
+@@ -568,16 +568,43 @@
+ 
+ 	if (! db_result_next(r)) { /* ignore */ }
  
 +	/* In PostgreSQL 9.1 lastRowId is _not_ always zero
 +	 *
@@ -36,14 +36,14 @@ diff -uri dbmail-3.0.2.orig/src/dm_db.c dbmail-3.0.2/src/dm_db.c
  	// or possibly for sqlite after calling executeQuery but 
  	// before calling db_result_next
  
--	if ((id = (u64_t )Connection_lastRowId(c)) == 0) { // mysql
-+	else if ((id = (u64_t )Connection_lastRowId(c)) == 0) { // mysql
+-	if ((id = (uint64_t )Connection_lastRowId(c)) == 0) { // mysql
++	else if ((id = (uint64_t )Connection_lastRowId(c)) == 0) { // mysql
  		// but if we're using 'RETURNING id' clauses on inserts
  		// or we're using the sqlite backend, we can do this
  
- 		if ((id = (u64_t )Connection_lastRowId(c)) == 0) // sqlite
+ 		if ((id = (uint64_t )Connection_lastRowId(c)) == 0) // sqlite
 -			id = db_result_get_u64(r, 0); // postgresql
-+			id = db_result_get_u64(r, 0); // postgresql - should not happen
++			id = db_result_get_u64(r, 0); // postgresql - should not get this far
  	}
  	assert(id);
  	return id;
