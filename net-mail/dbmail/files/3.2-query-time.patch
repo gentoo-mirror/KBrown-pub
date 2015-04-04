@@ -1,0 +1,13 @@
+diff -uriN dbmail-3.2.2.orig/src/dm_db.c dbmail-3.2.2/src/dm_db.c
+--- dbmail-3.2.2.orig/src/dm_db.c	2014-12-20 16:32:38.000000000 -0600
++++ dbmail-3.2.2/src/dm_db.c	2015-04-03 19:20:28.000000000 -0600
+@@ -354,7 +354,7 @@
+ 
+ void log_query_time(char *query, struct timeval before, struct timeval after)
+ {
+-	double elapsed = ((double)after.tv_sec + ((double)after.tv_usec / 1000000)) - ((double)before.tv_sec + ((double)before.tv_usec / 1000000));
++	double elapsed = (((double)after.tv_sec * 1000000 + (double)after.tv_usec) / 1000000) - (((double)before.tv_sec * 1000000 + (double)before.tv_usec) / 1000000);
+ 	TRACE(TRACE_DATABASE, "last query took [%.3f] seconds", elapsed);
+ 	if (elapsed > (double)db_params.query_time_warning)
+ 		TRACE(TRACE_WARNING, "slow query [%s] took [%.3f] seconds", query, elapsed);
+

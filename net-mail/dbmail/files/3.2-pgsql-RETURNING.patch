@@ -1,6 +1,6 @@
 diff -uriN dbmail-3.2.2.orig/src/dm_db.c dbmail-3.2.2/src/dm_db.c
 --- dbmail-3.2.2.orig/src/dm_db.c	2014-12-20 16:32:38.000000000 -0600
-+++ dbmail-3.2.2/src/dm_db.c	2015-04-03 17:32:19.000000000 -0600
++++ dbmail-3.2.2/src/dm_db.c	2015-04-03 17:43:45.000000000 -0600
 @@ -568,16 +568,43 @@
  
  	if (! db_result_next(r)) { /* ignore */ }
@@ -28,7 +28,7 @@ diff -uriN dbmail-3.2.2.orig/src/dm_db.c dbmail-3.2.2/src/dm_db.c
 +	 * However, we are expecting only one row to be returned so 
 +	 * we should always use db_result_get_u64(r, 0);
 +	 */
-+	if (_db_params.db_driver == DM_DRIVER_POSTGRESQL) {
++	if (db_params.db_driver == DM_DRIVER_POSTGRESQL) {
 +		id = db_result_get_u64(r, 0); // postgresql
 +	}
 +
