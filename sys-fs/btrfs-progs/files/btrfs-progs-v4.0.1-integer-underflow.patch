@@ -1,0 +1,12 @@
+diff -uri btrfs-progs-v4.0.1.orig/ctree.c btrfs-progs-v4.0.1/ctree.c
+--- btrfs-progs-v4.0.1.orig/ctree.c	2015-06-19 03:43:12.000000000 -0500
++++ btrfs-progs-v4.0.1/ctree.c	2015-06-19 03:43:49.000000000 -0500
+@@ -2588,7 +2588,7 @@
+ 	int ret = 0;
+ 
+ 	nritems = btrfs_header_nritems(parent);
+-	if (slot != nritems -1) {
++	if (slot < nritems -1) {
+ 		memmove_extent_buffer(parent,
+ 			      btrfs_node_key_ptr_offset(slot),
+ 			      btrfs_node_key_ptr_offset(slot + 1),

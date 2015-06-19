@@ -49,6 +49,8 @@ if [[ ${PV} == 9999 ]]; then
 fi
 
 src_prepare() {
+	epatch "${FILESDIR}/btrfs-progs-v4.0.1-integer-underflow.patch"
+
 	epatch_user
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
