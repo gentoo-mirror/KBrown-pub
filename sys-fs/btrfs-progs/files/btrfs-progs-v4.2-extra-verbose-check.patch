@@ -1,0 +1,15 @@
+Only in btrfs-progs-v4.2: .cmds-check.c.swp
+Common subdirectories: btrfs-progs-v4.2.orig/Documentation and btrfs-progs-v4.2/Documentation
+diff -u btrfs-progs-v4.2.orig/cmds-check.c btrfs-progs-v4.2/cmds-check.c
+--- btrfs-progs-v4.2.orig/cmds-check.c	2015-09-03 07:29:20.000000000 -0500
++++ btrfs-progs-v4.2/cmds-check.c	2015-09-18 14:24:37.000000000 -0500
+@@ -7972,6 +7972,7 @@
+ 	}
+ 
+ again:
++	fprintf(stderr, "again\n");
+ 	root1 = root->fs_info->tree_root;
+ 	level = btrfs_header_level(root1->node);
+ 	ret = add_root_item_to_list(&normal_trees, root1->root_key.objectid,
+Common subdirectories: btrfs-progs-v4.2.orig/config and btrfs-progs-v4.2/config
+Common subdirectories: btrfs-progs-v4.2.orig/tests and btrfs-progs-v4.2/tests
