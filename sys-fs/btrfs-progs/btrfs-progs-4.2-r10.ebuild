@@ -50,6 +50,7 @@ if [[ ${PV} == 9999 ]]; then
 fi
 
 src_prepare() {
+	epatch "${FILESDIR}/btrfs-progs-v4.2-extra-verbose-check.patch"
 	epatch_user
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf

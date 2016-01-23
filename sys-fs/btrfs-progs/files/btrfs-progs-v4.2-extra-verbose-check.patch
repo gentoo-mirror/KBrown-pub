@@ -1,15 +1,116 @@
 Only in btrfs-progs-v4.2: .cmds-check.c.swp
-Common subdirectories: btrfs-progs-v4.2.orig/Documentation and btrfs-progs-v4.2/Documentation
-diff -u btrfs-progs-v4.2.orig/cmds-check.c btrfs-progs-v4.2/cmds-check.c
+Only in btrfs-progs-v4.2: .ctree.c.swp
+Only in btrfs-progs-v4.2: .ctree.h.swp
+Only in btrfs-progs-v4.2: .extent-tree.c.swp
+diff -uri btrfs-progs-v4.2.orig/cmds-check.c btrfs-progs-v4.2/cmds-check.c
 --- btrfs-progs-v4.2.orig/cmds-check.c	2015-09-03 07:29:20.000000000 -0500
-+++ btrfs-progs-v4.2/cmds-check.c	2015-09-18 14:24:37.000000000 -0500
-@@ -7972,6 +7972,7 @@
++++ btrfs-progs-v4.2/cmds-check.c	2015-09-18 16:01:15.000000000 -0500
+@@ -7870,10 +7870,13 @@
+ 		rec = list_entry(list->next,
+ 				 struct root_item_record, list);
+ 		last = 0;
++		fprintf(stderr, "read_tree_block() root - objectid:%lld bytenr:%lld level_size:%lld\n",
++			root->objectid, rec->bytenr, rec->level_size);
+ 		buf = read_tree_block(root->fs_info->tree_root,
+ 				      rec->bytenr, rec->level_size, 0);
+ 		if (!extent_buffer_uptodate(buf)) {
+ 			free_extent_buffer(buf);
++			fprintf(stderr, "ret = -EIO;");
+ 			ret = -EIO;
+ 			break;
+ 		}
+@@ -7890,8 +7893,13 @@
+ 					     extent_cache, chunk_cache,
+ 					     dev_cache, block_group_cache,
+ 					     dev_extent_cache, rec);
+-			if (ret != 0)
++
++			if (ret != 0) {
++				fprintf(stderr, "run_next_block() root - objectid:%lld start:%lld size:%d bits_nr:%d \t",
++					root->objectid, bits->start, bits->size, bits_nr);
++				fprintf(stderr, "\t ret = %d\n", ret);
+ 				break;
++			}
+ 		}
+ 		free_extent_buffer(buf);
+ 		list_del(&rec->list);
+@@ -7905,6 +7913,9 @@
+ 				     dev_cache, block_group_cache,
+ 				     dev_extent_cache, NULL);
+ 		if (ret != 0) {
++			fprintf(stderr, "run_next_block() root - objectid:%lld start:%lld size:%d bits_nr:%d \t",
++				root->objectid, bits->start, bits->size, bits_nr);
++			fprintf(stderr, "\t ret = %d\n", ret);
+ 			if (ret > 0)
+ 				ret = 0;
+ 			break;
+@@ -7943,15 +7954,22 @@
+ 	u8 level;
+ 
+ 	dev_cache = RB_ROOT;
++	fprintf(stderr, "cache_tree_init(&chunk_cache);\n");
+ 	cache_tree_init(&chunk_cache);
+ 	block_group_tree_init(&block_group_cache);
+ 	device_extent_tree_init(&dev_extent_cache);
+ 
++	fprintf(stderr, "cache_tree_init(&extent_cache);\n");
+ 	cache_tree_init(&extent_cache);
++	fprintf(stderr, "cache_tree_init(&seen);\n");
+ 	cache_tree_init(&seen);
++	fprintf(stderr, "cache_tree_init(&pending);\n");
+ 	cache_tree_init(&pending);
++	fprintf(stderr, "cache_tree_init(&nodes);\n");
+ 	cache_tree_init(&nodes);
++	fprintf(stderr, "cache_tree_init(&reada);\n");
+ 	cache_tree_init(&reada);
++	fprintf(stderr, "cache_tree_init(&corrupt_blocks);\n");
+ 	cache_tree_init(&corrupt_blocks);
+ 	extent_io_tree_init(&excluded_extents);
+ 	INIT_LIST_HEAD(&dropping_trees);
+@@ -7972,8 +7990,11 @@
  	}
  
  again:
-+	fprintf(stderr, "again\n");
++	fprintf(stderr, "check_chunks_and_extents() again:\n");
  	root1 = root->fs_info->tree_root;
  	level = btrfs_header_level(root1->node);
++	fprintf(stderr, "root1 - objectid:%lld level: %lld \n", 
++			root1->objectid, level);
  	ret = add_root_item_to_list(&normal_trees, root1->root_key.objectid,
-Common subdirectories: btrfs-progs-v4.2.orig/config and btrfs-progs-v4.2/config
-Common subdirectories: btrfs-progs-v4.2.orig/tests and btrfs-progs-v4.2/tests
+ 				    root1->node->start, 0, level, 0,
+ 				    btrfs_level_size(root1, level), NULL);
+@@ -8047,6 +8068,8 @@
+ 	 * this in mind when dealing with return values from these functions, if
+ 	 * we get -EAGAIN we want to fall through and restart the loop.
+ 	 */
++	fprintf(stderr, "deal_root_from_list() root - objectid:%lld start:%lld size:%d bits_nr:%d \n",
++		root->objectid, bits->start, bits->size, bits_nr );
+ 	ret = deal_root_from_list(&normal_trees, root, bits, bits_nr, &pending,
+ 				  &seen, &reada, &nodes, &extent_cache,
+ 				  &chunk_cache, &dev_cache, &block_group_cache,
+@@ -8056,6 +8079,8 @@
+ 			goto loop;
+ 		goto out;
+ 	}
++	fprintf(stderr, "deal_root_from_list() root - objectid:%lld start:%lld size:%d bits_nr:%d \n",
++		root->objectid, bits->start, bits->size, bits_nr);
+ 	ret = deal_root_from_list(&dropping_trees, root, bits, bits_nr,
+ 				  &pending, &seen, &reada, &nodes,
+ 				  &extent_cache, &chunk_cache, &dev_cache,
+@@ -8066,6 +8091,7 @@
+ 		goto out;
+ 	}
+ 
++	fprintf(stderr, "check_chunks()");
+ 	err = check_chunks(&chunk_cache, &block_group_cache,
+ 			   &dev_extent_cache, NULL, NULL, NULL, 0);
+ 	if (err) {
+@@ -8075,6 +8101,8 @@
+ 			ret = err;
+ 	}
+ 
++	fprintf(stderr, "check_extent_refs() root - objectid:%lld\n",
++		root->objectid);
+ 	ret = check_extent_refs(root, &extent_cache);
+ 	if (ret < 0) {
+ 		if (ret == -EAGAIN)
