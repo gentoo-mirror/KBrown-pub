@@ -1,4 +1,3 @@
-Binary files sn9c1xx-1.50.orig/.sn9c102.h.swp and sn9c1xx-1.50/.sn9c102.h.swp differ
 diff -uriN sn9c1xx-1.50.orig/.sn9c102.ko.cmd sn9c1xx-1.50/.sn9c102.ko.cmd
 --- sn9c1xx-1.50.orig/.sn9c102.ko.cmd	1969-12-31 18:00:00.000000000 -0600
 +++ sn9c1xx-1.50/.sn9c102.ko.cmd	2016-01-31 15:54:04.000000000 -0600
