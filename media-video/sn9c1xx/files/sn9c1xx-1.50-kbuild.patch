@@ -1,0 +1,10 @@
+diff -uriN sn9c1xx-1.50.orig/Kbuild sn9c1xx-1.50/Kbuild
+--- sn9c1xx-1.50.orig/Kbuild	2008-01-18 09:38:32.000000000 -0600
++++ sn9c1xx-1.50/Kbuild	2016-01-31 09:59:33.000000000 -0600
+@@ -33,6 +33,3 @@
+                 sensors/sn9c102_tas5110c1b.o \
+                 sensors/sn9c102_tas5110d.o \
+                 sensors/sn9c102_tas5130d1b.o
+-
+-# Enable the /sysfs interface overriding the kernel configuration option
+-EXTRA_CFLAGS := -DCONFIG_VIDEO_ADV_DEBUG
