@@ -21,7 +21,7 @@ CONFIG_CHECK="VIDEO_DEV USB"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${P}-kbuild.patch
+	epatch "${FILESDIR}"/${P}-compat-4.3.patch
 	set_arch_to_kernel
 }
 
@@ -31,6 +31,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" modules_install || die "emake install failed"
 	dodoc ChangeLog sn9c102.txt || die "installing docs faild"
 }
