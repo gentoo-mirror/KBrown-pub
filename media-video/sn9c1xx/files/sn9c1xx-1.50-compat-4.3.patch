@@ -12866,7 +12866,7 @@ Binary files sn9c1xx-1.50.orig/sn9c102.mod.o and sn9c1xx-1.50/sn9c102.mod.o diff
 Binary files sn9c1xx-1.50.orig/sn9c102.o and sn9c1xx-1.50/sn9c102.o differ
 diff -uriN sn9c1xx-1.50.orig/sn9c102_core.c sn9c1xx-1.50/sn9c102_core.c
 --- sn9c1xx-1.50.orig/sn9c102_core.c	2008-06-07 08:19:21.000000000 -0500
-+++ sn9c1xx-1.50/sn9c102_core.c	2016-01-31 13:21:24.000000000 -0600
++++ sn9c1xx-1.50/sn9c102_core.c	2016-01-31 16:36:04.000000000 -0600
 @@ -50,6 +50,13 @@
  #define SN9C102_MODULE_VERSION  "1:1.50"
  #define SN9C102_MODULE_VERSION_CODE  KERNEL_VERSION(1, 1, 50)
@@ -12902,19 +12902,20 @@ diff -uriN sn9c1xx-1.50.orig/sn9c102_core.c sn9c1xx-1.50/sn9c102_core.c
  #endif
  	.read = sn9c102_read,
  	.poll = sn9c102_poll,
-@@ -3386,13 +3393,18 @@
+@@ -3386,13 +3393,19 @@
  	}
  
  	strcpy(cam->v4ldev->name, "SN9C1xx PC Camera");
 -	cam->v4ldev->owner = THIS_MODULE;
 -	cam->v4ldev->type = VID_TYPE_CAPTURE | VID_TYPE_SCALES;
 +	cam->v4ldev->cdev->owner = THIS_MODULE;
-+#if 0 
-+	/* hardware is neither fefined in struct video_device, struct cdev or struct device
-+	 * and it's being initialized as 0
-+	 * so we might just ignore it */
++	/* int hardware does not belong to any of 
++	 * struct video_device, struct cdev or struct device
++	 * and it's being initialized with 0
++	 * so it was not used in old v4l api.
++	 * We will just ignore it 
  	cam->v4ldev->hardware = 0;
-+#endif
++	 */
  	cam->v4ldev->fops = &sn9c102_fops;
  	cam->v4ldev->minor = video_nr[dev_nr];
  	cam->v4ldev->release = video_device_release;
