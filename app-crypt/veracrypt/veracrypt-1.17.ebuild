@@ -54,7 +54,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}/makefile-archdetect.diff"
 	epatch "${FILESDIR}/execstack-fix.diff"
-	epatch "${FILESDIR}/veracrypt-1.13-remove-packaging-from-makefile.patch"
+	epatch "${FILESDIR}/veracrypt-1.17-remove-packaging-from-makefile.patch"
 	epatch "${FILESDIR}/veracrypt-1.13-link-with-libdl.patch"
 
 	mkdir "${T}"/pkcs11 || die
