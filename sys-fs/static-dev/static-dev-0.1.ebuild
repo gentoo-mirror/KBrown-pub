@@ -16,28 +16,12 @@ IUSE=""
 RDEPEND="sys-apps/makedev"
 DEPEND="${RDEPEND}"
 
-abort() {
-	echo
-	eerror "We have detected that you currently use udev or devfs or devtmpfs"
-	eerror "and this ebuild cannot install to the same mount-point."
-	die "Cannot install on udev/devfs tmpfs."
-}
-
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} == "buildonly" ]] ; then
 		# User is just compiling which is fine -- all our checks are merge-time.
 		return
 	fi
 
-	# We want to not clobber udev (tmpfs) or older devfs setups.
-	if [[ -d ${ROOT}/dev/.udev || -c ${ROOT}/dev/.devfs ]] ; then
-		abort
-	fi
-	# We also want to not clobber newer devtmpfs setups.
-	if [[ ${ROOT} == "/" ]] && \
-	   ! awk '$2 == "/dev" && $3 == "devtmpfs" { exit 1 }' /proc/mounts ; then
-		abort
-	fi
 }
 
 pkg_postinst() {
