@@ -56,12 +56,4 @@ python_install_all() {
 	local DOCS=( AUTHORS.txt docs/*.rst )
 	distutils-r1_python_install_all
 
-	COMPLETION="${T}"/completion.tmp
-
-	"${PYTHON}" -m pip completion --bash > "${COMPLETION}" || die
-	newbashcomp "${COMPLETION}" ${PN}
-
-	"${PYTHON}" -m pip completion --zsh > "${COMPLETION}" || die
-	insinto /usr/share/zsh/site-functions
-	newins "${COMPLETION}" _pip
 }
