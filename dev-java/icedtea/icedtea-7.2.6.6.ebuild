@@ -160,9 +160,9 @@ icedtea_check_requirements() {
 	local CHECKREQS_DISK_BUILD
 
 	if use doc; then
-		CHECKREQS_DISK_BUILD="9000M"
+		CHECKREQS_DISK_BUILD="5000M"
 	else
-		CHECKREQS_DISK_BUILD="1500M"
+		CHECKREQS_DISK_BUILD="2500M"
 	fi
 
 	check-reqs_pkg_${EBUILD_PHASE}
