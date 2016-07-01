@@ -27,7 +27,7 @@
 # extern/libmv/third_party/glog
 
 EAPI=5
-PYTHON_COMPAT=( python3_5 )
+PYTHON_COMPAT=( python3_4 )
 #PATCHSET="1"
 
 inherit multilib fdo-mime gnome2-utils cmake-utils eutils python-single-r1 versionator flag-o-matic toolchain-funcs pax-utils check-reqs
