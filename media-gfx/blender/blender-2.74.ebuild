@@ -26,8 +26,8 @@
 # extern/libmv/third_party/gflags
 # extern/libmv/third_party/glog
 
-EAPI=5
-PYTHON_COMPAT=( python3_5 )
+EAPI=6
+PYTHON_COMPAT=( python3_4 )
 #PATCHSET="1"
 
 inherit multilib fdo-mime gnome2-utils cmake-utils eutils python-single-r1 versionator flag-o-matic toolchain-funcs pax-utils check-reqs
@@ -55,7 +55,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	redcode? ( jpeg2k ffmpeg )
 	cycles? ( boost openexr tiff )
 	nls? ( boost )
-	game-engine? ( boost )"
+	colorio? ( boost )
+	openal? ( boost )
+	game-engine? ( boost )
+	?? ( ffmpeg libav )"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -68,22 +71,20 @@ RDEPEND="
 	sci-libs/ldl
 	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg
+	virtual/jpeg:0
 	virtual/libintl
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXi
 	x11-libs/libXxf86vm
 	boost? ( >=dev-libs/boost-1.44[nls?,threads(+)] )
-	collada? ( media-libs/opencollada )
-	colorio? ( <=media-libs/opencolorio-1.0.9 )
+	collada? ( >=media-libs/opencollada-1.6.18 )
+	colorio? ( >=media-libs/opencolorio-1.0.9-r2 )
 	cycles? (
 		media-libs/openimageio
 	)
-	ffmpeg? (
-		!libav? ( >=media-video/ffmpeg-2.1.4:0=[x264,mp3,encode,theora,jpeg2k?] )
-		libav? ( >=media-video/libav-9:0=[x264,mp3,encode,theora,jpeg2k?] )
-	)
+	ffmpeg? ( media-video/ffmpeg:0=[x264,mp3,encode,theora,jpeg2k?] )
+	libav? ( >=media-video/libav-11.3:0=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0 )
 	jack? ( media-sound/jack-audio-connection-kit )
 	jpeg2k? ( media-libs/openjpeg:0 )
@@ -105,6 +106,13 @@ DEPEND="${RDEPEND}
 	)
 	nls? ( sys-devel/gettext )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.68-doxyfile.patch
+	"${FILESDIR}"/${PN}-2.68-fix-install-rules.patch
+	"${FILESDIR}"/${PN}-2.70-sse2.patch
+	"${FILESDIR}"/${P}-fix-util_simd.patch
+)
+
 pkg_pretend() {
 	if use openmp && ! tc-has-openmp; then
 		eerror "You are using gcc built without 'openmp' USE."
@@ -122,11 +130,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.68-doxyfile.patch \
-		"${FILESDIR}"/${PN}-2.68-fix-install-rules.patch \
-		"${FILESDIR}"/${PN}-2.77-sse2.patch 
-
-	epatch_user
+	default
 
 	# we don't want static glew, but it's scattered across
 	# thousand files
@@ -155,39 +159,42 @@ src_configure() {
 	# shadows, see bug #276338 for reference
 	append-flags -funsigned-char
 	append-lfs-flags
+	append-ldflags $(no-as-needed)
 
 	# WITH_PYTHON_SECURITY
 	# WITH_PYTHON_SAFETY
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DWITH_INSTALL_PORTABLE=OFF
-		$(cmake-utils_use_with boost BOOST)
-		$(cmake-utils_use_with cycles CYCLES)
-		$(cmake-utils_use_with collada OPENCOLLADA)
-		$(cmake-utils_use_with dds IMAGE_DDS)
-		$(cmake-utils_use_with elbeem MOD_FLUID)
-		$(cmake-utils_use_with ffmpeg CODEC_FFMPEG)
-		$(cmake-utils_use_with fftw FFTW3)
-		$(cmake-utils_use_with fftw MOD_OCEANSIM)
-		$(cmake-utils_use_with game-engine GAMEENGINE)
-		$(cmake-utils_use_with nls INTERNATIONAL)
-		$(cmake-utils_use_with jack JACK)
-		$(cmake-utils_use_with jpeg2k IMAGE_OPENJPEG)
-		$(cmake-utils_use_with openimageio OPENIMAGEIO)
-		$(cmake-utils_use_with openal OPENAL)
-		$(cmake-utils_use_with openexr IMAGE_OPENEXR)
-		$(cmake-utils_use_with openmp OPENMP)
-		$(cmake-utils_use_with opennl OPENNL)
-		$(cmake-utils_use_with player PLAYER)
-		$(cmake-utils_use_with redcode IMAGE_REDCODE)
-		$(cmake-utils_use_with sdl SDL)
-		$(cmake-utils_use_with sndfile CODEC_SNDFILE)
-		$(cmake-utils_use_with cpu_flags_x86_sse RAYOPTIMIZATION)
-		$(cmake-utils_use_with cpu_flags_x86_sse2 SSE2)
-		$(cmake-utils_use_with bullet BULLET)
-		$(cmake-utils_use_with tiff IMAGE_TIFF)
-		$(cmake-utils_use_with colorio OPENCOLORIO)
-		$(cmake-utils_use_with ndof INPUT_NDOF)
+		-DWITH_BOOST=$(usex boost ON OFF )
+		-DWITH_CYCLES=$(usex cycles ON OFF )
+		-DWITH_OPENCOLLADA=$(usex collada ON OFF )
+		-DWITH_IMAGE_DDS=$(usex dds ON OFF )
+		-DWITH_MOD_FLUID=$(usex elbeem ON OFF )
+		-DWITH_CODEC_FFMPEG=$(usex ffmpeg ON OFF )
+		-DWITH_FFTW3=$(usex fftw ON OFF )
+		-DWITH_MOD_OCEANSIM=$(usex fftw ON OFF )
+		-DWITH_GAMEENGINE=$(usex game-engine ON OFF )
+		-DWITH_INTERNATIONAL=$(usex nls ON OFF )
+		-DWITH_JACK=$(usex jack ON OFF )
+		-DWITH_IMAGE_OPENJPEG=$(usex jpeg2k ON OFF )
+		-DWITH_OPENIMAGEIO=$(usex openimageio ON OFF )
+		-DWITH_OPENAL=$(usex openal ON OFF )
+		-DWITH_IMAGE_OPENEXR=$(usex openexr ON OFF )
+		-DWITH_OPENMP=$(usex openmp ON OFF )
+		-DWITH_OPENNL=$(usex opennl ON OFF )
+		-DWITH_PLAYER=$(usex player ON OFF )
+		-DWITH_IMAGE_REDCODE=$(usex redcode ON OFF )
+		-DWITH_SDL=$(usex sdl ON OFF )
+		-DWITH_CODEC_SNDFILE=$(usex sndfile ON OFF )
+		-DWITH_RAYOPTIMIZATION=$(usex cpu_flags_x86_sse ON OFF )
+		-DWITH_SSE2=$(usex cpu_flags_x86_sse2 ON OFF )
+		-DWITH_BULLET=$(usex bullet ON OFF )
+		-DWITH_IMAGE_TIFF=$(usex tiff ON OFF )
+		-DWITH_OPENCOLORIO=$(usex colorio ON OFF )
+		-DWITH_INPUT_NDOF=$(usex ndof ON OFF )
+		-DWITH_CXX_GUARDEDALLOC=$(usex debug ON OFF )
+		-DWITH_ASSERT_ABORT=$(usex debug ON OFF )
 		-DWITH_PYTHON_INSTALL=OFF
 		-DWITH_PYTHON_INSTALL_NUMPY=OFF
 		-DWITH_STATIC_LIBS=OFF
@@ -205,6 +212,10 @@ src_compile() {
 	cmake-utils_src_compile
 
 	if use doc; then
+		# Workaround for binary drivers.
+		cards=( /dev/ati/card* /dev/nvidia* )
+		for card in "${cards[@]}"; do addpredict "${card}"; done
+
 		einfo "Generating Blender C/C++ API docs ..."
 		cd "${CMAKE_USE_DIR}"/doc/doxygen || die
 		doxygen -u Doxyfile
@@ -228,18 +239,19 @@ src_install() {
 	pax-mark m "${CMAKE_BUILD_DIR}"/bin/blender
 
 	if use doc; then
-		docinto "API/python"
-		dohtml -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/*
+		docinto "html/API/python"
+		dodoc -r "${CMAKE_USE_DIR}"/doc/python_api/BPY_API/*
 
-		docinto "API/blender"
-		dohtml -r "${CMAKE_USE_DIR}"/doc/doxygen/html/*
+		docinto "html/API/blender"
+		dodoc -r "${CMAKE_USE_DIR}"/doc/doxygen/html/*
 	fi
 
 	# fucked up cmake will relink binary for no reason
 	emake -C "${CMAKE_BUILD_DIR}" DESTDIR="${D}" install/fast
 
 	# fix doc installdir
-	dohtml "${CMAKE_USE_DIR}"/release/text/readme.html
+	docinto "html"
+	dodoc "${CMAKE_USE_DIR}"/release/text/readme.html
 	rm -rf "${ED%/}"/usr/share/doc/blender
 
 	python_fix_shebang "${ED%/}"/usr/bin/blender-thumbnailer.py
@@ -267,6 +279,7 @@ pkg_postinst() {
 	ewarn "If you are concerned about security, file a bug upstream:"
 	ewarn "  https://developer.blender.org/"
 	ewarn
+
 	gnome2_icon_cache_update
 	fdo-mime_desktop_database_update
 }
