@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.2-soversion.patch
 	"${FILESDIR}"/${PN}-1.2.2-no-undefined.patch
 	"${FILESDIR}"/${PN}-1.2.2-libdir.patch
+	"${FILESDIR}"/${PN}-1.6.18-clang.patch
 )
 
 src_prepare() {
