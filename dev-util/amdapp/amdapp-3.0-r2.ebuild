@@ -6,7 +6,7 @@ EAPI=5
 
 inherit multilib unpacker versionator
 
-MY_V="$(get_version_component_range 1).$(get_version_component_range 2).130.135-GA"
+MY_V="$(get_version_component_range 1).$(get_version_component_range 2).130.136-GA"
 
 X86_AT="AMD-APP-SDKInstaller-v${MY_V}-linux32.tar.bz2"
 AMD64_AT="AMD-APP-SDKInstaller-v${MY_V}-linux64.tar.bz2"
