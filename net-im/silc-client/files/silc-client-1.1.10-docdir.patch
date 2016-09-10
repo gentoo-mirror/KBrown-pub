@@ -1,0 +1,26 @@
+diff -uri silc-client-1.1.10.orig/apps/irssi/docs/help/Makefile.in silc-client-1.1.10/apps/irssi/docs/help/Makefile.in
+--- silc-client-1.1.10.orig/apps/irssi/docs/help/Makefile.in	2014-05-06 05:19:32.000000000 -0500
++++ silc-client-1.1.10/apps/irssi/docs/help/Makefile.in	2016-09-09 23:38:32.000000000 -0500
+@@ -494,21 +494,7 @@
+ 
+ clean-libtool:
+ 	-rm -rf .libs _libs
+-install-helpDATA: $(help_DATA)
+-	@$(NORMAL_INSTALL)
+-	@list='$(help_DATA)'; test -n "$(helpdir)" || list=; \
+-	if test -n "$$list"; then \
+-	  echo " $(MKDIR_P) '$(DESTDIR)$(helpdir)'"; \
+-	  $(MKDIR_P) "$(DESTDIR)$(helpdir)" || exit 1; \
+-	fi; \
+-	for p in $$list; do \
+-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+-	  echo "$$d$$p"; \
+-	done | $(am__base_list) | \
+-	while read files; do \
+-	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(helpdir)'"; \
+-	  $(INSTALL_DATA) $$files "$(DESTDIR)$(helpdir)" || exit $$?; \
+-	done
++install-helpDATA: 
+ 
+ uninstall-helpDATA:
+ 	@$(NORMAL_UNINSTALL)

@@ -34,7 +34,7 @@ RDEPEND="${COMMONDEPEND}
 src_prepare() {
 	sed -i -e "s:-g -O2:${CFLAGS}:g" configure
 	use amd64 && sed -i -e 's:felf\([^6]\):felf64\1:g' configure
-	epatch "${FILESDIR}/${PN}-1.1.8-docdir.patch"
+	epatch "${FILESDIR}/${PN}-1.1.10-docdir.patch"
 	epatch "${FILESDIR}/${PN}-1.1.8-sandbox-errors-fix.patch"
 }
 
