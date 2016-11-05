@@ -1,0 +1,71 @@
+diff --git a/src/Crypto/AesSmall_x86.asm b/src/Crypto/AesSmall_x86.asm
+index 872aa01..a48b8bb 100644
+--- a/src/Crypto/AesSmall_x86.asm
++++ b/src/Crypto/AesSmall_x86.asm
+@@ -1442,3 +1442,12 @@ _aes_dec_tab:
+     db  v8(0xe1),v8(0x69),v8(0x14),v8(0x63),v8(0x55),v8(0x21),v8(0x0c),v8(0x7d)
+ 
+ %endif
++	%ifidn __OUTPUT_FORMAT__,elf
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf32
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf64
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
+diff --git a/src/Crypto/Aes_hw_cpu.asm b/src/Crypto/Aes_hw_cpu.asm
+index edc20b2..b1040d5 100644
+--- a/src/Crypto/Aes_hw_cpu.asm
++++ b/src/Crypto/Aes_hw_cpu.asm
+@@ -331,3 +331,12 @@
+ 
+ 
+ %endif	; __BITS__ != 16
++	%ifidn __OUTPUT_FORMAT__,elf
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf32
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf64
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
+diff --git a/src/Crypto/Aes_x64.asm b/src/Crypto/Aes_x64.asm
+index f74d032..4385943 100644
+--- a/src/Crypto/Aes_x64.asm
++++ b/src/Crypto/Aes_x64.asm
+@@ -905,3 +905,12 @@ end_prologue
+ %endif
+ 
+ %endif
++	%ifidn __OUTPUT_FORMAT__,elf
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf32
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf64
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
+diff --git a/src/Crypto/Aes_x86.asm b/src/Crypto/Aes_x86.asm
+index 484e31a..3902623 100644
+--- a/src/Crypto/Aes_x86.asm
++++ b/src/Crypto/Aes_x86.asm
+@@ -644,3 +644,12 @@ stk_spc equ    20   ; stack space
+     do_exit
+ 
+ %endif
++	%ifidn __OUTPUT_FORMAT__,elf
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf32
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
++	%ifidn __OUTPUT_FORMAT__,elf64
++	section .note.GNU-stack noalloc noexec nowrite progbits
++	%endif
+-- 
+2.7.3
+
