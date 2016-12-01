@@ -37,7 +37,10 @@ MULTILIB_WRAPPED_HEADERS=(
 PATCHES=(
 	"${FILESDIR}/${PN}-4.8.5-honor-ExcludeSocketNotifiers-in-glib-event-loop.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.5-qeventdispatcher-recursive.patch" # bug 514968
+	"${FILESDIR}/${PN}-4.8.5-libressl.patch"
 	"${FILESDIR}/${PN}-4.8.6-moc-boost-1.60.patch" # bug 556104
+	#"${FILESDIR}/${PN}-4.8.7-libressl-ssl3.patch" # bug 590342
+
 )
 
 QT4_TARGET_DIRECTORIES="
