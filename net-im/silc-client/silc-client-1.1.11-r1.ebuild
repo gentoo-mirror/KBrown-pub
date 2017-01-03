@@ -19,7 +19,7 @@ IUSE="ipv6 perl debug"
 COMMONDEPEND="perl? ( dev-lang/perl )
 	sys-libs/ncurses
 	>=dev-libs/glib-2.8
-	!<=net-im/silc-toolkit-0.9.12-r1"
+	!<=net-im/silc-toolkit-1.1.10"
 
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig
