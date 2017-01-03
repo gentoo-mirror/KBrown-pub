@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="gmp ipv6 debug"
 
-RDEPEND="!<net-im/silc-toolkit-1.1.12
+RDEPEND=">=net-im/silc-toolkit-1.1.12
 	!<=net-im/silc-client-1.1.11
 	gmp? ( dev-libs/gmp )"
 
