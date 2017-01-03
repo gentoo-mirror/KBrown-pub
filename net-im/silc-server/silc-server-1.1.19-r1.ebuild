@@ -61,7 +61,7 @@ src_install() {
 		"${D}"/usr/include \
 		"${D}"/etc/silc/silcd.{pub,prv}
 
-	newinitd "${FILESDIR}/silcd.initd-r1" silcd
+	newinitd "${FILESDIR}/silcd.rc" silcd
 	doman doc/silcd.8 doc/silcd.conf.5
 
 	sed -i \
