@@ -1,11 +1,10 @@
-diff --git a/src/Main/Main.make b/src/Main/Main.make
-index 92865ef..b7e3c29 100644
---- a/src/Main/Main.make
-+++ b/src/Main/Main.make
-@@ -194,48 +194,6 @@ endif
+--- src/Main/Main.make.orig
++++ src/Main/Main.make
+@@ -190,49 +190,6 @@
+ 	rm -fr "$(PWD)/Setup/MacOSX/VeraCrypt_dmg"
  endif
- 
- 
+
+-
 -
 -ifeq "$(PLATFORM)" "Linux"
 -ifeq "$(TC_BUILD_CONFIG)" "Release"
@@ -49,8 +48,5 @@ index 92865ef..b7e3c29 100644
 -endif
 -
  $(OBJS): $(PCH)
- 
- Resources.o: $(RESOURCES)
--- 
-2.7.3
 
+ Resources.o: $(RESOURCES)
