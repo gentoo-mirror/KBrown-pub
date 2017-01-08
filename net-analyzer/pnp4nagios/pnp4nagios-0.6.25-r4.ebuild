@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 DEPEND="
 	dev-lang/php:*[filter,gd,json,simplexml,xml,zlib]
 	>=net-analyzer/rrdtool-1.2[graph,perl]
-	|| ( <net-analyzer/nagios-core-4 net-analyzer/icinga net-analyzer/icinga2 )"
+	|| ( net-analyzer/nagios-core net-analyzer/icinga net-analyzer/icinga2 )"
 
 # A list of modules used in our Apache config file.
 APACHE_MODS="apache2_modules_alias,"       # "Alias" directive
