@@ -72,7 +72,7 @@ src_install() {
 		die "unable to remove ${ED%/}/usr/share/pnp/install.php"
 
 	if use apache2 ; then
-		insinto "${APACHE_MODULES_CONFDIR}"
+		insinto "/etc/apache2/modules.d"
 		newins "${FILESDIR}"/98_pnp4nagios-2.4.conf 98_pnp4nagios.conf
 
 		# Allow the apache user to read our config files. This same
