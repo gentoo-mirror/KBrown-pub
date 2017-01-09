@@ -14,26 +14,31 @@ EGIT_REPO_URI="https://github.com/PHP-FFMpeg/PHP-FFMpeg.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
+# https://wiki.gentoo.org/wiki/Composer_packaging
+#TODO: Add composer dependencies
 DEPEND="dev-lang/php:*
 		media-video/ffmpeg
 		dev-php/fedora-autoloader"
 RDEPEND="${DEPEND}"
 
-#src_unpack() {
-#	git-r3_src_unpack
-#	php-ext-source-r3_src_unpack
-#}
-#
-#src_prepare() {
-#	php-ext-source-r3_src_prepare
-#}
-
 S="${WORKDIR}/${PF}/src"
+
+src_prepare() {
+    default
+    if use test; then
+        cp "${FILESDIR}"/autoload.php "${S}"/autoload-test.php || die
+    fi
+}
+
 src_install() {
 	insinto "/usr/share/php/FFMpeg"
 	doins -r FFMpeg/. "${FILESDIR}"/autoload.php
 	dodoc "${WORKDIR}/${PF}"/README.md
+}
+
+src_test() {
+    phpunit --bootstrap "${S}"/autoload-test.php || die "test suite failed"
 }
 
