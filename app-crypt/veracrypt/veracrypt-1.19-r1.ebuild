@@ -44,8 +44,15 @@ PATCHES=(
 	"${FILESDIR}/${P}-makefile-archdetect.patch"
 	"${FILESDIR}/${P}-execstack-fix.patch"
 	"${FILESDIR}/${P}-remove-packaging-from-makefile.patch"
-	"${FILESDIR}/${P}-missing-libs.patch"
 )
+
+src_prepare() {
+	default
+	WX_BASENAME=$( /usr/bin/wx-config --basename )
+	if [[ ${WX_BASENAME} == "wx_baseu" ]] ; then
+		epatch "${FILESDIR}/${P}-missing-libs.patch"
+	fi
+}
 
 
 src_compile() {

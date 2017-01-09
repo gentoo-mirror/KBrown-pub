@@ -1,5 +1,5 @@
-diff -uriN ../VeraCrypt-VeraCrypt_1.19.orig/src/Main/Main.make src/Main/Main.make
---- ../VeraCrypt-VeraCrypt_1.19.orig/src/Main/Main.make	2016-10-17 11:40:41.000000000 -0500
+diff -uriN src.orig/Main/Main.make src/Main/Main.make
+--- src.orig/Main/Main.make	2016-10-17 11:40:41.000000000 -0500
 +++ src/Main/Main.make	2017-01-07 20:52:13.000000000 -0600
 @@ -82,14 +82,10 @@
  #------ wxWidgets configuration ------
