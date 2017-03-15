@@ -17,8 +17,6 @@ SLOT="0/43"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="+asm static-libs"
 
-RDEPEND="!dev-libs/openssl:0"
-DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
 src_prepare() {
