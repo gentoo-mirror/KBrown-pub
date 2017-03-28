@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: darwin-streaming-server-6.0.3.ebuild 2008-06-05 bpkroth $
 
+EAPI=2
+
 inherit eutils
 
 MY_P="DarwinStreamingSrvr${PV}-Source"
