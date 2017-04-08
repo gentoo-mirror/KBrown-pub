@@ -34,6 +34,10 @@ pkg_setup() {
 	enewuser dbmail -1 -1 /var/lib/dbmail dbmail
 }
 
+src_prepare() {
+	epatch "${FILESDIR}/3.2-pgsql-RETURNING.patch"
+}
+
 src_configure() {
 	econf \
 		--enable-manpages \
