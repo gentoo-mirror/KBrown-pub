@@ -27,15 +27,13 @@ DEPEND="dev-db/libzdb
 	ssl? ( dev-libs/openssl )"
 RDEPEND="${DEPEND}"
 
+PATCHES="${FILESDIR}/3.2-pgsql-RETURNING.patch "
+
 DOCS="AUTHORS README.md INSTALL THANKS UPGRADING"
 
 pkg_setup() {
 	enewgroup dbmail
 	enewuser dbmail -1 -1 /var/lib/dbmail dbmail
-}
-
-src_prepare() {
-	epatch "${FILESDIR}/3.2-pgsql-RETURNING.patch"
 }
 
 src_configure() {
