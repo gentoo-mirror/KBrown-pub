@@ -15,7 +15,7 @@ SRC_URI="https://downloads.sourceforge.net/project/boost/${PN}/${PV}/${MY_P}.tar
 
 LICENSE="Boost-1.0"
 SLOT="0/${PV}" # ${PV} instead ${MAJOR_V} due to bug 486122
-KEYWORDS="~mips ~s390 ~sh ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="~mips ~s390 ~sh ~ppc ~amd64 ~x86 ~sparc ~sparc64 "
 
 IUSE="context debug doc icu +nls mpi python static-libs +threads tools"
 
