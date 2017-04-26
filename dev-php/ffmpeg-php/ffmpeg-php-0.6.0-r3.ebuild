@@ -12,7 +12,7 @@ USE_PHP="php5-6 php5-5 php5-4"
 
 inherit php-ext-source-r2 eutils
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="PHP extension that provides access to movie info"
 HOMEPAGE="https://sourceforge.net/projects/ffmpeg-php/"
