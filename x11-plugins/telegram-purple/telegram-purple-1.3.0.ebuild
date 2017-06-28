@@ -15,6 +15,9 @@ case ${PV} in
 	"1.3.0")
 	EGIT_COMMIT="0340e4f14b2480782db4e5b9242103810227c522"
 	;;
+	"1.3.1")
+	EGIT_COMMIT="065e0b7ac946f65f080bf05e8f91a1a4214e2d24"
+	;;
 	*)
 	EGIT_BRANCH="master"
 	KEYWORDS="~*"
