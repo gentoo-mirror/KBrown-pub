@@ -60,6 +60,7 @@ MODULE_DEPENDS="
 	lbmethod_bytraffic:proxy_balancer
 	lbmethod_bybusyness:proxy_balancer
 	lbmethod_heartbeat:proxy_balancer
+	libressl:ssl
 	log_forensic:log_config
 	logio:log_config
 	cache_disk:cache
@@ -127,7 +128,7 @@ HOMEPAGE="https://httpd.apache.org/"
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
 
 DEPEND+="apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )"
 
@@ -138,6 +139,7 @@ pkg_setup() {
 	# to USE flag conditionals (bug #499260)
 	use ssl && MODULE_CRITICAL+=" socache_shmcb"
 	use doc && MODULE_CRITICAL+=" alias negotiation setenvif"
+	use libressl && PATCHES+=" ${FILESDIR}/httpd-2.4.26-LibreSSL.patch"
 	apache-2_pkg_setup
 }
 
