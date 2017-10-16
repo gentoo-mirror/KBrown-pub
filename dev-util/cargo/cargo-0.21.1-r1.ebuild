@@ -3,7 +3,7 @@
 
 EAPI=6
 
-CARGO_SNAPSHOT_DATE="2017-10-02"
+CARGO_SNAPSHOT_DATE="2017-10-15"
 CRATES="
 advapi32-sys-0.2.0
 aho-corasick-0.5.3
@@ -60,9 +60,9 @@ num-iter-0.1.33
 num-rational-0.1.38
 num-traits-0.1.39
 num_cpus-1.6.2
-openssl-0.9.19
+openssl-0.9.20
 openssl-probe-0.1.1
-openssl-sys-0.9.19
+openssl-sys-0.9.20
 percent-encoding-1.0.0
 pkg-config-0.3.9
 psapi-sys-0.1.0
@@ -153,7 +153,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/findutils
 	sys-apps/sed"
 
-PATCHES=( "${FILESDIR}/0.21.0-openssl-0.9.19.patch" )
+PATCHES=( "${FILESDIR}/0.21.0-openssl-0.9.20.patch" )
 
 src_configure() {
 	# Do nothing
