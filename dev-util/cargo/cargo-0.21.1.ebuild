@@ -153,7 +153,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/findutils
 	sys-apps/sed"
 
-PATCHES=( "${FILESDIR}/0.21.0-openssl-0.9.19.patch" )
+PATCHES=( "${FILESDIR}/0.21.1-openssl-0.9.19.patch" )
 
 src_configure() {
 	# Do nothing
