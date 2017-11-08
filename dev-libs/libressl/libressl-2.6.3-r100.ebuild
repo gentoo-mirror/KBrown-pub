@@ -18,7 +18,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="+asm nc static-libs"
 
 RDEPEND="
-	!dev-libs/openssl:0
 	nc? ( !net-analyzer/openbsd-netcat )"
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
