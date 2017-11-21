@@ -31,4 +31,3 @@ diff -aru a/src/plugins/preauth/pkinit/pkinit_crypto_openssl.h b/src/plugins/pre
  #include <openssl/asn1t.h>
  #else
  #include <openssl/asn1_mac.h>
-Only in src/util/verto: Makefile

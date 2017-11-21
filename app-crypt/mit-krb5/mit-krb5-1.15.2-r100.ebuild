@@ -59,7 +59,7 @@ src_prepare() {
 	eapply -p2 "${FILESDIR}/${PN}-config_LDFLAGS.patch"
 	eapply -p0 "${FILESDIR}/${PN}-1.14.2-redeclared-ttyname.patch"
 	eapply "${FILESDIR}/${PN}-1.14.4-disable-nls.patch"
-	eapply -p0 "${FILESDIR}/${PN}-libressl.patch"
+	eapply -p1 "${FILESDIR}/${PN}-libressl.patch"
 	
 	# Make sure we always use the system copies.
 	rm -rf util/{et,ss,verto}
