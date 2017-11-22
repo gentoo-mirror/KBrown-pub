@@ -69,9 +69,9 @@ num-iter-0.1.34
 num-rational-0.1.39
 num-traits-0.1.40
 num_cpus-1.6.2
-openssl-0.9.20
+openssl-0.9.21
 openssl-probe-0.1.1
-openssl-sys-0.9.20
+openssl-sys-0.9.21
 percent-encoding-1.0.0
 pkg-config-0.3.9
 psapi-sys-0.1.0
@@ -167,7 +167,7 @@ DEPEND="${COMMON_DEPEND}
 	sys-apps/sed"
 
 PATCHES=(
-	"${FILESDIR}/cargo-0.22.0-libressl.patch"
+	"${FILESDIR}/cargo-0.22.0-libressl-2.6.3.patch"
 )
 
 src_configure() {
