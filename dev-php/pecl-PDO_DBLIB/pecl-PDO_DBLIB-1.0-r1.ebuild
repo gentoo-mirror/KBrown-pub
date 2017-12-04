@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="pdo_dblib"
 PHP_EXT_INI="yes"
@@ -10,7 +10,7 @@ PHP_EXT_ZENDEXT="no"
 
 USE_PHP="php5-4 php5-5 php5-6"
 
-inherit php-ext-pecl-r2
+inherit php-ext-pecl-r3
 
 DESCRIPTION="PHP bindings for the Free TDS library"
 LICENSE="PHP-3.01"
@@ -19,15 +19,17 @@ IUSE=""
 KEYWORDS="~amd64 ~x86"
 DEPEND=">=dev-db/freetds-0.91"
 RDEPEND="${DEPEND}"
+PATCHES=(
+	"${FILESDIR}/PDO_DBLIB-1.0-config.patch"
+	"${FILESDIR}/PDO_DBLIB-1.0-compile.patch"
+)
 
 src_prepare() {
 	for slot in $(php_get_slots); do
 		php_init_slot_env ${slot}
-		epatch "${FILESDIR}"/PDO_DBLIB-config.patch
-		epatch "${FILESDIR}"/PDO_DBLIB-compile.patch
 	done
 
-	php-ext-source-r2_src_prepare
+	php-ext-source-r3_src_prepare
 }
 
 src_configure() {
