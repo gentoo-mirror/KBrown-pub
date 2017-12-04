@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 DEPEND=">=dev-db/freetds-0.91"
 RDEPEND="${DEPEND}"
 PATCHES=(
-	"${FILESDIR}/PDO_DBLIB-config.patch"
-	"${FILESDIR}/PDO_DBLIB-compile.patch"
+	"${FILESDIR}/PDO_DBLIB-1.0-config.patch"
+	"${FILESDIR}/PDO_DBLIB-1.0-compile.patch"
 )
 
 src_prepare() {
