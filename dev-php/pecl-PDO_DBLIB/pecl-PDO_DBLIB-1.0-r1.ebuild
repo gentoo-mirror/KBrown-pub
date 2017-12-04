@@ -29,7 +29,7 @@ src_prepare() {
 		php_init_slot_env ${slot}
 	done
 
-	php-ext-source-r2_src_prepare
+	php-ext-source-r3_src_prepare
 }
 
 src_configure() {
