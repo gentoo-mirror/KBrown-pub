@@ -14,7 +14,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ppc ~s390 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~s390 ~sparc ~x86"
 
 IUSE="bgpclassless caps fpm doc elibc_glibc ipv6 multipath nhrpd ospfapi pam protobuf +readline snmp tcp-zebra test"
 
@@ -37,7 +37,9 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.99.22.4-ipctl-forwarding.patch"
+	"${FILESDIR}/${PN}-1.2.2-NETINET_IN_H.patch"
 )
+
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="Sample configuration files can be found in /usr/share/doc/${PF}/samples
