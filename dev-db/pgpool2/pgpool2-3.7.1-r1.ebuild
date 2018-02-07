@@ -17,14 +17,17 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE="doc memcached pam ssl static-libs"
+IUSE="doc libressl memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
 	net-libs/libnsl:0=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
-	ssl? ( dev-libs/openssl:* )
+	ssl? ( 
+		!libressl? ( dev-libs/openssl:* )
+		libressl? ( dev-libs/libressl:* )
+	)
 "
 DEPEND="${RDEPEND}
 	sys-devel/bison
@@ -41,6 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/pgpool_run_paths-3.6.5.patch"
+	eapply "${FILESDIR}/pgpool-II-3.7.1-libressl.patch"
 
 	postgres-multi_src_prepare
 }
