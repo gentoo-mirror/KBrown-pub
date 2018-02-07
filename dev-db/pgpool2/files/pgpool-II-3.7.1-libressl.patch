@@ -1,0 +1,45 @@
+diff -pura pgpool-II-3.7.1.orig/src/main/main.c pgpool-II-3.7.1/src/main/main.c
+--- pgpool-II-3.7.1.orig/src/main/main.c	2018-01-08 01:46:37.000000000 -0600
++++ pgpool-II-3.7.1/src/main/main.c	2018-02-07 05:10:16.000000000 -0600
+@@ -186,7 +186,7 @@ int main(int argc, char **argv)
+ 	}
+ #ifdef USE_SSL
+ 	/* global ssl init */
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined (LIBRESSL_VERSION_NUMBER))
+ 	OPENSSL_init_ssl(0, NULL);
+ #else
+ 	SSL_library_init();
+diff -pura pgpool-II-3.7.1.orig/src/utils/pool_ssl.c pgpool-II-3.7.1/src/utils/pool_ssl.c
+--- pgpool-II-3.7.1.orig/src/utils/pool_ssl.c	2018-01-08 01:46:37.000000000 -0600
++++ pgpool-II-3.7.1/src/utils/pool_ssl.c	2018-02-07 05:10:16.000000000 -0600
+@@ -253,7 +253,7 @@ static int init_ssl_ctx(POOL_CONNECTION
+ 	char *cacert = NULL, *cacert_dir = NULL;
+ 
+ 	/* initialize SSL members */
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined (LIBRESSL_VERSION_NUMBER))
+ 		cp->ssl_ctx = SSL_CTX_new(TLS_method());
+ #else
+ 		cp->ssl_ctx = SSL_CTX_new(SSLv23_method());
+diff -pura pgpool-II-3.7.1.orig/src/watchdog/wd_utils.c pgpool-II-3.7.1/src/watchdog/wd_utils.c
+--- pgpool-II-3.7.1.orig/src/watchdog/wd_utils.c	2018-01-08 01:46:37.000000000 -0600
++++ pgpool-II-3.7.1/src/watchdog/wd_utils.c	2018-02-07 05:10:16.000000000 -0600
+@@ -154,7 +154,7 @@ static void calculate_hmac_sha256(const
+ 	unsigned int res_len = WD_AUTH_HASH_LEN;
+ 	HMAC_CTX *ctx = NULL;
+ 
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined (LIBRESSL_VERSION_NUMBER))
+ 	ctx = HMAC_CTX_new();
+ 	HMAC_CTX_reset(ctx);
+ #else
+@@ -165,7 +165,7 @@ static void calculate_hmac_sha256(const
+ 	HMAC_Init_ex(ctx, key, strlen(key), EVP_sha256(), NULL);
+ 	HMAC_Update(ctx, (unsigned char*)data, len);
+ 	HMAC_Final(ctx, (unsigned char*)str, &res_len);
+-#if (OPENSSL_VERSION_NUMBER >= 0x10100000L)
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined (LIBRESSL_VERSION_NUMBER))
+ 	HMAC_CTX_reset(ctx);
+ 	HMAC_CTX_free(ctx);
+ #else
