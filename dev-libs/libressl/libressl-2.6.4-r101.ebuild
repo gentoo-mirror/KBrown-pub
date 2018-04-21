@@ -21,10 +21,6 @@ REQUIRED_USE="test? ( static-libs )"
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.6.4-getrandom.patch"
-)
-
 src_prepare() {
 	touch crypto/Makefile.in
 
@@ -37,6 +33,7 @@ src_prepare() {
 		-e '/^[ \t]*USER_CFLAGS=/s#-O2"#"#' \
 		configure || die "fixing CFLAGS failed"
 
+	eapply "${FILESDIR}/${PN}-2.6.4-getrandom.patch"
 	eapply_user
 }
 
