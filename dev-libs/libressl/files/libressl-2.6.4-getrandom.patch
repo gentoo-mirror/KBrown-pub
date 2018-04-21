@@ -1,0 +1,60 @@
+diff -uri libressl-2.6.4.orig/crypto/compat/getentropy_linux.c libressl-2.6.4/crypto/compat/getentropy_linux.c
+--- libressl-2.6.4.orig/crypto/compat/getentropy_linux.c	2017-12-12 03:48:10.000000000 -0600
++++ libressl-2.6.4/crypto/compat/getentropy_linux.c	2018-04-20 20:00:24.000000000 -0500
+@@ -74,9 +74,6 @@
+ int	getentropy(void *buf, size_t len);
+ 
+ static int gotdata(char *buf, size_t len);
+-#ifdef SYS_getrandom
+-static int getentropy_getrandom(void *buf, size_t len);
+-#endif
+ static int getentropy_urandom(void *buf, size_t len);
+ #ifdef SYS__sysctl
+ static int getentropy_sysctl(void *buf, size_t len);
+@@ -94,20 +91,6 @@
+ 		return (-1);
+ 	}
+ 
+-#ifdef SYS_getrandom
+-	/*
+-	 * Try descriptor-less getrandom(), in non-blocking mode.
+-	 *
+-	 * The design of Linux getrandom is broken.  It has an
+-	 * uninitialized phase coupled with blocking behaviour, which
+-	 * is unacceptable from within a library at boot time without
+-	 * possible recovery. See http://bugs.python.org/issue26839#msg267745
+-	 */
+-	ret = getentropy_getrandom(buf, len);
+-	if (ret != -1)
+-		return (ret);
+-#endif
+-
+ 	/*
+ 	 * Try to get entropy with /dev/urandom
+ 	 *
+@@ -193,25 +176,6 @@
+ 	return (0);
+ }
+ 
+-#ifdef SYS_getrandom
+-static int
+-getentropy_getrandom(void *buf, size_t len)
+-{
+-	int pre_errno = errno;
+-	int ret;
+-	if (len > 256)
+-		return (-1);
+-	do {
+-		ret = syscall(SYS_getrandom, buf, len, GRND_NONBLOCK);
+-	} while (ret == -1 && errno == EINTR);
+-
+-	if (ret != len)
+-		return (-1);
+-	errno = pre_errno;
+-	return (0);
+-}
+-#endif
+-
+ static int
+ getentropy_urandom(void *buf, size_t len)
+ {
