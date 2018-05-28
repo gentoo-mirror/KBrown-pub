@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	S=${WORKDIR}/${P}/${PN}
 else
-	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.bz2"
+	SRC_URI="mirror://sourceforge/urjtag/${P}.tar.xz"
 	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 fi
 
@@ -20,9 +20,10 @@ HOMEPAGE="http://urjtag.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ftdi readline usb"
+IUSE="ftd2xx ftdi readline usb"
 
-DEPEND="ftdi? ( dev-embedded/libftdi:0 )
+DEPEND="ftdi? ( dev-embedded/libftdi )
+	ftd2xx? ( dev-embedded/libftd2xx )
 	readline? ( sys-libs/readline:= )
 	usb? ( virtual/libusb:0 )"
 RDEPEND="${DEPEND}
@@ -42,6 +43,7 @@ src_configure() {
 	econf \
 		--disable-werror \
 		--disable-python \
+		$(use_with ftd2xx ftd2xx) \
 		$(use_with ftdi libftdi) \
 		$(use_with usb libusb)
 }
