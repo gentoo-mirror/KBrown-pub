@@ -6,7 +6,7 @@ EAPI=5
 
 XORG_DRI="always"
 XORG_EAUTORECONF="yes"
-XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos"
+XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos --disable-selective-werror"
 
 inherit autotools xorg-2 versionator
 
@@ -15,7 +15,7 @@ MY_PV="v${PV}-${MY_PR}"
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/mdrjr/xf86-video-armsoc/archive/v${PV}-${MY_PR}.tar.gz -> ${P}-${PR}.tar.gz"
-	KEYWORDS="~arm"
+	KEYWORDS="~arm ~arm64"
 	S="${WORKDIR}/${P}-${MY_PR}"
 else
 	inherit git-r3
