@@ -9,13 +9,13 @@ XORG_EAUTORECONF="yes"
 XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos --disable-selective-werror"
 
 inherit autotools xorg-2 flag-o-matic git-r3
-	EGIT_REPO_URI="http://anongit.freedesktop.org/git/xorg/driver/xf86-video-armsoc.git"
-	EGIT_COMMIT="1.3.1"
-	#EGIT_REPO_URI="https://github.com/mdrjr/xf86-video-armsoc.git
-	#	git@github.com:mdrjr/xf86-video-armsoc.git"
-	## release branch for github tarballs: r4p0-umplock
-	## alternate 5422 branch is more active: 5422_r5p1
-	#EGIT_BRANCH="5422_r5p1"
+	#EGIT_REPO_URI="http://anongit.freedesktop.org/git/xorg/driver/xf86-video-armsoc.git"
+	#EGIT_COMMIT="1.3.1"
+	EGIT_REPO_URI="https://github.com/mdrjr/xf86-video-armsoc.git
+		git@github.com:mdrjr/xf86-video-armsoc.git"
+	# release branch for github tarballs: r4p0-umplock
+	# alternate 5422 branch is more active: 5422_r5p1
+	EGIT_BRANCH="5422_r5p1"
 
 
 DESCRIPTION="Open-source X.org graphics driver for ARM graphics"
