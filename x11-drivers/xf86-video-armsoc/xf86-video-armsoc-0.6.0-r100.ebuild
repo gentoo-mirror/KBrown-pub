@@ -34,7 +34,8 @@ RDEPEND=">=x11-base/xorg-server-1.9
 	!x11-drivers/mali-drivers"
 
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+	x11-libs/libump"
 
 # Best way to jam this into the config parameter?
 #IUSE="exynos pl111"
