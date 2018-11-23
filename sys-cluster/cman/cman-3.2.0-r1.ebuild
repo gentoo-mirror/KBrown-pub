@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit linux-info multilib toolchain-funcs versionator
 
@@ -36,6 +36,10 @@ RDEPEND="dev-libs/libxml2
 DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.24"
 
+PATCHES="${FILESDIR}/cman-3.2.0-inline-fix.patch
+	${FILESDIR}/cluster-3.2.0-sysmacros.patch
+"
+
 S="${WORKDIR}/${MY_P}"
 
 # TODO:
@@ -68,7 +72,7 @@ src_configure() {
 		--cflags="-Wall" \
 		--libdir=/usr/$(get_libdir) \
 		--disable_kernel_check \
-		--kernel_src=${KERNEL_DIR} \
+		--kernel_src=nowhere \
 		--somajor="$MAJ_PV" \
 		--sominor="$MIN_PV" \
 		--without_rgmanager \
