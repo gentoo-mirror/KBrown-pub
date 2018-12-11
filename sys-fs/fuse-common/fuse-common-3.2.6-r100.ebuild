@@ -11,7 +11,8 @@ SRC_URI="https://github.com/libfuse/libfuse/releases/download/fuse-${PV}/fuse-${
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="udev"
 
 DEPEND="virtual/pkgconfig"
 RDEPEND="!<sys-fs/fuse-2.9.7-r1:0"
@@ -28,11 +29,20 @@ src_prepare() {
 	filter-flags -flto*
 }
 
+src_configure() {
+	if ! use udev ; then
+		local emesonargs=( -Dudevrulesdir=/lib/udev/rules.d )
+	fi
+ 	meson_src_configure
+}
+
 src_install() {
 	newsbin "${BUILD_DIR}"/util/mount.fuse3 mount.fuse
 	newman doc/mount.fuse3.8 mount.fuse.8
 
-	udev_newrules util/udev.rules 99-fuse.rules
+	if use udev ; then
+		udev_newrules util/udev.rules 99-fuse.rules
+	fi
 
 	if use kernel_linux ; then
 		newinitd "${FILESDIR}"/fuse.init fuse
