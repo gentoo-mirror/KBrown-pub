@@ -44,6 +44,7 @@ src_prepare() {
 		|| die "could not tweak makefile.am!"
 
 	epatch "${FILESDIR}"/${PN}-implicit_declaration.patch
+	epatch "${FILESDIR}"/${PN}-compat-api.patch
 
 	xorg-2_src_prepare
 }

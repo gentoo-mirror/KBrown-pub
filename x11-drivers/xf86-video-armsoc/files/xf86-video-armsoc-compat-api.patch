@@ -1,0 +1,23 @@
+diff -puriN xf86-video-armsoc.orig/src/compat-api.h xf86-video-armsoc/src/compat-api.h
+--- xf86-video-armsoc.orig/src/compat-api.h	2018-11-16 07:13:46.000000000 -0600
++++ xf86-video-armsoc/src/compat-api.h	2018-12-11 11:46:04.270021934 -0600
+@@ -77,9 +77,17 @@
+ 
+ #define SCREEN_INIT_ARGS_DECL ScreenPtr pScreen, int argc, char **argv
+ 
+-#define BLOCKHANDLER_ARGS_DECL \
+-	ScreenPtr arg, pointer pTimeout, pointer pReadmask
++#if XORG_VERSION_CURRENT < XORG_VERSION_NUMERIC(1,17,0,0,0)
+ #define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
++#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout, pointer pReadmask
++#define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
++#elif XORG_VERSION_CURRENT < XORG_VERSION_NUMERIC(1,19,0,0,0)
++#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, void* pTimeout, void* pReadmask
++#define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
++#else
++#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, void* pTimeout
++#define BLOCKHANDLER_ARGS arg, pTimeout
++#endif
+ 
+ #define CLOSE_SCREEN_ARGS_DECL ScreenPtr pScreen
+ #define CLOSE_SCREEN_ARGS pScreen
