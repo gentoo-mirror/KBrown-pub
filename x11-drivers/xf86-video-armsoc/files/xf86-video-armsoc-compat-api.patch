@@ -1,16 +1,25 @@
 diff -puriN xf86-video-armsoc.orig/src/compat-api.h xf86-video-armsoc/src/compat-api.h
 --- xf86-video-armsoc.orig/src/compat-api.h	2018-11-16 07:13:46.000000000 -0600
-+++ xf86-video-armsoc/src/compat-api.h	2018-12-11 11:46:04.270021934 -0600
-@@ -77,9 +77,17 @@
++++ xf86-video-armsoc/src/compat-api.h	2018-12-11 12:32:09.870023252 -0600
+@@ -28,6 +28,8 @@
+ #ifndef COMPAT_API_H
+ #define COMPAT_API_H
+ 
++#include <xorgVersion.h>
++
+ #ifndef GLYPH_HAS_GLYPH_PICTURE_ACCESSOR
+ #define GetGlyphPicture(g, s) GlyphPicture((g))[(s)->myNum]
+ #define SetGlyphPicture(g, s, p) GlyphPicture((g))[(s)->myNum] = p
+@@ -77,9 +79,17 @@
  
  #define SCREEN_INIT_ARGS_DECL ScreenPtr pScreen, int argc, char **argv
  
 -#define BLOCKHANDLER_ARGS_DECL \
 -	ScreenPtr arg, pointer pTimeout, pointer pReadmask
 +#if XORG_VERSION_CURRENT < XORG_VERSION_NUMERIC(1,17,0,0,0)
- #define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
-+#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout, pointer pReadmask
 +#define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
++#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, pointer pTimeout, pointer pReadmask
+ #define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
 +#elif XORG_VERSION_CURRENT < XORG_VERSION_NUMERIC(1,19,0,0,0)
 +#define BLOCKHANDLER_ARGS_DECL ScreenPtr arg, void* pTimeout, void* pReadmask
 +#define BLOCKHANDLER_ARGS arg, pTimeout, pReadmask
