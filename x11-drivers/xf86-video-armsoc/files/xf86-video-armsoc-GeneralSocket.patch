@@ -1,0 +1,25 @@
+diff -puriN xf86-video-armsoc.2/src/drmmode_display.c xf86-video-armsoc/src/drmmode_display.c
+--- xf86-video-armsoc.2/src/drmmode_display.c	2018-11-16 07:26:04.000000000 -0600
++++ xf86-video-armsoc/src/drmmode_display.c	2018-12-11 19:24:05.050035038 -0600
+@@ -1901,7 +1901,9 @@ drmmode_wakeup_handler(pointer data, int
+ 
+ void drmmode_init_wakeup_handler(struct ARMSOCRec *pARMSOC)
+ {
+-	AddGeneralSocket(pARMSOC->drmFD);
++	FD_SET(pARMSOC->drmFD, &AllSockets);
++	if (GrabInProgress)
++		FD_SET(pARMSOC->drmFD, &SavedAllSockets);
+ 	RegisterBlockAndWakeupHandlers((BlockHandlerProcPtr)NoopDDA,
+ 			drmmode_wakeup_handler, pARMSOC);
+ }
+@@ -1910,7 +1912,9 @@ void drmmode_fini_wakeup_handler(struct
+ {
+ 	RemoveBlockAndWakeupHandlers((BlockHandlerProcPtr)NoopDDA,
+ 			drmmode_wakeup_handler, pARMSOC);
+-	RemoveGeneralSocket(pARMSOC->drmFD);
++	FD_CLR(pARMSOC->drmFD, &AllSockets);
++	if (GrabInProgress)
++		FD_CLR(pARMSOC->drmFD, &SavedAllSockets);
+ }
+ 
+ void

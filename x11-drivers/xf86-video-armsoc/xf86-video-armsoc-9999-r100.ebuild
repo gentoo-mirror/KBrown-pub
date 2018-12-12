@@ -45,6 +45,7 @@ src_prepare() {
 
 	epatch "${FILESDIR}"/${PN}-implicit_declaration.patch
 	epatch "${FILESDIR}"/${PN}-compat-api.patch
+	epatch "${FILESDIR}"/${PN}-GeneralSocket.patch
 
 	xorg-2_src_prepare
 }
