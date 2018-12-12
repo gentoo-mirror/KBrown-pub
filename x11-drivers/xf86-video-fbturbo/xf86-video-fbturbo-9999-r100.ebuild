@@ -5,7 +5,8 @@
 EAPI=4
 XORG_DRI=always
 
-EGIT_REPO_URI="https://github.com/ssvb/xf86-video-fbturbo.git"
+#EGIT_REPO_URI="https://github.com/ssvb/xf86-video-fbturbo.git"
+EGIT_REPO_URI="https://github.com/schaal/xf86-video-fbturbo.git"
 
 inherit autotools-utils xorg-2 git-2
 
