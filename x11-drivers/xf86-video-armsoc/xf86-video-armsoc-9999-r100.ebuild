@@ -11,15 +11,20 @@ XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos --disable-selective-werror"
 inherit autotools xorg-2 flag-o-matic git-r3
 	#EGIT_REPO_URI="http://anongit.freedesktop.org/git/xorg/driver/xf86-video-armsoc.git"
 	#EGIT_COMMIT="1.3.1"
-	EGIT_REPO_URI="https://github.com/mdrjr/xf86-video-armsoc.git
-		git@github.com:mdrjr/xf86-video-armsoc.git"
-	# release branch for github tarballs: r4p0-umplock
-	# alternate 5422 branch is more active: 5422_r5p1
-	EGIT_BRANCH="5422_r5p1"
+
+	#EGIT_REPO_URI="https://github.com/mdrjr/xf86-video-armsoc.git
+	#	git@github.com:mdrjr/xf86-video-armsoc.git"
+	## release branch for github tarballs: r4p0-umplock
+	## alternate 5422 branch is more active: 5422_r5p1
+	#EGIT_BRANCH="5422_r5p1"
+
+	EGIT_REPO_URI="https://github.com/superna9999/xf86-video-armsoc.git"
+	EGIT_BRANCH="sunxi-mali"
 
 
 DESCRIPTION="Open-source X.org graphics driver for ARM graphics"
-HOMEPAGE="https://github.com/mdrjr/xf86-video-armsoc"
+#HOMEPAGE="https://github.com/mdrjr/xf86-video-armsoc"
+HOMEPAGE="https://github.com/superna9999/xf86-video-armsoc"
 LICENSE="MIT"
 KEYWORDS="~arm ~arm64"
 
@@ -43,11 +48,7 @@ src_prepare() {
 		 "${S}"/Makefile.am "${S}"/src/Makefile.am \
 		|| die "could not tweak makefile.am!"
 
-	epatch "${FILESDIR}"/${PN}-implicit_declaration.patch
-	epatch "${FILESDIR}"/${PN}-compat-api.patch
-	epatch "${FILESDIR}"/${PN}-GeneralSocket.patch
-
-	xorg-2_src_prepare
+	t rm xorg-2_src_prepare
 }
 
 src_install() {
