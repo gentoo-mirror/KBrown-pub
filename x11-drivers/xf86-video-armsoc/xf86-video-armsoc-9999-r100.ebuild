@@ -19,7 +19,8 @@ inherit autotools xorg-2 flag-o-matic git-r3
 	#EGIT_BRANCH="5422_r5p1"
 
 	EGIT_REPO_URI="https://github.com/superna9999/xf86-video-armsoc.git"
-	EGIT_BRANCH="sunxi-mali"
+	#EGIT_BRANCH="sunxi-mali"
+	EGIT_BRANCH="meson-drm"
 
 
 DESCRIPTION="Open-source X.org graphics driver for ARM graphics"
