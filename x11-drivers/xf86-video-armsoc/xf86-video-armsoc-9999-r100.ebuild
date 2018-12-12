@@ -48,7 +48,7 @@ src_prepare() {
 		 "${S}"/Makefile.am "${S}"/src/Makefile.am \
 		|| die "could not tweak makefile.am!"
 
-	t rm xorg-2_src_prepare
+	xorg-2_src_prepare
 }
 
 src_install() {
