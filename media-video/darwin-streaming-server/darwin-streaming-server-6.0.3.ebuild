@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: darwin-streaming-server-6.0.3.ebuild 2008-06-05 bpkroth $
 
-EAPI=2
+EAPI=7
 
 inherit eutils
 
@@ -19,47 +19,52 @@ LICENSE="APSL-2"
 
 SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc"
-IUSE="ssl ${M32}"
+IUSE=" ssl ${M32}"
 
 DEPEND="virtual/libc"
 
 RDEPEND="${DEPEND}
+	m32? ( elibc_glibc? ( sys-libs/glibc[multilib] ) )
 	 dev-lang/perl
 	 !media-video/darwin-streaming-server-bin
 	 ssl? ( dev-perl/Net-SSLeay )"
 
 DEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
+src_prepare() {
 
 	#Apply the patch to set proper FHS paths
-	cd ${WORKDIR}
-	epatch ${FILESDIR}/${P}-gentoo.patch
+	#cd ${WORKDIR}
+	eapply ${FILESDIR}/${P}-gentoo.patch
 
 	# A patch to make things build nicely in linux:
 	# http://dss.macosforge.org/trac/ticket/6
-	epatch ${FILESDIR}/${P}-linux.patch
+	eapply ${FILESDIR}/${P}-linux.patch
 
 	# Apply the patch to allow PPC64 w/ 32bit-UL to build as if it were i686.
 	# http://bugs.gentoo.org/show_bug.cgi?id=84011#c36
 	# Warning: this is a hack.
 	if [ "${ARCH}" == "ppc" ] || [ ${ARCH} == "ppc64" ]; then
-		epatch ${FILESDIR}/${P}-ppc64.patch
+		eapply ${FILESDIR}/${P}-ppc64.patch
 	fi
 	
 	# Apply patch to build on x86_64
 	# http://dss.macosforge.org/trac/ticket/10
 	if [ "${ARCH}" == "amd64" ]; then
-		epatch ${FILESDIR}/${P}-x86_64.patch
+		eapply ${FILESDIR}/${P}-x86_64.patch
 		if use m32; then
-			epatch ${FILESDIR}/${P}-x86_64-m32.patch
+			eapply ${FILESDIR}/${P}-x86_64-m32.patch
 		else
 			ewarn "This package is currently unstable when builing 64-bit code."
 			ewarn "Please consider setting USE=\"m32\" to force 32-bit code."
 			ewarn "See: http://dss.macosforge.org/trac/ticket/10"
 		fi
 	fi
+
+	# Apply more compile fixes
+	eapply ${FILESDIR}/${P}-getopt.patch
+
+	default
 }
 
 src_compile() {
