@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sandino@sandino.net</email>
+		<name>Sandino Araico Sanchez</name>
+	</maintainer>
+	<longdescription>
+		Darwin Streaming Server allows you to send streaming media across the internet using the industry standard RTP and RTSP protocols.
+	</longdescription>
+	<use>
+		<flag name="m32">Build with -m32 compiler flag</flag>
+	</use>
+</pkgmetadata>

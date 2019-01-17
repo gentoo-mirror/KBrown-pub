@@ -1,0 +1,14 @@
+Binary files DarwinStreamingSrvr6.0.3-Source.patched.orig/CommonUtilitiesLib/.getopt.h.swp and DarwinStreamingSrvr6.0.3-Source.patched/CommonUtilitiesLib/.getopt.h.swp differ
+diff -puriN DarwinStreamingSrvr6.0.3-Source.patched.orig/CommonUtilitiesLib/getopt.h DarwinStreamingSrvr6.0.3-Source.patched/CommonUtilitiesLib/getopt.h
+--- DarwinStreamingSrvr6.0.3-Source.patched.orig/CommonUtilitiesLib/getopt.h	2019-01-08 22:48:14.000000000 -0600
++++ DarwinStreamingSrvr6.0.3-Source.patched/CommonUtilitiesLib/getopt.h	2019-01-08 22:52:42.000000000 -0600
+@@ -94,7 +94,8 @@ extern int optreset;
+ extern int optind;
+ extern int opterr;
+ extern int optopt;
+-int getopt(int argc, char* const *argv, const char *optstr);
++int getopt(int argc, char* const *argv, const char *optstr)
++	__THROW __nonnull ((2, 3));
+ 
+ //#endif /* WIN32 */
+ 
