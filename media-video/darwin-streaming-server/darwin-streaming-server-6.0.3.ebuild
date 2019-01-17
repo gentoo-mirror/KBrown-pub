@@ -9,7 +9,6 @@ inherit eutils
 MY_P="DarwinStreamingSrvr${PV}-Source"
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="Darwin Streaming Server allows you to send streaming media across the internet using the industry standard RTP and RTSP protocols."
 HOMEPAGE="http://dss.macosforge.org/"
 SRC_URI="http://dss.macosforge.org/downloads/${MY_P}.tar"
 
