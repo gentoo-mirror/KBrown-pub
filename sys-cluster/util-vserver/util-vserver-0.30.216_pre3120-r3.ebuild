@@ -74,6 +74,7 @@ src_install() {
 
 	# remove runtime paths
 	rm -rf "${D}"/var/run
+	rm -rf "${D}"/var/cache
 
 	# keep dirs
 	keepdir "${VDIRBASE}"
