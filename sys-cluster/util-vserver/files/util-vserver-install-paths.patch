@@ -1,0 +1,40 @@
+Binary files util-vserver-0.30.216-pre3131.orig/doc/.configuration.xml.swp and util-vserver-0.30.216-pre3131/doc/.configuration.xml.swp differ
+diff -puriN util-vserver-0.30.216-pre3131.orig/gentoo/util-vserver util-vserver-0.30.216-pre3131/gentoo/util-vserver
+--- util-vserver-0.30.216-pre3131.orig/gentoo/util-vserver	2018-01-14 06:26:26.000000000 -0600
++++ util-vserver-0.30.216-pre3131/gentoo/util-vserver	2019-02-19 04:11:18.000000000 -0600
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2007 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
+diff -puriN util-vserver-0.30.216-pre3131.orig/gentoo/vprocunhide util-vserver-0.30.216-pre3131/gentoo/vprocunhide
+--- util-vserver-0.30.216-pre3131.orig/gentoo/vprocunhide	2018-01-14 06:26:26.000000000 -0600
++++ util-vserver-0.30.216-pre3131/gentoo/vprocunhide	2019-02-19 03:49:38.000000000 -0600
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2005 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
+diff -puriN util-vserver-0.30.216-pre3131.orig/gentoo/vservers.default util-vserver-0.30.216-pre3131/gentoo/vservers.default
+--- util-vserver-0.30.216-pre3131.orig/gentoo/vservers.default	2018-01-14 06:26:26.000000000 -0600
++++ util-vserver-0.30.216-pre3131/gentoo/vservers.default	2019-02-19 04:21:51.000000000 -0600
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2005 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
+diff -puriN util-vserver-0.30.216-pre3131.orig/scripts/vserver-init.functions util-vserver-0.30.216-pre3131/scripts/vserver-init.functions
+--- util-vserver-0.30.216-pre3131.orig/scripts/vserver-init.functions	2018-01-14 06:26:26.000000000 -0600
++++ util-vserver-0.30.216-pre3131/scripts/vserver-init.functions	2019-02-19 04:21:14.000000000 -0600
+@@ -80,7 +80,7 @@ function kill_contexts()
+ 
+ function create_dirs()
+ {
+-    $_MKDIR -p "$__RUNDIR" && $_MKDIR -p "$__VSHELPERSTATEDIR" && $_MKDIR -p `$_READLINK "$__PKGSTATEREVDIR"`
++    $_MKDIR -p "$__RUNDIR" && $_MKDIR -p "$__VSHELPERSTATEDIR" && $_MKDIR -p "$__PKGCACHEDIR" && $_MKDIR -p `$_READLINK "$__PKGSTATEREVDIR"`
+ }
+ 
+ function mount_cgroup()
