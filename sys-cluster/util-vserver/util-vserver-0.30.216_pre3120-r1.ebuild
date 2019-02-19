@@ -30,6 +30,8 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES="${FILESDIR}/util-vserver-0.30.216-pre3120-dietlibc.patch "
+
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
 		einfo

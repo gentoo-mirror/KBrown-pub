@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils bash-completion-r1
 
@@ -13,13 +13,13 @@ SRC_URI="http://people.linux-vserver.org/~dhozac/t/uv-testing/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 
 CDEPEND="
-	dev-libs/beecrypt
-	net-firewall/iptables
 	net-misc/vconfig
-	sys-apps/iproute2"
+	dev-libs/beecrypt
+	sys-apps/iproute2
+	net-firewall/iptables"
 
 DEPEND="
 	${CDEPEND}
@@ -29,6 +29,8 @@ RDEPEND="
 	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES="${FILESDIR}/util-vserver-0.30.216-pre3131-dietlibc.patch "
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -62,12 +64,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 || die "emake failed!"
+	emake -j1
 }
 
 src_install() {
-	make DESTDIR="${D}" install install-distribution \
-		|| die "make install failed!"
+	make DESTDIR="${D}" install install-distribution || die
 
 	# keep dirs
 	keepdir /var/cache/vservers
@@ -83,7 +84,6 @@ src_install() {
 pkg_postinst() {
 	# Create VDIRBASE in postinst, so it is (a) not unmerged and (b) also
 	# present when merging.
-
 	mkdir -p "${VDIRBASE}" || die
 	if ! setattr --barrier "${VDIRBASE}"; then
 		ewarn "Filesystem on ${VDIRBASE} does not support chroot barriers."
