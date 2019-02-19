@@ -30,7 +30,9 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES="${FILESDIR}/util-vserver-0.30.216-pre3131-dietlibc.patch "
+PATCHES="
+	${FILESDIR}/util-vserver-0.30.216-pre3131-dietlibc.patch 
+	${FILESDIR}/util-vserver-install-paths.patch "
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -70,8 +72,11 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install install-distribution || die
 
+	# remove runtime paths
+	rm -rf "${D}"/var/run
+	rm -rf "${D}"/var/cache
+
 	# keep dirs
-	keepdir /var/cache/vservers
 	keepdir "${VDIRBASE}"
 	keepdir "${VDIRBASE}"/.pkg
 
