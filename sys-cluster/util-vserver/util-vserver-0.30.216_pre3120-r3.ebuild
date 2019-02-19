@@ -32,7 +32,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES="
 	${FILESDIR}/util-vserver-0.30.216-pre3120-dietlibc.patch 
-	${FILESDIR}/util-vserver-gentoo-bug-632586.patch "
+	${FILESDIR}/util-vserver-install-paths.patch "
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
