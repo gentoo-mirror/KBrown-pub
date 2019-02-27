@@ -1,0 +1,28 @@
+diff -puriN ../PDO_DBLIB-1.0.orig/dblib_driver.c ./dblib_driver.c
+--- ../PDO_DBLIB-1.0.orig/dblib_driver.c	2005-10-16 09:58:50.000000000 -0500
++++ ./dblib_driver.c	2019-02-27 03:37:10.000000000 -0600
+@@ -58,11 +58,11 @@ static int dblib_fetch_error(pdo_dbh_t *
+ 		msg, einfo->dberr, einfo->severity, stmt ? stmt->active_query_string : "");
+ 
+ 	add_next_index_long(info, einfo->dberr);
+-	add_next_index_string(info, message, 0);
++	add_next_index_string(info, message);
+ 	add_next_index_long(info, einfo->oserr);
+ 	add_next_index_long(info, einfo->severity);
+ 	if (einfo->oserrstr) {
+-		add_next_index_string(info, einfo->oserrstr, 1);
++		add_next_index_string(info, einfo->oserrstr);
+ 	}
+ 
+ 	return 1;
+diff -puriN ../PDO_DBLIB-1.0.orig/dblib_stmt.c ./dblib_stmt.c
+--- ../PDO_DBLIB-1.0.orig/dblib_stmt.c	2005-10-16 09:58:50.000000000 -0500
++++ ./dblib_stmt.c	2019-02-27 03:33:22.000000000 -0600
+@@ -226,7 +226,6 @@ static int pdo_dblib_stmt_describe(pdo_s
+ 	}
+ 
+ 	col->maxlen = S->cols[colno].maxlen;	
+-	col->namelen = strlen(S->cols[colno].name);	
+ 	col->name = estrdup(S->cols[colno].name);
+ 	col->param_type = PDO_PARAM_STR;
+ 		
