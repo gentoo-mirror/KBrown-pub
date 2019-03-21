@@ -60,10 +60,6 @@ COMMON_DEPEND="
 	)
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
-	mgr? (
-		<net-libs/nodejs-9.0
-		>net-libs/nodejs-8.10
-	)
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
 		!libressl? (
