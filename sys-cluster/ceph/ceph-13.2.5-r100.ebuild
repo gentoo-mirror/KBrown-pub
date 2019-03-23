@@ -27,8 +27,8 @@ SLOT="0"
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
 IUSE="babeltrace cephfs dpdk fuse jemalloc ldap libressl lttng +mgr"
-IUSE+=" +radosgw +ssl static-libs +system-boost systemd +tcmalloc test"
-IUSE+=" xfs zfs"
+IUSE+=" numa +radosgw +ssl static-libs +system-boost systemd +tcmalloc"
+IUSE+=" test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 # unbundling code commented out pending bugs 584056 and 584058
@@ -54,6 +54,7 @@ COMMON_DEPEND="
 	ldap? ( net-nds/openldap:=[static-libs?] )
 	lttng? ( dev-util/lttng-ust:= )
 	fuse? ( sys-fs/fuse:0=[static-libs?] )
+	numa? ( sys-process/numactl:=[static-libs?] )
 	ssl? ( 
 		!libressl? ( dev-libs/openssl:=[static-libs?] )
 		libressl? ( dev-libs/libressl:=[static-libs?] )
@@ -145,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-13.2.0-mgr-python-version.patch"
 	"${FILESDIR}/ceph-13.2.0-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
+	"${FILESDIR}/ceph-13.2.5-no-automagic-deps.patch"
 )
 
 check-reqs_export_vars() {
@@ -202,6 +204,7 @@ ceph_src_configure() {
 		-DWITH_LTTNG=$(usex lttng)
 		-DWITH_MGR=$(usex mgr)
 		-DWITH_MGR_DASHBOARD_FRONTEND=NO
+		-DWITH_NUMA=$(usex numa)
 		-DWITH_OPENLDAP=$(usex ldap)
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_SSL=$(usex ssl)
@@ -214,6 +217,7 @@ ceph_src_configure() {
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)
 		-DWITH_RDMA=no
+		-DWITH_TBB=no
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
 		-DEPYTHON_VERSION="${EPYTHON#python}"
 		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${P}"
