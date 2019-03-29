@@ -14,6 +14,8 @@
 		the main server.
 	</longdescription>
 	<use>
+		<flag name="beecrypt">Use dev-libs/beecrypt for cryptography</flag>
 		<flag name="dietlibc">Compile against dev-libs/dietlibc</flag>
+		<flag name="nss">Use dev-libs/nss for cryptography</flag>
 	</use>
 </pkgmetadata>
