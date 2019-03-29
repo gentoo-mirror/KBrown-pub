@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -96,8 +96,7 @@ src_configure() {
 		)
 	fi
 		
-	econf "${myeconf[@]}" \
-		
+	econf "${myeconf[@]}"
 }
 
 src_compile() {
@@ -108,8 +107,8 @@ src_install() {
 	make DESTDIR="${D}" install install-distribution || die
 
 	# remove runtime paths
-	rm -rf "${D}"/var/run
-	rm -rf "${D}"/var/cache
+	rm -r "${D}"/var/run 
+	rm -r "${D}"/var/cache
 
 	# keep dirs
 	keepdir "${VDIRBASE}"
