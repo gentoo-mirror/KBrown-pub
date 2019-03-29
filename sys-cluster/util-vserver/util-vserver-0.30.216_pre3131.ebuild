@@ -14,11 +14,12 @@ SRC_URI="http://people.linux-vserver.org/~dhozac/t/uv-testing/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
-IUSE="+dietlibc"
+IUSE="beecrypt +dietlibc +nss"
 
 CDEPEND="
 	net-misc/vconfig
-	dev-libs/beecrypt
+	beecrypt? ( dev-libs/beecrypt )
+	nss? ( dev-libs/nss )
 	sys-apps/iproute2
 	net-firewall/iptables"
 
@@ -29,6 +30,12 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}"
 
+REQUIRED_USE="
+	?? ( 
+		beecrypt
+		nss
+	)"
+	
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
@@ -75,6 +82,20 @@ src_configure() {
 		)
 	fi
 	
+	if use nss ; then
+		myeconf=( ${myeconf} 
+			--with-crypto-api=nss
+		)
+	elif use beecrypt ; then
+		myeconf=( ${myeconf} 
+			--with-crypto-api=beecrypt
+		)
+	else
+		myeconf=( ${myeconf} 
+			--with-crypto-api=none
+		)
+	fi
+		
 	econf "${myeconf[@]}" \
 		
 }
@@ -112,9 +133,7 @@ pkg_postinst() {
 		ewarn "code from the guest system (nss) which in turn gives"
 		ewarn "guest root a good chance to do evil things on the host"
 		ewarn "and even if security is not a concern in your case, you"
-		ewarn "ight end up with unexpected failures"
-		ewarn ""
-		ewarn ""
+		ewarn "might end up with unexpected failures"
 	fi
 	# Create VDIRBASE in postinst, so it is (a) not unmerged and (b) also
 	# present when merging.
