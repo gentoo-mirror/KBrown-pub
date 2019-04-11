@@ -70,34 +70,21 @@ src_test() {
 }
 
 src_configure() {
-	local myeconf=(
-		--with-vrootdir="${VDIRBASE}"
-		--with-initscripts=gentoo
-		--localstatedir=/var
-	)
+	local myeconf=" --with-vrootdir=${VDIRBASE} --with-initscripts=gentoo --localstatedir=/var"
 
 	if ! use dietlibc ; then
-		myeconf=( ${myeconf} 
-			--disable-dietlibc
-		)
+		myeconf+=" --disable-dietlibc"
 	fi
 	
 	if use nss ; then
-		myeconf=( ${myeconf} 
-			--with-crypto-api=nss
-		)
+		myeconf+=" --with-crypto-api=nss"
 	elif use beecrypt ; then
-		myeconf=( ${myeconf} 
-			--with-crypto-api=beecrypt
-		)
+		myeconf+=" --with-crypto-api=beecrypt"
 	else
-		myeconf=( ${myeconf} 
-			--with-crypto-api=none
-		)
+		myeconf+=" --with-crypto-api=none"
 	fi
 		
-	econf "${myeconf[@]}" \
-		
+	econf ${myeconf} 
 }
 
 src_compile() {
