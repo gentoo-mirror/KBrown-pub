@@ -19,7 +19,7 @@ SRC_URI="
 SLOT="0"
 RESTRICT="strip mirror" # mirror as explained at bug #547372
 LICENSE="WPS-EULA"
-IUSE=""
+IUSE="pulseaudio"
 
 # Deps got from this (listed in order):
 # rpm -qpR wps-office-10.1.0.5707-1.a21.x86_64.rpm
@@ -42,7 +42,7 @@ RDEPEND="
 
 	dev-libs/libpcre:3
 	dev-libs/libffi
-	media-sound/pulseaudio
+	pulseaudio? ( media-sound/pulseaudio )
 	app-arch/bzip2:0
 	media-libs/libpng:0
 	dev-libs/expat
