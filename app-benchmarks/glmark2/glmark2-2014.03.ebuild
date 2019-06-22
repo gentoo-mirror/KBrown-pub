@@ -36,6 +36,8 @@ src_prepare() {
 src_configure() {
 	: ${WAF_BINARY:="${S}/waf"}
 
+	LDFLAGS="${LDFLAGS} -lm"
+
 	local myconf
 
 	if use X; then
