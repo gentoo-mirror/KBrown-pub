@@ -58,7 +58,7 @@ src_configure() {
 	myconf=${myconf#,}
 
 	# it does not know --libdir specification, dandy huh
-	CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS}" "${WAF_BINARY}" \
+	CCFLAGS="${CFLAGS}" LINKFLAGS="${LDFLAGS} -lm" "${WAF_BINARY}" \
 		--prefix=/usr \
 		--with-flavors ${myconf} \
 		configure || die "configure failed"
