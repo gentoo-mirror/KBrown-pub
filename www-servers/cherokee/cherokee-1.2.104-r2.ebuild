@@ -35,7 +35,7 @@ COMMON_DEPEND="
 		dev-lang/php:*[cgi]
 	) )
 	ssl? (
-		!libressl? ( <dev-libs/openssl-1.1.0:0= )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	"
@@ -48,7 +48,8 @@ RESTRICT="test"
 
 WEBROOT="/var/www/localhost"
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.99-gentoo.patch" )
+PATCHES="${FILESDIR}/${PN}-1.2.99-gentoo.patch 
+	${FILESDIR}/${PN}-openssl-1.1.patch"
 S="${WORKDIR}/webserver-${PV}"
 
 pkg_setup() {

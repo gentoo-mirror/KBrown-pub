@@ -1,0 +1,88 @@
+diff --git a/cherokee/cryptor_libssl.c b/cherokee/cryptor_libssl.c
+index 80a5c2eb..fabf9912 100644
+--- a/cherokee/cryptor_libssl.c
++++ b/cherokee/cryptor_libssl.c
+@@ -356,7 +356,7 @@ verify_trace_cb(int preverify_ok, X509_STORE_CTX *x509_store)
+ 		char *ptr;
+ 		X509_print (mem, peer_certificate);
+ 		BIO_get_mem_data(mem, &ptr);
+-		TRACE (ENTRIES, "SSL: %s\n", ptr);
++		TRACE (ENTRIES, "SSL: %s", ptr);
+ 		BIO_free (mem);
+ 	}
+ 
+@@ -785,7 +785,7 @@ _socket_init_tls (cherokee_cryptor_socket_libssl_t *cryp,
+ 		if (cipher) {
+ 			SSL_CIPHER_description (cipher, &buf[0], buf_size-1);
+ 
+-			TRACE (ENTRIES, "SSL: %s, %sREUSED, Ciphers: %s\n",
++			TRACE (ENTRIES, "SSL: %s, %sREUSED, Ciphers: %s",
+ 			       SSL_get_version(cryp->session),
+ 			       SSL_session_reused(cryp->session)? "" : "Not ", &buf[0]);
+ 		}
+diff --git a/cherokee/post.c b/cherokee/post.c
+index 8a1fe4bd..5d98b920 100644
+--- a/cherokee/post.c
++++ b/cherokee/post.c
+@@ -309,7 +309,6 @@ process_chunk (cherokee_post_t   *post,
+ 		}
+ 
+ 		if (unlikely (p+2 > end)) {
+-			cherokee_buffer_clean (in);
+ 			return ret_ok;
+ 		}
+ 
+@@ -326,7 +325,6 @@ process_chunk (cherokee_post_t   *post,
+ 
+ 		/* Read the length
+ 		*/
+-		errno = 0;
+ 		content_size = (size_t) strtoul (begin, NULL, 16);
+ 		if (unlikely (errno != 0)) {
+ 			return ret_error;
+@@ -351,7 +349,6 @@ process_chunk (cherokee_post_t   *post,
+ 			if (post->chunked.retransmit) {
+ 				cherokee_buffer_add_str (out, "0" CRLF);
+ 			}
+-			p += 2; /* CRLF */
+ 			begin = p;
+ 			break;
+ 		}
+@@ -381,7 +378,7 @@ process_chunk (cherokee_post_t   *post,
+ 	/* Very unlikely, but still possible
+ 	 */
+ 	if (! cherokee_buffer_is_empty(in)) {
+-		TRACE (ENTRIES, "There are %d left-over bytes in the post buffer -> incoming header\n", in->len);
++		TRACE (ENTRIES, "There are %d left-over bytes in the post buffer -> incoming header", in->len);
+ #if 0
+ 		cherokee_buffer_add_buffer (&conn->incoming_header, in);
+ 		cherokee_buffer_clean (in);
+diff --git a/cherokee/rule_url_arg.c b/cherokee/rule_url_arg.c
+index 0cdf8668..4c88f6e1 100644
+--- a/cherokee/rule_url_arg.c
++++ b/cherokee/rule_url_arg.c
+@@ -42,11 +42,6 @@ check_argument (cherokee_rule_url_arg_t *rule,
+ {
+ 	int re;
+ 
+-	if (value == NULL) {
+-		TRACE (ENTRIES, "Empty parameter value\n");
+-		return ret_not_found;
+-	}
+-
+ 	/* Check whether it matches
+ 	 */
+ 	re = pcre_exec (rule->pcre, NULL,
+diff --git a/cherokee/server.c b/cherokee/server.c
+index 64faccdd..7afbf19d 100644
+--- a/cherokee/server.c
++++ b/cherokee/server.c
+@@ -1770,7 +1770,7 @@ cherokee_server_daemonize (cherokee_server_t *srv)
+ {
+ 	pid_t child_pid;
+ 
+-	TRACE (ENTRIES, "server (%p) about to become evil\n", srv);
++	TRACE (ENTRIES, "server (%p) about to become evil", srv);
+ 
+ 	child_pid = fork();
+ 	switch (child_pid) {
