@@ -18,14 +18,14 @@ inherit autotools xorg-2 flag-o-matic git-r3
 	## alternate 5422 branch is more active: 5422_r5p1
 	#EGIT_BRANCH="5422_r5p1"
 
-	EGIT_REPO_URI="https://github.com/superna9999/xf86-video-armsoc.git"
+	EGIT_REPO_URI="https://github.com/KBrown/xf86-video-armsoc.git"
 	#EGIT_BRANCH="sunxi-mali"
 	EGIT_BRANCH="meson-drm"
 
 
 DESCRIPTION="Open-source X.org graphics driver for ARM graphics"
 #HOMEPAGE="https://github.com/mdrjr/xf86-video-armsoc"
-HOMEPAGE="https://github.com/superna9999/xf86-video-armsoc"
+HOMEPAGE="https://github.com/KenjiBrown/xf86-video-armsoc"
 LICENSE="MIT"
 KEYWORDS="~arm ~arm64"
 
