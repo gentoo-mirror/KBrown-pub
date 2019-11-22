@@ -18,7 +18,7 @@ inherit autotools xorg-2 flag-o-matic git-r3
 	## alternate 5422 branch is more active: 5422_r5p1
 	#EGIT_BRANCH="5422_r5p1"
 
-	EGIT_REPO_URI="https://github.com/KBrown/xf86-video-armsoc.git"
+	EGIT_REPO_URI="https://github.com/KenjiBrown/xf86-video-armsoc.git"
 	#EGIT_BRANCH="sunxi-mali"
 	EGIT_BRANCH="meson-drm"
 
