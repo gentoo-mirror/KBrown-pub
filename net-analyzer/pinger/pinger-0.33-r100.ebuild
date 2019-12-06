@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk2 gtk3 ncurses nls"
 
 REQUIRED_USE="
@@ -41,6 +41,7 @@ DOCS=( AUTHORS BUGS ChangeLog NEWS README )
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${P}-descs.patch
 
 	sed -i -e '/Root privileges/d' src/Makefile.am || die
 
