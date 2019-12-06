@@ -1,0 +1,15 @@
+Only in pinger-0.33/src: .arp.c.swp
+diff -uri pinger-0.33.orig/src/arp.c pinger-0.33/src/arp.c
+--- pinger-0.33.orig/src/arp.c	2014-09-27 04:56:23.000000000 -0500
++++ pinger-0.33/src/arp.c	2019-12-06 12:17:14.000000000 -0600
+@@ -79,8 +79,8 @@
+     unsigned int network;
+ };
+ 
+-//FIXME: only 8 interfaces?
+-struct if_desc descs[8];
++//FIXME: only 48 interfaces?
++struct if_desc descs[48];
+ int descs_count = 0;
+ 
+ void sig_int(int a)
