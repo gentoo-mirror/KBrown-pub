@@ -15,10 +15,11 @@ SRC_URI="
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl systemtap test"
+IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm openssl pax_kernel +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
+	ssl? ( || ( openssl libressl bundled-ssl ) )
 "
 
 RDEPEND="
@@ -27,7 +28,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.40.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
-	ssl? ( >=dev-libs/openssl-1.1.1:0= )
+	openssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -47,6 +48,7 @@ S="${WORKDIR}/node-v${PV}"
 pkg_pretend() {
 	(use x86 && ! use cpu_flags_x86_sse2) && \
 		die "Your CPU doesn't support the required SSE2 instruction."
+	use libressl && die "libressl support is broken in this version"
 
 	( [[ ${MERGE_TYPE} != "binary" ]] && ! test-flag-CXX -std=c++11 ) && \
 		die "Your compiler doesn't support C++11. Use GCC 4.8, Clang 3.3 or newer."
@@ -104,7 +106,7 @@ src_configure() {
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
-	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
+	use ssl && ( use bundled-ssl || myconf+=( --shared-openssl --openssl-use-def-ca-store ) ) || myconf+=( --without-ssl )
 
 	local myarch=""
 	case ${ABI} in
