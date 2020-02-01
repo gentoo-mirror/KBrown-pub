@@ -19,7 +19,7 @@ IUSE="bundled-ssl cpu_flags_x86_sse2 debug doc icu inspector libressl +npm opens
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
-	ssl? ( || ( openssl libressl bundled-ssl ) )
+	ssl? ( ^^ ( openssl libressl bundled-ssl ) )
 "
 
 RDEPEND="
