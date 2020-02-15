@@ -55,7 +55,6 @@ COMMON_DEPEND="
 	)
 	sys-apps/dbus:=
 	sys-apps/pciutils:=
-	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3[X]
@@ -302,7 +301,6 @@ src_prepare() {
 		third_party/libsecret
 		third_party/libsrtp
 		third_party/libsync
-		third_party/libudev
 		third_party/libwebm
 		third_party/libxml/chromium
 		third_party/libyuv
