@@ -41,7 +41,7 @@ done
 
 DESCRIPTION="Oracle's Java SE Development Kit"
 HOMEPAGE="http://www.oracle.com/technetwork/java/javase/"
-LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
+LICENSE="OTN examples? ( BSD )"
 SLOT="1.8"
 IUSE="alsa commercial cups doc examples +fontconfig headless-awt javafx jce nsplugin selinux source visualvm"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
