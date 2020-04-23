@@ -10,7 +10,7 @@ XORG_DRI=always
 EGIT_REPO_URI="https://github.com/KenjiBrown/xf86-video-fbturbo.git"
 EGIT_BRANCH="aarch64-gentoo"
 
-inherit autotools-utils xorg-2 git-2
+inherit autotools-utils xorg-2 git-r3
 
 DESCRIPTION="FBTurbo ARM video driver (based on sunxifb)"
 
