@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-db/freetds-0.91:=[iodbc,mssql] php_targets_php5-6? ( dev-lang/php:5.6[pdo] ) php_targets_php7-0? ( dev-lang/php:7.0[pdo] ) php_targets_php7-1? ( dev-lang/php:7.1[pdo] ) php_targets_php7-2? ( dev-lang/php:7.2[pdo] ) php_targets_php7-3? ( dev-lang/php:7.3[pdo] ) php_targets_php7-4? ( dev-lang/php:7.4[pdo] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+DESCRIPTION=PHP bindings for the Free TDS library
+EAPI=7
+HOMEPAGE=https://pecl.php.net/PDO_DBLIB
+IUSE=php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4
+KEYWORDS=~amd64 ~x86
+LICENSE=PHP-3.01
+RDEPEND=>=dev-db/freetds-0.91:=[iodbc,mssql] php_targets_php5-6? ( dev-lang/php:5.6[pdo] ) php_targets_php7-0? ( dev-lang/php:7.0[pdo] ) php_targets_php7-1? ( dev-lang/php:7.1[pdo] ) php_targets_php7-2? ( dev-lang/php:7.2[pdo] ) php_targets_php7-3? ( dev-lang/php:7.3[pdo] ) php_targets_php7-4? ( dev-lang/php:7.4[pdo] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 )
+SLOT=0
+SRC_URI=https://pecl.php.net/get/PDO_DBLIB-1.0.tgz
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	0914eab919f4f11dd9e0407b92af4726	php-ext-pecl-r3	a59741d3df8ea9f17afcdcfb7edaee6d	php-ext-source-r3	1aa741f0d0128470481dff5011ba00c4	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97
+_md5_=f70062545add9d9581d5b41ea54e6171
