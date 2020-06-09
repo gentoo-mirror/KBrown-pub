@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 inherit distutils-r1
 
 MY_PV="1-0-0"
@@ -41,8 +41,8 @@ REQUIRED_USE="pyzord? ( || ( gdbm redis ) )
 S="${WORKDIR}/${PN}-release-${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}/read-stdin-as-binary-in-get_input_msg.patch"
-	"${FILESDIR}/unfix-configparser-compat-for-2to3.patch"
+	"${FILESDIR}/commit-2b8d76d6b86ea2e9076a9c34ffd4651909d214b7.diff"
+	"${FILESDIR}/65.patch"
 )
 
 python_test() {
