@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
 HOMEPAGE="https://github.com/SpamExperts/pyzor"
-EGIT_REPO_URI="https://github.com/majn/telegram-purple"
+EGIT_REPO_URI="https://github.com/SpamExperts/pyzor"
 EGIT_BRANCH="master"
 
 LICENSE="GPL-2"
