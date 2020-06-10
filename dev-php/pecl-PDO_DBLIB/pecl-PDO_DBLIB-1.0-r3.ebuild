@@ -15,7 +15,7 @@ DESCRIPTION="PHP bindings for the Free TDS library"
 LICENSE="PHP-3.01"
 SLOT="0"
 ABI_X86="32 64 x32"
-IUSE=""
+IUSE="abi_x86_32 abi_x86_64 abi_x86_x32"
 KEYWORDS="~amd64 ~x86"
 DEPEND="
 	>=dev-db/freetds-0.91:=[iodbc,mssql]
