@@ -1,0 +1,56 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+app-benchmarks/glmark2:drm - Enable DRM backend support
+app-benchmarks/glmark2:gles2 - Enable GLES2 support
+app-crypt/veracrypt:asm - Enable assembly for optimization
+dev-java/oracle-jdk-bin:commercial - Install features requiring a commercial license for production use
+dev-java/oracle-jdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
+dev-java/oracle-jdk-bin:gtk2 - Enable GTK+ 2 support in JavaFX
+dev-java/oracle-jdk-bin:gtk3 - Enable GTK+ 3 support in JavaFX
+dev-java/oracle-jdk-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
+dev-java/oracle-jdk-bin:javafx - Install JavaFX libraries
+dev-java/oracle-jdk-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
+dev-java/oracle-jdk-bin:source - Install JVM (and optionally JavaFX) sources
+dev-java/oracle-jdk-bin:visualvm - Install VisualVM debugging tool
+dev-libs/boost:context - Build and install the Boost.Context (and Boost.Fiber) library and all other Boost libraries that depend on it
+dev-libs/boost:debug - Build and install only the debug version of the Boost libraries. Only enable this flag if you're developing against boost.
+dev-libs/boost:doc - Install the full API documentation documentation. This takes over 200MB of extra disk space.
+dev-libs/boost:nls - Build libboost_locale. This library requires compatible C library interfaces, which might not be provided by uClibc or other embedded libraries.
+dev-libs/boost:threads - Build multi-thread-compatible libraries instead of single-threaded only.
+dev-libs/boost:tools - Build and install the boost tools (bcp, quickbook, inspect, wave)
+mail-filter/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
+mail-filter/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
+mail-filter/pyzor:pyzord - Enable the pyzord server daemon
+mail-filter/pyzor:redis - Enables the redis back-end database engine for pyzord through dev-python/redis-py
+media-video/darwin-streaming-server:m32 - Build with -m32 compiler flag
+net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
+net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
+net-libs/liboauth:bindist - Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL.
+net-libs/liboauth:curl - If enabled, net-misc/curl is used thorugh the libcurl library; if it's not, the curl command is used instead. Some features are only available when using the library, but using it as library requires matching SSL implementations.
+net-libs/liboauth:nss - Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead.
+net-libs/nodejs:bundled-ssl - Use bundled openssl library instead of system's
+net-libs/nodejs:inspector - Enable V8 inspector
+net-libs/nodejs:libressl - Enable libressl support
+net-libs/nodejs:npm - Enable NPM package manager
+net-libs/nodejs:openssl - Enable openssl support
+net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
+net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
+net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
+sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
+sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesystem built on top of ceph
+sys-cluster/ceph:fuse - Build fuse client
+sys-cluster/ceph:lttng - Add support for LTTng
+sys-cluster/ceph:mgr - Build the ceph-mgr daemon
+sys-cluster/ceph:nss - Use dev-libs/nss for cryptography
+sys-cluster/ceph:radosgw - Add radosgw support
+sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled one
+sys-cluster/ceph:xfs - Add xfs support
+sys-cluster/ceph:zfs - Add zfs support
+sys-cluster/util-vserver:beecrypt - Use dev-libs/beecrypt for cryptography
+sys-cluster/util-vserver:dietlibc - Compile against dev-libs/dietlibc
+sys-cluster/util-vserver:nss - Use dev-libs/nss for cryptography
+sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+www-servers/cherokee:admin - Install web based cherokee conf tool
+www-servers/cherokee:rrdtool - Enable rrdtool support
