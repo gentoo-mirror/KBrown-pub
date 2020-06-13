@@ -428,6 +428,9 @@ multilib_src_configure() {
 	# LTO support, bug #566282
 	is-flagq "-flto*" && myconf+=( "--enable-lto" )
 
+	# Disable samba support
+	use samba || myconf+=( --disable-protocol=libsmbclient )
+
 	# Mandatory configuration
 	myconf=(
 		--enable-avfilter
