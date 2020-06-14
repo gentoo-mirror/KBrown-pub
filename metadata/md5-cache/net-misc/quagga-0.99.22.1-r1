@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=caps? ( sys-libs/libcap ) snmp? ( net-analyzer/net-snmp ) readline? ( sys-libs/readline pam? ( sys-libs/pam ) ) !elibc_glibc? ( dev-libs/libpcre ) app-arch/xz-utils >=sys-devel/libtool-2.2.4 >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
+EAPI=5
+HOMEPAGE=http://quagga.net/
+IUSE=bgpclassless caps doc elibc_glibc ipv6 multipath ospfapi pam +readline snmp tcp-zebra
+KEYWORDS=alpha amd64 arm hppa ppc s390 sparc x86
+LICENSE=GPL-2
+RDEPEND=caps? ( sys-libs/libcap ) snmp? ( net-analyzer/net-snmp ) readline? ( sys-libs/readline pam? ( sys-libs/pam ) ) !elibc_glibc? ( dev-libs/libpcre ) sys-apps/openrc sys-apps/iproute2
+SLOT=0
+SRC_URI=mirror://nongnu/quagga/quagga-0.99.22.1.tar.xz bgpclassless? ( http://hasso.linux.ee/stuff/patches/quagga/ht-20040304-classless-bgp.patch )
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	autotools-utils	95db0904ad0f62535e18e5ccb67cce5e	desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	f1194291b9a1baca337c1c89b5f7f365	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	ba693a7065ee4edc78b3ea02a015bcad	pam	a1771fc1e5831c201eaf18451747d94b	preserve-libs	ef207dc62baddfddfd39a164d9797648	readme.gentoo	273fa5d1a8ed000a29d79323e2ed0dc1	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=fd074246a0ac7471466233bce11cb008
