@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prerm setup unpack
+DEPEND=>=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+DESCRIPTION=Oracle's Java SE Development Kit
+EAPI=6
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=alsa commercial cups doc +fontconfig +gentoo-vm gtk2 gtk3 headless-awt javafx nsplugin selinux source
+KEYWORDS=-* ~amd64
+LICENSE=OTN
+RDEPEND=!x64-macos? ( !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) javafx? ( dev-libs/atk dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt media-libs/freetype:2 x11-libs/gdk-pixbuf x11-libs/libX11 x11-libs/libXtst x11-libs/libXxf86vm x11-libs/pango virtual/opengl gtk2? ( x11-libs/cairo x11-libs/gtk+:2 ) gtk3? ( x11-libs/cairo[glib] x11-libs/gtk+:3 ) ) ) !prefix? ( dev-libs/elfutils sys-libs/glibc:* ) alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) doc? ( dev-java/java-sdk-docs:11 ) fontconfig? ( media-libs/fontconfig:1.0 ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
+REQUIRED_USE=javafx? ( alsa fontconfig ^^ ( gtk2 gtk3 ) )
+RESTRICT=bindist fetch preserve-libs strip
+SLOT=11
+SRC_URI=amd64? ( jdk-11.0.7_linux-x64_bin.tar.gz )
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	893e828f0f25f070f0b38d20c83c7670	java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	ba693a7065ee4edc78b3ea02a015bcad	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	d3e75048a89c0445838d2f44e5c65d97	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=a3e56990ed7d377c93cf7b1c4fca7059
