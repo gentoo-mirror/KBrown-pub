@@ -1,0 +1,61 @@
+app-arch/libarchive 3.3.1-r100: BSD tar command
+app-benchmarks/glmark2 2014.03-r100: Opengl test suite
+app-crypt/mit-krb5 1.15.2-r100: MIT Kerberos V
+app-crypt/veracrypt 1.19 1.19-r1 1.21: Disk encryption with strong security based on TrueCrypt
+app-office/wps-office 11.1.0.8372-r100: WPS Office is an office productivity suite
+dev-db/libzdb 3.1-r1: A thread safe high level multi-database connection pool library
+dev-db/pgpool2 3.7.1-r1: Connection pool server for PostgreSQL
+dev-embedded/u-boot-tools 2018.05-r100: utilities for working with Das U-Boot
+dev-embedded/urjtag 2017.10: Tool for communicating over JTAG with flash chips, CPUs, and many more
+dev-java/oracle-jdk-bin 1.8.0.251 11.0.7: Oracle's Java SE Development Kit
+dev-lang/php 5.5.37 5.5.38 5.5.38-r1 5.6.40-r7: The PHP language runtime engine
+dev-libs/boost 1.62.0-r101 1.63.0-r100: Boost Libraries for C++
+dev-libs/libressl 2.5.4-r100 2.5.5-r100 2.6.0-r100 2.6.1-r100 2.6.2-r100 2.6.3-r100 2.6.4-r100 2.6.4-r101 2.6.5-r100 2.8.3-r100 2.9.2-r100 3.0.2-r100: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/openssl 9998: This is a fake ebuild to support libressl
+dev-php/PHP-FFMpeg 9999: An Object Oriented library to convert video/audio files with FFmpeg / AVConv.
+dev-php/pecl-PDO_DBLIB 1.0-r2 1.0-r3: PHP bindings for the Free TDS library
+mail-filter/pyzor 1.0.0-r20 9999: A distributed, collaborative spam detection and filtering network
+mail-filter/spamassassin-olemacro 9999: SpamAssassin plugin that that searches attached documents for an OLE Macro
+media-libs/opencollada 1.6.18-r1: Stream based read/write library for COLLADA files
+media-video/darwin-streaming-server 6.0.3: 
+media-video/sn9c1xx 1.50: A driver for sn9c1xx (webcam) devices, like the Sweex Mini cam
+net-analyzer/pinger 0.33-r100: Cyclic multi ping utility for selected adresses using GTK/ncurses
+net-analyzer/pnp4nagios 0.6.25-r4: A performance data analyzer for nagios
+net-dialup/freeradius 1.1.7: Highly configurable free RADIUS server
+net-im/silc-client 1.1.10 1.1.11 1.1.11-r1 1.1.11-r2 1.1.11-r3: IRSSI-based text client for Secure Internet Live Conferencing
+net-im/silc-server 1.1.19 1.1.19-r1: Server for Secure Internet Live Conferencing
+net-im/silc-toolkit 1.1.11 1.1.12: SDK for the SILC protocol
+net-libs/c-client 2007f-r4: UW IMAP c-client library
+net-libs/liboauth 1.0.3-r100: C library implementing the OAuth secure authentication protocol
+net-libs/nghttp2 1.22.0: HTTP/2 C Library
+net-libs/nodejs 13.6.0-r100 13.6.0-r101: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/serf 1.3.9-r100: HTTP client library
+net-mail/dbmail 3.2.2-r1 3.2.3-r2 3.2.3-r100 3.2.3-r101 3.2.3-r102 3.2.4: Fast and scalable sql based email services
+net-misc/quagga 0.99.21-r1 0.99.22.1-r1 0.99.22.4-r1 1.2.2-r100: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
+sys-apps/chpax 0.7: Manages various PaX related flags for ELF32, ELF64, and a.out binaries.
+sys-block/open-isns 0.98-r1: iSNS server and client for Linux
+sys-cluster/ceph 12.2.10-r100 13.2.1-r100 13.2.2-r100 13.2.4-r100 13.2.5-r100: Ceph distributed filesystem
+sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0 3.2.0-r1: Cluster Manager
+sys-cluster/corosync-compat 1.4.7: Compatibility files for libcoroipcc in =sys-cluster/corosync-1.4.7
+sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
+sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
+sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
+sys-cluster/libcman 3.1.5 3.2.0: Cluster Manager Library
+sys-cluster/libdlm 3.1.5 3.2.0: General-purpose Distributed Lock Manager Library
+sys-cluster/libfence 3.1.5 3.2.0: Cluster Fencing Library
+sys-cluster/liblogthread 3.1.5 3.2.0: Thread-Safe Syslog Logging Library
+sys-cluster/libqb 0.17.1 0.17.2 1.0.1: Library providing high performance logging, tracing, ipc, and poll
+sys-cluster/openais 1.1.4-r1 1.1.4-r2: Open Application Interface Specification cluster framework
+sys-cluster/rgmanager 2.03.09-r1 3.1.5: Clustered resource group manager
+sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
+sys-cluster/sanlock 3.4.0-r1 3.6.0: shared storage lock manager
+sys-cluster/util-vserver 0.30.216_pre3120-r2 0.30.216_pre3120-r3 0.30.216_pre3120-r4 0.30.216_pre3120-r5 0.30.216_pre3120-r6 0.30.216_pre3131: Linux-VServer admin utilities
+sys-fs/fuse-common 3.2.6-r100: Common files for multiple slots of sys-fs/fuse
+sys-fs/static-dev 0.1: A skeleton, statically managed /dev
+sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4: Hardened kernel sources (kernel series 4.3)
+www-servers/apache 2.4.27-r1: The Apache Web Server
+www-servers/cherokee 1.2.104-r2: An extremely fast and tiny web server
+x11-drivers/xf86-video-armsoc 0.6.0-r100 9999-r100 9999-r101: Open-source X.org graphics driver for ARM graphics
+x11-drivers/xf86-video-fbturbo 9999-r101: FBTurbo ARM video driver (based on sunxifb)
+x11-libs/wxGTK 3.0.2.0-r3 3.0.2.0-r4: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
+x11-plugins/telegram-purple 1.3.0 1.3.1 1.3.1-r1 9999: Adds support for Telegram to Pidgin and Finch.
