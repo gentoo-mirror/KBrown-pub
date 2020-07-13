@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit systemd versionator user
+inherit systemd user
 
 DESCRIPTION="Fast and scalable sql based email services"
 HOMEPAGE="http://www.dbmail.org/"
@@ -30,6 +30,8 @@ DEPEND="dev-db/libzdb
 		libressl? ( dev-libs/libressl:0= )
 	)"
 RDEPEND="${DEPEND}"
+
+PATCHES="${FILESDIR}/3.2-pgsql-RETURNING.patch "
 
 pkg_setup() {
 	enewgroup dbmail
