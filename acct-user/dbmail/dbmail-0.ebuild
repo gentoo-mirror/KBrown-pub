@@ -7,6 +7,7 @@ inherit acct-user
 
 DESCRIPTION="user for dbmail daemons"
 ACCT_USER_ID=277
+ACCT_USER_HOME="/var/lib/dbmail"
 ACCT_USER_GROUPS=( dbmail mail )
 
 acct-user_add_deps
