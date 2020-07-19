@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure unpack
+DEPEND=sys-devel/gettext dev-libs/libgcrypt:0/20 libwebp? ( media-libs/libwebp ) net-im/pidgin sys-libs/zlib >=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers
+EAPI=5
+HOMEPAGE=https://github.com/majn/telegram-purple
+IUSE=+libwebp
+KEYWORDS=~amd64
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=sys-devel/gettext dev-libs/libgcrypt:0/20 libwebp? ( media-libs/libwebp ) net-im/pidgin sys-libs/zlib
+SLOT=0
+_eclasses_=git-r3	8ec5b53812bce105ae7943930e4660f8
+_md5_=886bb0fe9caf8e0f9028ff71d5c38a31
