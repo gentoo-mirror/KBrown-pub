@@ -237,8 +237,7 @@ src_unpack() {
 		unpack ${A}
 	fi
 	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
-	rm -vf "${patchdir}/00030_openssl-1.1-compatibility.patch"
-	rm -vf "${patchdir}/00190_July2019-backports.patch"
+	cp -vf "${FILESDIR}/00030_openssl-1.1-compatibility.patch" "${patchdir}/"
 }
 
 src_prepare() {
