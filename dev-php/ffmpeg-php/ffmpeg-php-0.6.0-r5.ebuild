@@ -10,7 +10,7 @@ PHP_EXT_ZENDEXT="no"
 
 USE_PHP="php5-6 php5-5 php5-4"
 
-inherit php-ext-source-r2 eutils
+inherit php-ext-source-r3 eutils
 
 KEYWORDS="~amd64 ~x86"
 
@@ -45,5 +45,5 @@ src_prepare() {
 		epatch "${FILESDIR}/${P}-api.patch"
 		epatch "${FILESDIR}/${P}-libav10.patch"
 	done
-	php-ext-source-r2_src_prepare
+	php-ext-source-r3_src_prepare
 }
