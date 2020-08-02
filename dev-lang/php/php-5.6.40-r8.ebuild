@@ -415,8 +415,6 @@ src_configure() {
 	# MySQL support
 	local mysqllib="mysqlnd"
 	local mysqlilib="mysqlnd"
-	use libmysqlclient && mysqllib="${EPREFIX}/usr"
-	use libmysqlclient && mysqlilib="${EPREFIX}/usr/bin/mysql_config"
 
 	our_conf+=( $(use_with mysql mysql "${mysqllib}") )
 	our_conf+=( $(use_with mysqli mysqli "${mysqlilib}") )
