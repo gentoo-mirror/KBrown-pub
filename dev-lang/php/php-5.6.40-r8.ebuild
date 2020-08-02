@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -21,7 +21,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2"
@@ -36,11 +36,11 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	enchant exif +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
-	mhash mssql mysql libmysqlclient mysqli nls
+	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
-	sybase-ct sysvipc systemd tidy +tokenizer truetype unicode vpx wddx
+	sysvipc systemd tidy +tokenizer truetype unicode wddx
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 # The supported (that is, autodetected) versions of BDB are listed in
@@ -67,7 +67,7 @@ COMMON_DEPEND="
 	coverage? ( dev-util/lcov )
 	crypt? ( >=dev-libs/libmcrypt-2.4 )
 	curl? ( >=net-misc/curl-7.10.5 )
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:* )
 	exif? ( !gd? (
 		virtual/jpeg:0
 		media-libs/libpng:0=
@@ -84,12 +84,10 @@ COMMON_DEPEND="
 	kerberos? ( virtual/krb5 )
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	ldap-sasl? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 )
-	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
+	libedit? ( dev-libs/libedit )
 	mssql? ( dev-db/freetds[mssql] )
-	libmysqlclient? (
-		mysql? ( <dev-db/mysql-connector-c-8.0:0= )
-		mysqli? ( <dev-db/mysql-connector-c-8.0:0= )
-	)
+	mysql? ( <dev-db/mysql-connector-c-8.0:0= )
+	mysqli? ( <dev-db/mysql-connector-c-8.0:0= )
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
@@ -107,7 +105,6 @@ COMMON_DEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	sybase-ct? ( dev-db/freetds )
 	tidy? ( app-text/htmltidy )
 	truetype? (
 		=media-libs/freetype-2*
@@ -116,7 +113,6 @@ COMMON_DEPEND="
 			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
 	)
 	unicode? ( dev-libs/oniguruma:= )
-	vpx? ( media-libs/libvpx:0= )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
 	xml? ( >=dev-libs/libxml2-2.6.8 )
 	xmlrpc? ( >=dev-libs/libxml2-2.6.8 virtual/libiconv )
@@ -150,7 +146,6 @@ REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed )
 	cli? ( ^^ ( readline libedit ) )
 	truetype? ( gd zlib )
-	vpx? ( gd zlib )
 	cjk? ( gd zlib )
 	exif? ( gd zlib )
 	xpm? ( gd zlib )
@@ -164,12 +159,8 @@ REQUIRED_USE="
 	ldap-sasl? ( ldap )
 	mhash? ( hash )
 	phar? ( hash )
-	recode? ( !imap !mysql !mysqli !libmysqlclient )
-	libmysqlclient? ( || (
-		mysql
-		mysqli
-		pdo
-	) )
+	recode? ( !imap !mysql !mysqli )
+	|| ( mysql mysqli pdo )
 
 	qdbm? ( !gdbm )
 	readline? ( !libedit )
@@ -241,7 +232,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	
+
 	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
 
 	eapply "${patchdir}/"
@@ -358,7 +349,6 @@ src_configure() {
 		$(use_enable soap soap)
 		$(use_enable sockets sockets)
 		$(use_with sqlite sqlite3 "${EPREFIX}/usr")
-		$(use_with sybase-ct sybase-ct "${EPREFIX}/usr")
 		$(use_enable sysvipc sysvmsg)
 		$(use_enable sysvipc sysvsem)
 		$(use_enable sysvipc sysvshm)
@@ -399,7 +389,6 @@ src_configure() {
 		$(use_with gd jpeg-dir "${EPREFIX}/usr")
 		$(use_with gd png-dir "${EPREFIX}/usr")
 		$(use_with xpm xpm-dir "${EPREFIX}/usr")
-		$(use_with vpx vpx-dir "${EPREFIX}/usr")
 	)
 	# enable gd last, so configure can pick up the previous settings
 	our_conf+=( $(use_with gd gd) )
