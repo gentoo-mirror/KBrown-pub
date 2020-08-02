@@ -1,7 +1,7 @@
-Index: work/php5.3/ffmpeg-php.c
+Index: work/ffmpeg-php.c
 ===================================================================
---- work.orig/php5.3/ffmpeg-php.c
-+++ work/php5.3/ffmpeg-php.c
+--- work.orig/ffmpeg-php.c
++++ work/ffmpeg-php.c
 @@ -101,6 +101,7 @@ PHP_MINIT_FUNCTION(ffmpeg)
      if (INI_BOOL("ffmpeg.show_warnings")) {
          av_log_set_callback(ffmpeg_errorhandler);

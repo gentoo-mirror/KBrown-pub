@@ -1,0 +1,15 @@
+Binary files ffmpeg-php-0.6.0.orig/.ffmpeg_movie.c.swp and ffmpeg-php-0.6.0/.ffmpeg_movie.c.swp differ
+diff -puriN ffmpeg-php-0.6.0.orig/ffmpeg_movie.c ffmpeg-php-0.6.0/ffmpeg_movie.c
+--- ffmpeg-php-0.6.0.orig/ffmpeg_movie.c	2008-10-13 17:46:53.000000000 -0500
++++ ffmpeg-php-0.6.0/ffmpeg_movie.c	2020-08-02 02:46:18.000000000 -0500
+@@ -956,8 +956,8 @@ static const char* _php_get_codec_name(f
+     } else if (decoder_ctx->codec_id == CODEC_ID_MPEG2TS) {
+         /* fake mpeg2 transport stream codec (currently not registered) */
+         codec_name = "mpeg2ts";
+-    } else if (decoder_ctx->codec_name[0] != '\0') {
+-        codec_name = decoder_ctx->codec_name;
++    } else if (decoder_ctx->codec->name[0] != '\0') {
++        codec_name = decoder_ctx->codec->name;
+     } else {
+         /* output avi tags */
+         if (decoder_ctx->codec_type == CODEC_TYPE_VIDEO) {

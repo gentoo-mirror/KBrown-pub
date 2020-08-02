@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="7"
 
 PHP_EXT_NAME="ffmpeg"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php5-6 php5-5 php5-4"
+USE_PHP=" php5-6 "
 
-inherit php-ext-source-r2 eutils
+inherit php-ext-source-r3 eutils
 
 KEYWORDS="~amd64 ~x86"
 
@@ -33,17 +33,17 @@ RESTRICT="test"
 
 DOCS="CREDITS ChangeLog EXPERIMENTAL TODO"
 
+PATCHES="${FILESDIR}/${P}-avutil50.patch
+		${FILESDIR}/${P}-ffmpeg.patch
+		${FILESDIR}/${P}-ffmpeg-4.patch
+		${FILESDIR}/${P}-log.patch
+		${FILESDIR}/${P}-php5-4.patch
+		${FILESDIR}/${P}-ffincludes.patch
+		${FILESDIR}/${P}-ffmpeg1.patch
+		${FILESDIR}/${P}-api.patch
+		${FILESDIR}/${P}-libav10.patch"
+
 src_prepare() {
-	for slot in $(php_get_slots) ; do
-		cd "${WORKDIR}/${slot}"
-		epatch "${FILESDIR}/${P}-avutil50.patch"
-		epatch "${FILESDIR}/${P}-ffmpeg.patch"
-		epatch "${FILESDIR}/${P}-log.patch"
-		epatch "${FILESDIR}/${P}-php5-4.patch"
-		epatch "${FILESDIR}/${P}-ffincludes.patch"
-		epatch "${FILESDIR}/${P}-ffmpeg1.patch"
-		epatch "${FILESDIR}/${P}-api.patch"
-		epatch "${FILESDIR}/${P}-libav10.patch"
-	done
-	php-ext-source-r2_src_prepare
+	[[ ${ABI} == x32 ]] && sed -i 's/lib64/libx32/' config.m4
+	php-ext-source-r3_src_prepare
 }
