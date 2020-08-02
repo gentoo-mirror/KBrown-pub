@@ -1,7 +1,7 @@
-Index: work/php5.3/ffmpeg_movie.c
+Index: work/ffmpeg_movie.c
 ===================================================================
---- work.orig/php5.3/ffmpeg_movie.c
-+++ work/php5.3/ffmpeg_movie.c
+--- work.orig/ffmpeg_movie.c
++++ work/ffmpeg_movie.c
 @@ -36,6 +36,7 @@
  
  #include <avcodec.h>
