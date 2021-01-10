@@ -1,7 +1,7 @@
 #!/sbin/runscript
 #
 
-PIDFILE="/var/run/dbmail-imapd.pid"
+PIDFILE="/run/dbmail-imapd.pid"
 
 depend() {
 	need net
