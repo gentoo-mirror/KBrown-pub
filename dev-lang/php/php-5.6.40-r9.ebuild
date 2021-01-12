@@ -137,6 +137,7 @@ RDEPEND="${COMMON_DEPEND}
 
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
+	app-text/dos2unix
 	>=sys-devel/bison-3.0.1
 	sys-devel/flex
 	>=sys-devel/m4-1.4.3
@@ -233,11 +234,9 @@ src_unpack() {
 }
 
 src_prepare() {
-
+	dos2unix ext/openssl/tests/bug66501.phpt
 	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
-
 	eapply "${patchdir}/"
-
 	eapply "${FILESDIR}/php-5.6-libressl.patch"
 
 	# Copy test binaries from patches
