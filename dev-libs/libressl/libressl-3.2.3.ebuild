@@ -19,7 +19,7 @@ IUSE="+asm static-libs test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( static-libs )"
 
-RDEPEND="!dev-libs/openssl:0"
+RDEPEND=""
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
 
