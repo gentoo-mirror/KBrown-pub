@@ -18,6 +18,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
+PATCHES="${FILESDIR}/libp11-0.4.11-libressl.patch"
 
 src_configure() {
 	econf \
