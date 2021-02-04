@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 )
+#PYTHON_COMPAT=( python2_7 )
 inherit waf-utils python-single-r1
 
 REV=${PV#*_p}
