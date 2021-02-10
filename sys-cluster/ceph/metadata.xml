@@ -2,16 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>chutzpah@gentoo.org</email>
-    <name>Patrick McLean</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>dlan@gentoo.org</email>
-    <name>Yixun Lan</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>cluster@gentoo.org</email>
-    <name>Gentoo Cluster Project</name>
+    <email>sandino@sandino.net</email>
+    <name>Sandino Araico Sanchez</name>
   </maintainer>
   <longdescription>
     Ceph is a distributed network file system designed to provide excellent performance, reliability, and scalability.
