@@ -81,13 +81,12 @@ DEPEND="
 	rabbitmq? ( net-libs/rabbitmq-c:= )
 	radosgw? (
 		dev-libs/expat:=
+		net-misc/curl:=
 		openssl? (
 			dev-libs/openssl:=
-			net-misc/curl:=[curl_ssl_openssl]
 		)
 		libressl? (
 			dev-libs/libressl:=
-			net-misc/curl:=[curl_ssl_libressl]
 		)
 	)
 	ssl? (
