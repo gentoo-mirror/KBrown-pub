@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
-inherit multilib python-any-r1 versionator  git-r3
+inherit multilib python-any-r1  git-r3
 
 CLUSTER_RELEASE="${PV}"
 MY_P="cluster-${CLUSTER_RELEASE}"
