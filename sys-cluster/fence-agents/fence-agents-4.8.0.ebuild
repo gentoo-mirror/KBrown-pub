@@ -26,14 +26,20 @@ IUSE=""
 DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/libxslt
+	dev-libs/nss
 	$(python_gen_any_dep '
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/suds[${PYTHON_USEDEP}]
 	')"
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
-	./autogen.sh
+#	./autogen.sh
 	econf \
 		--docdir=/usr/share/doc/${P} \
 		--libdir=/usr/$(get_libdir) \
