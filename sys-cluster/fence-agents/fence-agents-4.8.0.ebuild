@@ -21,7 +21,7 @@ EGIT_COMMIT="v4.8.0"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="libvirt"
 
 DEPEND="
 	${PYTHON_DEPS}
@@ -40,8 +40,8 @@ src_prepare() {
 }
 
 src_configure() {
-#	./autogen.sh
 	econf \
+		$(use_enable libvirt) \
 		--docdir=/usr/share/doc/${P} \
 		--libdir=/usr/$(get_libdir) \
 		--localstatedir=/var
