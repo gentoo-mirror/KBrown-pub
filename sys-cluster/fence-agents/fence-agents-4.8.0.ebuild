@@ -27,6 +27,7 @@ DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/libxslt
 	dev-libs/nss
+	libvirt? ( app-emulation/libvirt )
 	$(python_gen_any_dep '
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
