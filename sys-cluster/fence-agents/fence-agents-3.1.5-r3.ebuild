@@ -20,9 +20,9 @@ SRC_URI="https://fedorahosted.org/releases/f/e/${PN}/${PN}-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="${PYTHON_REQUIRED_USE}"
+IUSE=""
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+#REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="~sys-cluster/libccs-${PV}"
 DEPEND="${RDEPEND}
