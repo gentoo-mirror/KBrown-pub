@@ -31,6 +31,7 @@ DEPEND="
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
 		dev-python/suds[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')"
 
 src_prepare() {
