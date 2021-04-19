@@ -41,7 +41,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable libvirt) \
+		$(use_enable libvirt libvirt-plugin) \
 		--docdir=/usr/share/doc/${P} \
 		--libdir=/usr/$(get_libdir) \
 		--localstatedir=/var
