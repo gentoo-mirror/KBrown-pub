@@ -20,7 +20,7 @@ SRC_URI="https://fedorahosted.org/releases/f/e/${PN}/${PN}-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="${PYTHON_REQUIRED_USE}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
