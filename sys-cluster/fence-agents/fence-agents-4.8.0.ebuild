@@ -23,10 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-#REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-
-#RDEPEND="~sys-cluster/libccs-${PV}"
-DEPEND="${RDEPEND}
+DEPEND="
 	${PYTHON_DEPS}
 	dev-libs/libxslt
 	$(python_gen_any_dep '
@@ -36,6 +33,7 @@ DEPEND="${RDEPEND}
 	')"
 
 src_configure() {
+	./autogen.sh
 	econf \
 		--docdir=/usr/share/doc/${P} \
 		--libdir=/usr/$(get_libdir) \
