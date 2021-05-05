@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
+WX_GTK_VER="3.0-gtk3"
 inherit eutils linux-info pax-utils toolchain-funcs wxwidgets
 
 DESCRIPTION="Disk encryption with strong security based on TrueCrypt"
-HOMEPAGE="https://veracrypt.codeplex.com"
+HOMEPAGE="https://veracrypt.fr/"
 SRC_URI="https://github.com/veracrypt/VeraCrypt/archive/VeraCrypt_${PV}.tar.gz"
 
 LICENSE="Apache-2.0 truecrypt-3.0"
