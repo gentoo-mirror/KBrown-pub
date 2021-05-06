@@ -11,8 +11,8 @@ SLOT="0"
 IUSE="doc"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=virtual/jdk-1.4"
-RDEPEND=">=virtual/jre-1.4"
+DEPEND=">=virtual/jdk-1.8"
+RDEPEND=">=virtual/jre-1.8"
 
 S="${WORKDIR}/apache-jmeter-${PV}/"
 
