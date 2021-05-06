@@ -1,10 +1,10 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/jmeter/jmeter-2.0.1-r4.ebuild,v 1.2 2008/10/24 20:36:23 maekke Exp $
 
 DESCRIPTION="Load test and measure performance on HTTP/FTP services and databases."
-HOMEPAGE="http://jakarta.apache.org/jmeter"
-SRC_URI="mirror://apache/jakarta/jmeter/binaries/jakarta-jmeter-${PV}.tgz"
+HOMEPAGE="https://jmeter.apache.org/"
+#SRC_URI="mirror://apache/jakarta/jmeter/binaries/jakarta-jmeter-${PV}.tgz"
+SRC_URI="https://archive.apache.org/dist/jakarta/jmeter/binaries/jakarta-jmeter-${PV}.tgz"
 LICENSE="Apache-2.0"
 
 SLOT="0"
