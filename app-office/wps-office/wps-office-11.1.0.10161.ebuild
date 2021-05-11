@@ -44,7 +44,6 @@ RDEPEND="
 	media-libs/libsndfile
 	media-libs/libvorbis
 	media-libs/libpng:0
-	media-sound/pulseaudio
 	net-libs/libasyncns
 	net-print/cups
 	sys-apps/attr
