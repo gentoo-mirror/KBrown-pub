@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=7
 
 XORG_DRI="always"
 XORG_EAUTORECONF="yes"
 XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos --disable-selective-werror"
 
-inherit autotools xorg-2 flag-o-matic git-r3
+inherit autotools xorg-3 flag-o-matic git-r3
 	#EGIT_REPO_URI="http://anongit.freedesktop.org/git/xorg/driver/xf86-video-armsoc.git"
 	#EGIT_COMMIT="1.3.1"
 
@@ -18,14 +18,16 @@ inherit autotools xorg-2 flag-o-matic git-r3
 	## alternate 5422 branch is more active: 5422_r5p1
 	#EGIT_BRANCH="5422_r5p1"
 
-	EGIT_REPO_URI="https://github.com/superna9999/xf86-video-armsoc.git"
+	#EGIT_REPO_URI="https://github.com/superna9999/xf86-video-armsoc.git"
+	EGIT_REPO_URI="https://github.com/KenjiBrown/xf86-video-armsoc.git"
 	#EGIT_BRANCH="sunxi-mali"
 	EGIT_BRANCH="meson-drm"
 
 
 DESCRIPTION="Open-source X.org graphics driver for ARM graphics"
 #HOMEPAGE="https://github.com/mdrjr/xf86-video-armsoc"
-HOMEPAGE="https://github.com/superna9999/xf86-video-armsoc"
+#HOMEPAGE="https://github.com/superna9999/xf86-video-armsoc"
+HOMEPAGE="https://github.com/KenjiBrown/xf86-video-armsoc"
 LICENSE="MIT"
 KEYWORDS="~arm ~arm64"
 
