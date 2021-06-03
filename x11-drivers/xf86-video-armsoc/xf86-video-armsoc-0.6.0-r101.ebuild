@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=7
 
 XORG_DRI="always"
 XORG_EAUTORECONF="yes"
 XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos --disable-selective-werror"
 
-inherit autotools xorg-2 versionator
+inherit autotools xorg-3 
 
 MY_PR="1endless9"
 MY_PV="v${PV}-${MY_PR}"
