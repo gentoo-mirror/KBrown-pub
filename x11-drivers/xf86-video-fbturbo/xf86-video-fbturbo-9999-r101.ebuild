@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=7
 XORG_DRI=always
 
 #EGIT_REPO_URI="https://github.com/ssvb/xf86-video-fbturbo.git"
@@ -10,7 +10,7 @@ XORG_DRI=always
 EGIT_REPO_URI="https://github.com/KenjiBrown/xf86-video-fbturbo.git"
 EGIT_BRANCH="aarch64-gentoo"
 
-inherit autotools-utils xorg-2 git-r3
+inherit autotools xorg-3 git-r3
 
 DESCRIPTION="FBTurbo ARM video driver (based on sunxifb)"
 
