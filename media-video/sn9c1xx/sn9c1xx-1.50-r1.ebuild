@@ -28,7 +28,7 @@ src_unpack() {
 }
 
 src_compile() {
-	#emake clean || die "emake clean failed"
+	emake clean || die "emake clean failed"
 	emake modules || die "emake modules failed"
 }
 
