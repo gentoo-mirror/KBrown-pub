@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI=7 
+
 inherit eutils linux-info
 
 DESCRIPTION="A driver for sn9c1xx (webcam) devices, like the Sweex Mini cam"
@@ -26,7 +28,7 @@ src_unpack() {
 }
 
 src_compile() {
-	emake clean || die "emake clean failed"
+	#emake clean || die "emake clean failed"
 	emake modules || die "emake modules failed"
 }
 
