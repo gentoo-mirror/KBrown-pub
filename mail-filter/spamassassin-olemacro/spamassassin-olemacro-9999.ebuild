@@ -9,6 +9,7 @@ MY_PN="OLEMacro"
 DESCRIPTION="SpamAssassin plugin that that searches attached documents for an OLE Macro"
 HOMEPAGE="https://github.com/fmbla/spamassassin-olemacro"
 
+#EGIT_REPO_URI="https://github.com/fmbla/spamassassin-olemacro.git"
 EGIT_REPO_URI="https://github.com/fmbla/spamassassin-olemacro.git"
 EGIT_BRANCH="master"
 
