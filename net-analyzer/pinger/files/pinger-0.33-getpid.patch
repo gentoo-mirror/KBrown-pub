@@ -1,0 +1,20 @@
+diff -uri pinger-0.33.orig/src/ping.c pinger-0.33/src/ping.c
+--- pinger-0.33.orig/src/ping.c	2014-09-27 05:01:57.000000000 -0500
++++ pinger-0.33/src/ping.c	2021-09-10 07:07:03.629020933 -0500
+@@ -300,7 +300,6 @@
+         tvsub(&stop, &(host_info->start));
+         ping_delay = (double) (stop.tv_sec) * 1000.0 +
+             (double) (stop.tv_usec) / 1000.0;
+-        if (ich->un.echo.id == getpid()) {
+             if (ich->type == ICMP_ECHOREPLY) {
+                 if ((host_info->last_seq_sent = ich->un.echo.sequence)) {
+ 
+@@ -327,7 +326,6 @@
+                     host_info->sleep = 1;
+                 }
+             }
+-        }
+     }
+ }
+ 
+Sólo en pinger-0.33/src: .ping.c.swp
