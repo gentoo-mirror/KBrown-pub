@@ -36,6 +36,7 @@ RDEPEND="${DEPEND}
 PATCHES="
 	${FILESDIR}/3.2-pgsql-RETURNING.patch 
 	${FILESDIR}/dbmail-3.2.5-crypt.patch
+	${FILESDIR}/dbmail-3.2.4-group_concat.patch
 	"
 
 src_configure() {
