@@ -1,16 +1,13 @@
+Binary files dbmail-3.2.4.orig/src/.dm_mailboxstate.c.swp and dbmail-3.2.4/src/.dm_mailboxstate.c.swp differ
 diff -uriN dbmail-3.2.4.orig/src/dm_mailboxstate.c dbmail-3.2.4/src/dm_mailboxstate.c
 --- dbmail-3.2.4.orig/src/dm_mailboxstate.c	2020-06-08 02:19:38.000000000 -0500
-+++ dbmail-3.2.4/src/dm_mailboxstate.c	2021-11-08 15:40:45.000000000 -0600
-@@ -233,10 +233,10 @@
++++ dbmail-3.2.4/src/dm_mailboxstate.c	2021-11-08 18:46:00.000000000 -0600
+@@ -233,7 +233,7 @@
  	
  	memset(query, 0, sizeof(query));
  	snprintf(query, DEF_QUERYSIZE-1,
 -		"SELECT k.message_idnr, group_concat(distinct keyword) FROM %skeywords k "
-+		"SELECT k.message_idnr, k.keyword FROM %skeywords k "
++		"SELECT k.message_idnr, string_agg(distinct keyword, ',') FROM %skeywords k "
  		"LEFT JOIN %smessages m ON k.message_idnr=m.message_idnr "
  		"WHERE m.mailbox_idnr = ? %s "
--		"group by m.message_idnr",
-+		"group by k.message_idnr, k.keyword",
- 		DBPFX, DBPFX,
- 		filterCondition);
- 
+ 		"group by m.message_idnr",
