@@ -1,8 +1,8 @@
 Binary files dbmail-3.2.4.orig/src/.dm_mailboxstate.c.swp and dbmail-3.2.4/src/.dm_mailboxstate.c.swp differ
 diff -uriN dbmail-3.2.4.orig/src/dm_mailboxstate.c dbmail-3.2.4/src/dm_mailboxstate.c
 --- dbmail-3.2.4.orig/src/dm_mailboxstate.c	2020-06-08 02:19:38.000000000 -0500
-+++ dbmail-3.2.4/src/dm_mailboxstate.c	2021-11-08 18:46:00.000000000 -0600
-@@ -233,7 +233,7 @@
++++ dbmail-3.2.4/src/dm_mailboxstate.c	2021-11-08 19:09:07.000000000 -0600
+@@ -233,10 +233,10 @@
  	
  	memset(query, 0, sizeof(query));
  	snprintf(query, DEF_QUERYSIZE-1,
@@ -10,4 +10,8 @@ diff -uriN dbmail-3.2.4.orig/src/dm_mailboxstate.c dbmail-3.2.4/src/dm_mailboxst
 +		"SELECT k.message_idnr, string_agg(distinct keyword, ',') FROM %skeywords k "
  		"LEFT JOIN %smessages m ON k.message_idnr=m.message_idnr "
  		"WHERE m.mailbox_idnr = ? %s "
- 		"group by m.message_idnr",
+-		"group by m.message_idnr",
++		"group by k.message_idnr",
+ 		DBPFX, DBPFX,
+ 		filterCondition);
+ 
