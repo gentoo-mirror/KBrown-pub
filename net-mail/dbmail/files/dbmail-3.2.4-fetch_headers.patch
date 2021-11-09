@@ -2,12 +2,14 @@ Binary files dbmail-3.2.4.group_concat/src/.dm_imapsession.c.swp and dbmail-3.2.
 Binary files dbmail-3.2.4.group_concat/src/.dm_mailboxstate.c.swp and dbmail-3.2.4/src/.dm_mailboxstate.c.swp differ
 diff -uriN dbmail-3.2.4.group_concat/src/dm_imapsession.c dbmail-3.2.4/src/dm_imapsession.c
 --- dbmail-3.2.4.group_concat/src/dm_imapsession.c	2020-06-08 02:19:38.000000000 -0500
-+++ dbmail-3.2.4/src/dm_imapsession.c	2021-11-09 03:31:07.000000000 -0600
-@@ -805,6 +805,7 @@
++++ dbmail-3.2.4/src/dm_imapsession.c	2021-11-09 03:51:01.000000000 -0600
+@@ -805,7 +805,8 @@
  			"AND m.message_idnr %s "
  			"AND status < %d "
  			//"AND n.headername %s IN ('%s') "	//old, from the sql point of view is slow
+-			"having seq %s %d "			//patch Cosmin Cioranu, removing the above conditions needs a restriction, patched added
 +			"GROUP By m.message_idnr, n.headername, v.headervalue "
- 			"having seq %s %d "			//patch Cosmin Cioranu, removing the above conditions needs a restriction, patched added
++			//"having seq %s %d "			//patch Cosmin Cioranu, removing the above conditions needs a restriction, patched added
  			"ORDER BY message_idnr, seq",
  			not?"":fieldorder->str,
+ 			DBPFX, DBPFX, DBPFX, DBPFX,
