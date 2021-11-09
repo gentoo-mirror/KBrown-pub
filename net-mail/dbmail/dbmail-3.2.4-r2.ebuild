@@ -38,6 +38,7 @@ PATCHES="
 	${FILESDIR}/3.2-pgsql-RETURNING.patch 
 	${FILESDIR}/dbmail-3.2.5-crypt.patch
 	${FILESDIR}/dbmail-3.2.4-group_concat.patch
+	${FILESDIR}/dbmail-3.2.4-fetch_headers.patch
 	"
 
 src_configure() {
