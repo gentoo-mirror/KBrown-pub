@@ -39,7 +39,6 @@ PATCHES="
 	${FILESDIR}/dbmail-3.2.5-crypt.patch
 	${FILESDIR}/dbmail-3.2.4-group_concat.patch
 	${FILESDIR}/dbmail-3.2.4-fetch_headers.patch
-	${FILESDIR}/dbmail-3.2.4-size.patch
 	"
 
 src_configure() {
