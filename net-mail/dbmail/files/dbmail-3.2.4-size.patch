@@ -1,0 +1,13 @@
+diff -uriN dbmail-3.2.4.group_concat/src/dm_message.c dbmail-3.2.4/src/dm_message.c
+--- dbmail-3.2.4.group_concat/src/dm_message.c	2020-06-08 02:19:38.000000000 -0500
++++ dbmail-3.2.4/src/dm_message.c	2021-11-11 00:17:24.000000000 -0600
+@@ -1001,7 +1001,7 @@
+ 
+ size_t dbmail_message_get_size(const DbmailMessage *self, gboolean crlf)
+ {
+-        return crlf ? (size_t)p_string_len(self->crlf):(size_t)g_mime_stream_length(self->stream);
++        return (size_t)g_mime_stream_length(self->stream);
+ }
+ 
+ static DbmailMessage * _retrieve(DbmailMessage *self, const char *query_template)
+Binary files dbmail-3.2.4.group_concat/test-scripts/.testfetch.imap.swp and dbmail-3.2.4/test-scripts/.testfetch.imap.swp differ
