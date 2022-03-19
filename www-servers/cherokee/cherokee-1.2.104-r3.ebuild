@@ -8,7 +8,8 @@ PYTHON_COMPAT=( python3_8 python3_9 python3_10 )
 inherit autotools pam systemd 
 
 DESCRIPTION="An extremely fast and tiny web server"
-SRC_URI="https://github.com/cherokee/webserver/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/cherokee/webserver/archive/refs/tags/v${PV}.zip -> ${P}.zip"
+
 HOMEPAGE="https://www.cherokee-project.com/"
 
 LICENSE="GPL-2"
