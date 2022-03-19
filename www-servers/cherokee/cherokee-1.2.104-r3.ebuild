@@ -3,11 +3,9 @@
 
 EAPI=7
 
-WANT_AUTOMAKE="1.11"
+PYTHON_COMPAT=( python3_8 python3_9 python3_10 )
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit autotools python-r1 pam systemd user
+inherit autotools pam systemd 
 
 DESCRIPTION="An extremely fast and tiny web server"
 SRC_URI="https://github.com/cherokee/webserver/archive/v${PV}.zip -> ${P}.zip"
@@ -16,12 +14,14 @@ HOMEPAGE="https://www.cherokee-project.com/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
-IUSE="admin ffmpeg debug geoip ipv6 kernel_linux ldap libressl mysql nls pam php rrdtool ssl static static-libs"
+IUSE="ffmpeg debug geoip ipv6 kernel_linux ldap mysql nls pam php ssl rrdtool static static-libs threads"
 RDEPEND=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
+	acct-group/cherokee
+	acct-user/cherokee
 	dev-libs/libpcre
 	>=sys-libs/zlib-1.1.4-r1
 	ffmpeg? ( media-video/ffmpeg )
@@ -34,13 +34,11 @@ COMMON_DEPEND="
 		dev-lang/php:*[fpm]
 		dev-lang/php:*[cgi]
 	) )
-	ssl? (
-		!libressl? ( <dev-libs/openssl-1.1.0:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	ssl? ( dev-libs/openssl )
 	"
 DEPEND="${COMMON_DEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	app-text/asciidoc"
 RDEPEND="${COMMON_DEPEND}
 	rrdtool? ( net-analyzer/rrdtool )"
 BDEPEND="app-arch/unzip"
@@ -49,16 +47,15 @@ RESTRICT="test"
 
 WEBROOT="/var/www/localhost"
 
-PATCHES=( "${FILESDIR}/${PN}-1.2.99-gentoo.patch" )
+PATCHES="
+	${FILESDIR}/${PN}-1.2.99-gentoo.patch
+	${FILESDIR}/${PN}-1.2.104-python.patch
+	${FILESDIR}/${PN}-1.2.104-openssl.patch
+	"
 S="${WORKDIR}/webserver-${PV}"
 
-pkg_setup() {
-	enewgroup cherokee
-	enewuser cherokee -1 -1 /var/www cherokee
-}
 
 src_prepare() {
-	python_setup
 	default
 
 	"${S}/po/admin/generate_POTFILESin.py" > po/admin/POTFILES.in
@@ -68,11 +65,12 @@ src_prepare() {
 src_configure() {
 	local myconf
 
-	if use admin ; then
-		myconf="${myconf} --enable-admin --with-python=/usr/bin/python"
-	else
+# Disable broken admin 
+#	if use admin ; then
+#		myconf="${myconf} --enable-admin --with-python=/usr/bin/python"
+#	else
 		myconf="${myconf} --disable-admin"
-	fi
+#	fi
 
 	# Uses autodetect because --with-php requires path to php-{fpm,cgi}.
 	if ! use php ; then
@@ -137,13 +135,13 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-initd-1.2.99" ${PN}
 	newconfd "${FILESDIR}/${PN}-confd-1.2.98" ${PN}
 
-	if ! use admin ; then
+#	if ! use admin ; then
 		rm -r \
 			"${ED}"/usr/bin/cherokee-admin-launcher \
 			"${ED}"/usr/bin/CTK-run \
 			"${ED}"/usr/sbin/cherokee-admin \
 			"${ED}"/usr/share/cherokee/admin || die
-	fi
+#	fi
 
 	exeinto /usr/share/doc/${PF}/contrib
 	doexe contrib/{bin2buffer.py,make-cert.sh,make-dh_params.sh,tracelor.py}
@@ -175,22 +173,23 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	if use admin ; then
-		elog "Just run '/usr/sbin/cherokee-admin' and go to: http://localhost:9090"
-		elog
-		elog "Cherokee currently supports configuration versioning, so from now on,"
-		elog "whenever a change is made to the configuration file format,"
-		elog "Cherokee-Admin will be able to automatically convert yours to the new"
-		elog "release. You simply have to load Cherokee-Admin and it will be converted"
-		elog "once you proceed to saving it."
-		elog
-		elog "There is also a command line utility that you can use to do the exact"
-		elog "same thing. Config format can change in different versions. It is"
-		elog "provided under:"
-		elog "	${EPREFIX}/usr/share/cherokee/admin/upgrade_config.py"
-	else
-		elog "Try USE=admin if you want an easy way to configure cherokee."
-	fi
+# Disable broken admin
+#	if use admin ; then
+#		elog "Just run '/usr/sbin/cherokee-admin' and go to: http://localhost:9090"
+#		elog
+#		elog "Cherokee currently supports configuration versioning, so from now on,"
+#		elog "whenever a change is made to the configuration file format,"
+#		elog "Cherokee-Admin will be able to automatically convert yours to the new"
+#		elog "release. You simply have to load Cherokee-Admin and it will be converted"
+#		elog "once you proceed to saving it."
+#		elog
+#		elog "There is also a command line utility that you can use to do the exact"
+#		elog "same thing. Config format can change in different versions. It is"
+#		elog "provided under:"
+#		elog "	${EPREFIX}/usr/share/cherokee/admin/upgrade_config.py"
+#	else
+#		elog "Try USE=admin if you want an easy way to configure cherokee."
+#	fi
 	elog
 	elog "emerge www-servers/spawn-fcgi if you use Ruby on Rails with ${PN}."
 	elog
