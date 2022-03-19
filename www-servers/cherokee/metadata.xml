@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>blueness@gentoo.org</email>
-		<name>Anthony G. Basile</name>
+		<email>sandino@sandino.net</email>
+		<name>Sandino Araico Sánchez</name>
 	</maintainer>
 	<use>
 		<flag name="admin">Install web based cherokee conf tool</flag>
