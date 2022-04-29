@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd prefix tmpfiles
+inherit systemd prefix 
 
 DESCRIPTION="A man replacement that utilizes dbm instead of flat files"
 HOMEPAGE="https://gitlab.com/cjwatson/man-db https://www.nongnu.org/man-db/"
@@ -18,7 +18,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+manpager nls +seccomp selinux static-libs zlib"
+IUSE="+manpager nls +seccomp selinux static-libs systemd zlib"
 
 CDEPEND="
 	>=dev-libs/libpipeline-1.5.0
@@ -106,8 +106,8 @@ src_configure() {
 
 	export ac_cv_lib_z_gzopen=$(usex zlib)
 	local myeconfargs=(
-		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
-		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		$(use_with systemd systemdtmpfilesdir "${EPREFIX}"/usr/lib/tmpfiles.d)
+		$(use_with systemd systemdsystemunitdir "$(systemd_get_systemunitdir)")
 		--disable-setuid # bug #662438
 		--enable-cache-owner=man
 		--with-sections="${sections}"
@@ -183,7 +183,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	tmpfiles_process man-db.conf
+	if use systemd ; then
+		tmpfiles_process man-db.conf
+	fi
 
 	if [[ -n "${REPLACING_VERSIONS}" ]] ; then
 		local _replacing_version=
