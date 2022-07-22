@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/silc-client/Attic/silc-client-1.1.8.ebuild,v 1.9 2012/05/04 06:22:11 jdhore Exp $
 
-EAPI=5
+EAPI=7
 
 inherit eutils multilib
 
@@ -36,8 +36,9 @@ src_prepare() {
 	sed -i -e "s:-g -O2:${CFLAGS}:g" configure
 	sed -i -e "/CURSES_LIBS/s/-lncurses/-lncurses -ltinfo/" apps/irssi/configure
 	use amd64 && sed -i -e 's:felf\([^6]\):felf64\1:g' configure
-	epatch "${FILESDIR}/${PN}-1.1.10-docdir.patch"
-	epatch "${FILESDIR}/${PN}-1.1.8-sandbox-errors-fix.patch"
+	eapply "${FILESDIR}/${PN}-1.1.10-docdir.patch"
+	eapply "${FILESDIR}/${PN}-1.1.8-sandbox-errors-fix.patch"
+	default
 }
 
 src_configure() {
@@ -75,7 +76,8 @@ src_install() {
 	dodoc ChangeLog CREDITS README TODO || die
 	cd "${S}/apps/irssi" || die
 	dodoc silc.conf docs/formats.txt docs/manual.txt docs/signals.txt docs/special_vars.txt || die
-	dohtml docs/startup-HOWTO.html || die
+	docinto html
+	dodoc docs/startup-HOWTO.html || die
 
 	insinto /usr/share/silc-client/help
 	rm docs/help/Make* || die
