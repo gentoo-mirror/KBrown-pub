@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=7
 
 inherit eutils
 
@@ -24,6 +24,7 @@ src_prepare() {
 	sed -i \
 		"s/^\(pkgconfigdir =\) \$(libdir)\/pkgconfig/\1	\/usr\/$(get_libdir)\/pkgconfig/"\
 		"${S}"/lib/Makefile.{am,in}
+	default
 }
 
 src_configure() {
