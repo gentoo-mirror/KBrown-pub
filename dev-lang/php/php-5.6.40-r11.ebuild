@@ -240,6 +240,7 @@ src_prepare() {
 	eapply "${FILESDIR}/php-5.6-libressl.patch"
 	eapply "${FILESDIR}/php-5.6.40-intl-bool.patch"
 	eapply "${FILESDIR}/php-5.6.40-icu.patch"
+	eapply "${FILESDIR}/php-5.6.40-tidy.patch"
 
 	# Copy test binaries from patches
 	local ext_src
