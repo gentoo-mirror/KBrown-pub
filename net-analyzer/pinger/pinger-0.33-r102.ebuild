@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit autotools eutils flag-o-matic
 
@@ -40,13 +40,14 @@ DEPEND="
 DOCS=( AUTHORS BUGS ChangeLog NEWS README )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch "${FILESDIR}"/${P}-descs.patch
-	epatch "${FILESDIR}"/${P}-getpid.patch
+	eapply "${FILESDIR}"/${P}-gentoo.patch
+	eapply "${FILESDIR}"/${P}-descs.patch
+	eapply "${FILESDIR}"/${P}-getpid.patch
 
 	sed -i -e '/Root privileges/d' src/Makefile.am || die
 
 	eautoreconf
+	default
 }
 
 src_configure() {
