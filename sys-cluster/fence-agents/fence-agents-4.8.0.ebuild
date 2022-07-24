@@ -1,9 +1,9 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_9 python3_10 )
 
 inherit autotools multilib python-any-r1 git-r3
 
@@ -25,7 +25,7 @@ DEPEND="
 	$(python_gen_any_dep '
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		dev-python/pycurl[${PYTHON_USEDEP}]
-		dev-python/suds[${PYTHON_USEDEP}]
+		dev-python/suds-community[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 	')"
 
