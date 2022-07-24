@@ -3,7 +3,7 @@
 
 # See https://blogs.gentoo.org/ago/2017/08/21/sys-kernel-grsecurity-sources-available
 
-EAPI="7"
+EAPI="8"
 
 ETYPE="sources"
 K_GENPATCHES_VER="not-empty" # Set to not-empty to avoid the useless download of patch-*.xz
