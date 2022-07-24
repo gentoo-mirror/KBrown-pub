@@ -3,7 +3,7 @@
 
 # TODO: figure out htf to make python.eclass work
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils multilib
 if [[ ${PV} == "9999" ]] ; then
@@ -35,6 +35,7 @@ src_prepare() {
 		eautopoint
 		eautoreconf
 	fi
+	default
 }
 
 src_configure() {
