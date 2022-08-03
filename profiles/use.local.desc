@@ -1,0 +1,200 @@
+# This file is deprecated as per GLEP 56 in favor of metadata.xml.
+# Please add your descriptions to your package's metadata.xml ONLY.
+# * generated automatically using pmaint *
+
+app-emulation/libvirt:apparmor - Enable AppArmor support
+app-emulation/libvirt:dtrace - Enable dtrace support via dev-util/systemtap
+app-emulation/libvirt:firewalld - DBus interface to iptables/ebtables allowing for better runtime management of your firewall.
+app-emulation/libvirt:fuse - Allow LXC to use sys-fs/fuse for mount points
+app-emulation/libvirt:glusterfs - Enable GlusterFS support via sys-cluster/glusterfs
+app-emulation/libvirt:iscsi - Allow using an iSCSI remote storage server as pool for disk image storage
+app-emulation/libvirt:iscsi-direct - Allow using libiscsi for iSCSI storage pool backend
+app-emulation/libvirt:libssh - Use net-libs/libssh to communicate with remote libvirtd hosts, for example: qemu+libssh://server/system
+app-emulation/libvirt:libvirtd - Builds the libvirtd daemon as well as the client utilities instead of just the client utilities
+app-emulation/libvirt:lvm - Allow using the Logical Volume Manager (sys-fs/lvm2) as pool for disk image storage
+app-emulation/libvirt:lxc - Support management of Linux Containers virtualisation (app-containers/lxc)
+app-emulation/libvirt:nfs - Allow using Network File System mounts as pool for disk image storage
+app-emulation/libvirt:numa - Use NUMA for memory segmenting via sys-process/numactl and sys-process/numad
+app-emulation/libvirt:openvz - Support management of OpenVZ virtualisation (openvz-sources)
+app-emulation/libvirt:parted - Allow using real disk partitions as pool for disk image storage, using sys-block/parted to create, resize and delete them.
+app-emulation/libvirt:pcap - Support auto learning IP addreses for routing
+app-emulation/libvirt:qemu - Support management of QEMU virtualisation (app-emulation/qemu)
+app-emulation/libvirt:rbd - Enable rados block device support via sys-cluster/ceph
+app-emulation/libvirt:virt-network - Enable virtual networking (NAT) support for guests. Includes all the dependencies for NATed network mode. Effectively any network setup that relies on libvirt to setup and configure network interfaces on your host. This can include bridged and routed networks ONLY if you are allowing libvirt to create and manage the underlying devices for you. In some cases this requires enabling the 'netcf' USE flag (currently unavailable).
+app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisation (app-emulation/virtualbox)
+app-emulation/libvirt:wireshark-plugins - Build the net-analyzer/wireshark plugin for the Libvirt RPC protocol
+app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
+app-emulation/libvirt:zfs - Enable ZFS backend storage sys-fs/zfs
+dev-java/oracle-jdk-bin:commercial - Install features requiring a commercial license for production use
+dev-java/oracle-jdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
+dev-java/oracle-jdk-bin:gtk2 - Enable GTK+ 2 support in JavaFX
+dev-java/oracle-jdk-bin:gtk3 - Enable GTK+ 3 support in JavaFX
+dev-java/oracle-jdk-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
+dev-java/oracle-jdk-bin:javafx - Install JavaFX libraries
+dev-java/oracle-jdk-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
+dev-java/oracle-jdk-bin:source - Install JVM (and optionally JavaFX) sources
+dev-java/oracle-jdk-bin:visualvm - Install VisualVM debugging tool
+dev-lang/php:bcmath - Add support for libbcmath
+dev-lang/php:cli - Enable CLI SAPI
+dev-lang/php:coverage - Include gcov symbols for test coverage and lcov reports. Only useful for extension developers, and requires GCC.
+dev-lang/php:ctype - Enable ctype functions
+dev-lang/php:embed - Enable embed SAPI
+dev-lang/php:enchant - Add supports Enchant spelling library.
+dev-lang/php:fileinfo - Add fileinfo extension support
+dev-lang/php:filter - Add filter extension support
+dev-lang/php:flatfile - Add dbm support for flat files
+dev-lang/php:fpm - Enable the FastCGI Process Manager SAPI
+dev-lang/php:gd - Adds support for gd (bundled with PHP)
+dev-lang/php:hash - Enable the hash extension
+dev-lang/php:inifile - Add dbm support for .ini files
+dev-lang/php:intl - Enables the intl extension for extended internalization support
+dev-lang/php:json - Enable JSON support
+dev-lang/php:ldap-sasl - Add SASL support for the PHP LDAP extension
+dev-lang/php:opcache - Enables built-in opcode cache, replacing pecl-apc et al.
+dev-lang/php:pcntl - Add support for process creation functions
+dev-lang/php:pdo - Enable the bundled PDO extensions
+dev-lang/php:phar - Enables the phar extension to provide phar archive support
+dev-lang/php:sharedmem - Add support for shared memory use
+dev-lang/php:simplexml - Support for SimpleXML
+dev-lang/php:sysvipc - Support for System V-compatible inter-process communication
+dev-lang/php:tokenizer - Add support for the PHP file parser
+dev-lang/php:wddx - Add support for Web Distributed Data eXchange
+dev-lang/php:xmlreader - Enable XMLReader support
+dev-lang/php:xmlwriter - Enable XMLWriter support
+dev-lang/php:xslt - Enable the XSL extension
+dev-libs/libp11:doc - Generate and install API documentation for the package.
+gnome-base/gnome-keyring:ssh-agent - Use GNOME Keyring to unlock SSH keys. Recommended unless you are using ECDSA or Ed25519 keys.
+gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
+mail-filter/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
+mail-filter/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
+mail-filter/pyzor:pyzord - Enable the pyzord server daemon
+mail-filter/pyzor:redis - Enables the redis back-end database engine for pyzord through dev-python/redis-py
+media-video/darwin-streaming-server:m32 - Build with -m32 compiler flag
+media-video/ffmpeg:amr - Enables Adaptive Multi-Rate Audio support
+media-video/ffmpeg:amrenc - Enables Adaptive Multi-Rate Audio encoding support with media-libs/vo-amrwbenc.
+media-video/ffmpeg:appkit - Enables Apple AppKit framework
+media-video/ffmpeg:bluray - Enable playback of Blu-ray filesystems
+media-video/ffmpeg:bs2b - Enables media-libs/libbs2b based Bauer stereo-to-binaural filter.
+media-video/ffmpeg:cdio - Enables audio CD grabbing with dev-libs/libcdio.
+media-video/ffmpeg:chromaprint - Enables audio fingerprinting support with media-libs/chromaprint.
+media-video/ffmpeg:chromium - Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.
+media-video/ffmpeg:codec2 - Enables codec2 low bit rate speech codec support via media-libs/codec2.
+media-video/ffmpeg:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
+media-video/ffmpeg:cuda - Enables CUDA-based acceleration. Mostly used for specific filters.
+media-video/ffmpeg:dav1d - Enables AV1 decoding via media-libs/dav1d.
+media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
+media-video/ffmpeg:flite - Adds a text-to-speech filter based on app-accessibility/flite.
+media-video/ffmpeg:frei0r - Enable frei0r wrapping in libavfilter
+media-video/ffmpeg:fribidi - Enables fribidi support in the drawtext filter.
+media-video/ffmpeg:gcrypt - Enables gcrypt support: Needed for rtmp(t)e support if openssl, librtmp or gmp is not used.
+media-video/ffmpeg:gme - Enables support for media-libs/game-music-emu for playing various video game music formats.
+media-video/ffmpeg:gpl - Build GPL code. Should be enabled unless you require LGPL binaries.
+media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calculating them on the fly.
+media-video/ffmpeg:iec61883 - Support for FireWire DV/HDV input device using media-libs/libiec61883.
+media-video/ffmpeg:kvazaar - Enables media-libs/kvazaar based HEVC encoder.
+media-video/ffmpeg:libaom - Enables media-libs/libaom based AV1 codec support.
+media-video/ffmpeg:libaribb24 - Enables ARIB text and caption decoding via media-libs/aribb24.
+media-video/ffmpeg:libdrm - Enables x11-libs/libdrm support for better screen grabbing and hardware accelerated codecs.
+media-video/ffmpeg:libilbc - Enables iLBC de/encoding via media-libs/libilbc.
+media-video/ffmpeg:librtmp - Enables Real Time Messaging Protocol using librtmp (media-video/rtmpdump) in addition to FFmpeg's native implementation.
+media-video/ffmpeg:libsoxr - Enables audio resampling through media-libs/soxr.
+media-video/ffmpeg:libtesseract - Enables the OCR filter via app-text/tesseract.
+media-video/ffmpeg:libv4l - Uses media-libs/libv4l for video4linux instead of direct calls. Adds support for more devices via the userspace library.
+media-video/ffmpeg:libxml2 - Uses dev-libs/libxml2 to enable dash demuxing support.
+media-video/ffmpeg:lv2 - Enables lv2 audio filter wrapper.
+media-video/ffmpeg:mipsdspr1 - Enables MIPS DSP ASE R1 optimizations.
+media-video/ffmpeg:mipsdspr2 - Enables MIPS DSP ASE R2 optimizations.
+media-video/ffmpeg:mipsfpu - Enables floating point MIPS optimizations.
+media-video/ffmpeg:mmal - Enables Multi-Media Abstraction Layer (MMAL) decoding support: Available e.g. on the Raspberry Pi.
+media-video/ffmpeg:network - Enables network streaming support
+media-video/ffmpeg:nvenc - Adds support for NVIDIA Encoder (NVENC) API for hardware accelerated encoding on NVIDIA cards.
+media-video/ffmpeg:opencl - Enable OpenCL support
+media-video/ffmpeg:openh264 - Enables H.264 encoding suppoprt via media-libs/openh264.
+media-video/ffmpeg:openssl - Enables dev-libs/openssl support. Adds support for encrypted network protocols (TLS/HTTPS).
+media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slower)
+media-video/ffmpeg:postproc - Build and install libpostproc.
+media-video/ffmpeg:rubberband - Adds time-stretching and pitch-shifting audio filter based on media-libs/rubberband.
+media-video/ffmpeg:snappy - Enable app-arch/snappy support. Required for e.g. Vidvox Hap encoder.
+media-video/ffmpeg:srt - Enable support for Secure Reliable Transport (SRT) via net-libs/srt
+media-video/ffmpeg:ssh - Enable SSH/sftp support via net-libs/libssh.
+media-video/ffmpeg:twolame - Enables MP2 encoding via media-sound/twolame as an alternative to the internal encoder.
+media-video/ffmpeg:vidstab - Enables video stabilization filter using vid.stab library (media-libs/vidstab).
+media-video/ffmpeg:vpx - Enables VP8 and VP9 codec support using libvpx: Decoding does not require this to be enabled but libvpx can also be used for decoding; encoding requires this useflag to be enabled though.
+media-video/ffmpeg:vulkan - Enables support for the vulkan API for GPU offload.
+media-video/ffmpeg:x265 - Enables HEVC encoding with media-libs/x265.
+media-video/ffmpeg:zeromq - Enables net-libs/zeromq support with the zmq/azmq filters.
+media-video/ffmpeg:zimg - Enables media-libs/zimg based scale filter.
+media-video/ffmpeg:zvbi - Enables media-libs/zvbi based teletext decoder.
+net-analyzer/nrpe:command-args - Build support for specifying the command-line arguments from the Nagios/Icinga master. Make sure you understand the implications of this flag as it can be a security risk.
+net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
+net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
+net-libs/liboauth:bindist - Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL.
+net-libs/liboauth:curl - If enabled, net-misc/curl is used thorugh the libcurl library; if it's not, the curl command is used instead. Some features are only available when using the library, but using it as library requires matching SSL implementations.
+net-libs/liboauth:nss - Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead.
+net-libs/nodejs:bundled-ssl - Use bundled openssl library instead of system's
+net-libs/nodejs:inspector - Enable V8 inspector
+net-libs/nodejs:libressl - Enable libressl support
+net-libs/nodejs:npm - Enable NPM package manager
+net-libs/nodejs:openssl - Enable openssl support
+net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
+net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
+net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
+net-mail/dbmail:doc - Enable building and installation of man pages
+net-mail/dbmail:sieve - Enable sieve filter support
+net-misc/curl:alt-svc - Enable alt-svc support
+net-misc/curl:brotli - Enable brotli compression support
+net-misc/curl:ftp - Enable FTP support
+net-misc/curl:gnutls - Enable gnutls ssl backend
+net-misc/curl:gopher - Enable Gopher protocol support
+net-misc/curl:hsts - Enable HTTP Strict Transport Security
+net-misc/curl:http2 - Enable HTTP/2.0 support
+net-misc/curl:imap - Enable Internet Message Access Protocol support
+net-misc/curl:mbedtls - Enable mbedtls ssl backend
+net-misc/curl:metalink - Enable metalink support
+net-misc/curl:nghttp3 - Enable HTTP/3.0 support using net-libs/nghttp3 and net-libs/ngtcp2
+net-misc/curl:nss - Enable nss ssl backend
+net-misc/curl:openssl - Enable openssl ssl backend
+net-misc/curl:pop3 - Enable Post Office Protocol 3 support
+net-misc/curl:progress-meter - Enable the progress meter
+net-misc/curl:quiche - Enable HTTP/3.0 support using net-libs/quiche
+net-misc/curl:rtmp - Enable RTMP Streaming Media support
+net-misc/curl:smtp - Enable Simple Mail Transfer Protocol support
+net-misc/curl:ssh - Enable SSH urls in curl using libssh2
+net-misc/curl:ssl - Enable crypto engine support (via openssl if USE='-gnutls -nss')
+net-misc/curl:sslv3 - Support for the old/insecure SSLv3 protocol
+net-misc/curl:telnet - Enable Telnet protocol support
+net-misc/curl:tftp - Enable TFTP support
+net-misc/curl:winssl - Enable winssl ssl backend
+net-misc/curl:zstd - Enable zstd compression
+net-misc/tigervnc:dri3 - Build with DRI3 support
+net-misc/tigervnc:drm - Build with DRM support
+net-misc/tigervnc:server - Build TigerVNC server
+net-misc/tigervnc:xorgmodule - Build the Xorg module
+sys-apps/man-db:manpager - Enable manpager wrapper for colorizing output
+sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
+sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesystem built on top of ceph
+sys-cluster/ceph:diskprediction - Enable local diskprediction module to predict disk failures
+sys-cluster/ceph:dpdk - Enable DPDK messaging
+sys-cluster/ceph:fuse - Build fuse client
+sys-cluster/ceph:grafana - Install grafana dashboards
+sys-cluster/ceph:kafka - Rados Gateway's pubsub support for Kafka push endpoint
+sys-cluster/ceph:lttng - Add support for LTTng
+sys-cluster/ceph:mgr - Build the ceph-mgr daemon
+sys-cluster/ceph:numa - Use sys-process/numactl for numa support in rocksdb
+sys-cluster/ceph:openssl - Use dev-libs/openssl
+sys-cluster/ceph:pmdk - Enable PMDK libraries
+sys-cluster/ceph:rabbitmq - Use rabbitmq-c to build rgw amqp push endpoint
+sys-cluster/ceph:radosgw - Add radosgw support
+sys-cluster/ceph:rbd-rwl - Enable librbd persistent write back cache
+sys-cluster/ceph:spdk - Enable SPDK user-mode storage driver toolkit
+sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled one
+sys-cluster/ceph:uring - Build with support for sys-libs/liburing
+sys-cluster/ceph:xfs - Add xfs support
+sys-cluster/ceph:zfs - Add zfs support
+sys-cluster/util-vserver:beecrypt - Use dev-libs/beecrypt for cryptography
+sys-cluster/util-vserver:dietlibc - Compile against dev-libs/dietlibc
+sys-cluster/util-vserver:nss - Use dev-libs/nss for cryptography
+sys-kernel/dappersec-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
+www-servers/cherokee:admin - Install web based cherokee conf tool
+www-servers/cherokee:rrdtool - Enable rrdtool support

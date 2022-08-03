@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=virtual/jdk-1.4
+DESCRIPTION=Load test and measure performance on HTTP/FTP services and databases.
+EAPI=0
+HOMEPAGE=https://jmeter.apache.org/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=virtual/jre-1.4
+SLOT=0
+SRC_URI=https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-2.13.tgz
+_md5_=15faf53ddf43a883cc2a0922f46ac6e7

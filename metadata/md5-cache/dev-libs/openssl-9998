@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DEPEND=>=dev-libs/libressl-2.0.0
+DESCRIPTION=This is a fake ebuild to support libressl
+EAPI=7
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86
+LICENSE=public-domain
+SLOT=0
+_md5_=0991093b7a1879a4a3b0dd743d1f56a4
