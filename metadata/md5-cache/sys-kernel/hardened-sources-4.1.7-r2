@@ -4,12 +4,12 @@ DESCRIPTION=Hardened kernel sources (kernel series 4.1)
 EAPI=8
 HOMEPAGE=http://www.gentoo.org/proj/en/hardened/
 INHERIT=kernel-2
-IUSE=deblob symlink build
+IUSE=deblob symlink build deblob
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
-LICENSE=GPL-2 linux-firmware
+LICENSE=GPL-2 !deblob? ( linux-firmware )
 RDEPEND=>=sys-devel/gcc-4.5 !build? ( app-arch/cpio dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
 SLOT=4.1.7-r2
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-4.1.7-2.extras.tar.bz2 https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-4.1-11.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-4.1-11.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-4.1-11.base.tar.xz
-_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	kernel-2	7243c5ee4d1a26f42930f137a20ed659
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.1-gnu/deblob-4.1 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.1-gnu/deblob-check -> deblob-check-4.1 ) http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-4.1.7-2.extras.tar.bz2 https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-4.1-11.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-4.1-11.base.tar.xz https://dev.gentoo.org/~whissi/dist/genpatches/genpatches-4.1-11.base.tar.xz
+_eclasses_=estack	055c42df72f76a4f45ec92b35e83cd56	toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	kernel-2	aa8997cf13a12b867c4c8c57383b8582
 _md5_=eaec7ae5c8fdce50084565d62a926fef
