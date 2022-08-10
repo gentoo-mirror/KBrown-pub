@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.14:2 >=gnome-base/orbit-2.14.0 >=dev-libs/libxml2-2.4.20:2 >=sys-apps/dbus-1.0.0 >=dev-libs/dbus-glib-0.74 >=dev-libs/popt-1.5 !gnome-base/bonobo-activation dev-util/glib-utils dev-util/gtk-doc-am virtual/yacc sys-devel/flex x11-apps/xrdb virtual/pkgconfig >=dev-util/intltool-0.35 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GNOME CORBA framework
+EAPI=7
+HOMEPAGE=https://developer.gnome.org/libbonobo/stable/
+INHERIT=gnome2
+IUSE=debug examples test
+KEYWORDS=~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=LGPL-2.1 GPL-2
+RDEPEND=>=dev-libs/glib-2.14:2 >=gnome-base/orbit-2.14.0 >=dev-libs/libxml2-2.4.20:2 >=sys-apps/dbus-1.0.0 >=dev-libs/dbus-glib-0.74 >=dev-libs/popt-1.5 !gnome-base/bonobo-activation
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnome/sources/libbonobo/2.24/libbonobo-2.24.3.tar.bz2
+_eclasses_=toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	libtool	241a8f577b9781a42a7421e53448a44e	gnome.org	429073e99d7067d3462e875bf5c6e14a	xdg-utils	fffb53a53cf17c9c0c998a3c0a590c7e	gnome2-utils	2116cec8f46f4d1b0a88c5b1f1575dd3	xdg	6024fbc93167fad782e2032933654857	gnome2	4f729d9211b2e3c00a285d6301a557e1
+_md5_=69abd40f0fbe490f9befbe4ab4acd70e
