@@ -1,8 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI="7"
 GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 
@@ -38,7 +37,7 @@ PDEPEND="gnome-base/gvfs"
 
 src_prepare() {
 	# Make sure menus have icons. People don't like change
-	epatch "${FILESDIR}/${PN}-2.28.0-menus-have-icons.patch"
+	eapply "${FILESDIR}/${PN}-2.28.0-menus-have-icons.patch"
 
 	use branding && epatch "${FILESDIR}"/${PN}-2.26.0-branding.patch
 
@@ -46,6 +45,7 @@ src_prepare() {
 	sed -i -e 's/Clearlooks/Adwaita/' schemas/desktop_gnome_interface.schemas.in.in || die
 
 	gnome2_src_prepare
+	default
 }
 
 src_configure() {

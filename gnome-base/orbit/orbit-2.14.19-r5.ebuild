@@ -1,8 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-GCONF_DEBUG="yes"
+EAPI=7
 GNOME_ORG_MODULE="ORBit2"
 GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
@@ -17,7 +16,6 @@ SLOT="2"
 KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="pic static-libs test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="test? ( debug )"
 
 RDEPEND=">=dev-libs/glib-2.44.1-r1:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libIDL-0.8.14-r1[${MULTILIB_USEDEP}]
@@ -50,14 +48,17 @@ src_prepare() {
 
 	# Fix link_protocol_is_local() for ipv4 on machines with ipv6
 	# https://bugzilla.gnome.org/show_bug.cgi?id=693636
-	epatch "${FILESDIR}/${PN}-2.14.19-link_protocol_is_local.patch"
+	eapply "${FILESDIR}/${PN}-2.14.19-link_protocol_is_local.patch"
 
 	# Build libname-server-2.a with -fPIC on hardened, bug #312161
-	epatch "${FILESDIR}/${PN}-2.14.19-fPIC.patch"
+	eapply "${FILESDIR}/${PN}-2.14.19-fPIC.patch"
 
-	epatch "${FILESDIR}"/${P}-automake-1.13.patch
-	epatch "${FILESDIR}"/${P}-parallel-build.patch #273031
-	epatch "${FILESDIR}"/${P}-aix-func_data.patch #515094
+	eapply "${FILESDIR}"/${P}-automake-1.13.patch
+	eapply "${FILESDIR}"/${P}-parallel-build.patch #273031
+	eapply "${FILESDIR}"/${P}-aix-func_data.patch #515094
+
+	# Rename configure.in, bug #426262
+	mv configure.in configure.ac || die 
 
 	eautoreconf
 	gnome2_src_prepare
@@ -65,6 +66,8 @@ src_prepare() {
 	# we have to copy sources, there is something that causes tests
 	# to segfault when libs are out-of-source built.
 	multilib_copy_sources
+	
+	default
 }
 
 multilib_src_configure() {
