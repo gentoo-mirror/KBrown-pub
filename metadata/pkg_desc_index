@@ -5,7 +5,7 @@ acct-user/dbmail 0: user for dbmail daemons
 app-arch/libarchive 3.3.1-r100: BSD tar command
 app-benchmarks/jmeter-bin 2.4 2.5 2.5.1 2.13 3.0 3.3 4.0 5.0 5.2 5.4 5.4.1: Load test and measure performance on HTTP/FTP services and databases.
 app-crypt/mit-krb5 1.15.2-r100: MIT Kerberos V
-app-emulation/libvirt 7.7.0-r102 8.2.0-r100 8.4.0-r100: C toolkit to manipulate virtual machines
+app-emulation/libvirt 7.7.0-r102 8.2.0-r100 8.4.0-r100 8.7.0-r100: C toolkit to manipulate virtual machines
 app-office/wps-office 11.1.0.8372-r100 11.1.0.10161: WPS Office is an office productivity suite
 dev-db/pgpool2 3.7.1-r1: Connection pool server for PostgreSQL
 dev-embedded/u-boot-tools 2018.05-r100: utilities for working with Das U-Boot
@@ -34,6 +34,7 @@ mail-filter/pyzor 1.0.0-r20 9999: A distributed, collaborative spam detection an
 media-video/darwin-streaming-server 6.0.3: 
 media-video/ffmpeg 4.2.3 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/sn9c1xx 1.50-r1: A driver for sn9c1xx (webcam) devices, like the Sweex Mini cam
+net-analyzer/gsa 21.4.4: Greenbone Security Assistant
 net-analyzer/nrpe 3.2.1-r1 3.2.1-r3: Nagios Remote Plugin Executor
 net-analyzer/pinger 0.33-r102: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pnp4nagios 0.6.25-r4: A performance data analyzer for nagios
