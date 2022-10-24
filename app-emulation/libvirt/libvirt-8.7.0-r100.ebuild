@@ -279,6 +279,7 @@ src_configure() {
 		-Ddriver_remote=enabled
 		-Dstorage_fs=enabled
 		-Ddriver_vmware=enabled
+		-Ddriver_ch=disabled
 
 		--localstatedir="${EPREFIX}/var"
 		-Drunstatedir="${EPREFIX}/run"
