@@ -1,7 +1,7 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 
-PIDFILE="/run/dbmail-pop3d.pid"
+PIDFILE="/run/dbmail/dbmail-pop3d.pid"
 
 depend() {
 	need net
