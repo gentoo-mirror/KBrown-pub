@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit systemd readme.gentoo-r1
+inherit tmpfiles systemd readme.gentoo-r1
 
 DESCRIPTION="Fast and scalable sql based email services"
 HOMEPAGE="https://www.dbmail.org/"
@@ -75,6 +75,9 @@ src_install() {
 	newinitd "${FILESDIR}/dbmail-lmtpd.initd" dbmail-lmtpd
 	newinitd "${FILESDIR}/dbmail-pop3d.initd" dbmail-pop3d
 	newinitd "${FILESDIR}/dbmail-timsieved.initd" dbmail-timsieved
+	newtmpfiles - dbmail.conf <<-EOF
+		d /run/dbmail 0755 dbmail dbmail -
+	EOF
 
 	dobin contrib/mailbox2dbmail/mailbox2dbmail
 	doman contrib/mailbox2dbmail/mailbox2dbmail.1
@@ -93,5 +96,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	tmpfiles_process dbmail.conf
 	readme.gentoo_print_elog
 }
