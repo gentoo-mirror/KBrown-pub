@@ -44,7 +44,7 @@ net-im/silc-toolkit 1.1.12: SDK for the SILC protocol
 net-libs/liboauth 1.0.3-r100: C library implementing the OAuth secure authentication protocol
 net-libs/nghttp2 1.22.0: HTTP/2 C Library
 net-libs/nodejs 13.6.0-r100 13.6.0-r101: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-mail/dbmail 3.2.3-r102 3.2.4 3.2.4-r2 3.2.5 3.2.5-r2 3.2.6 3.2.6-r1: Fast and scalable sql based email services
+net-mail/dbmail 3.2.3-r102 3.2.4 3.2.4-r2 3.2.5 3.2.5-r2 3.2.6 3.2.6-r1 3.3.0: Fast and scalable sql based email services
 net-misc/curl 7.76.1: A Client that groks URLs
 net-misc/tigervnc 1.12.0-r6: Remote desktop viewer display system
 sys-apps/chpax 0.7-r1: Manages various PaX related flags for ELF32, ELF64, and a.out binaries.
