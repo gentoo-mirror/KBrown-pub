@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools subversion
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 
 DESCRIPTION="Tools to monitor storage systems to provide advanced warning of disk degradation"
@@ -18,7 +18,7 @@ HOMEPAGE="https://www.smartmontools.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps +daemon selinux static systemd +update-drivedb"
+IUSE="caps +daemon mail selinux static systemd +update-drivedb"
 
 DEPEND="
 	caps? (
@@ -31,7 +31,9 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	daemon? ( virtual/mailx )
+	daemon? (
+		mail? ( virtual/mailx )
+	)
 	selinux? ( sec-policy/selinux-smartmon )
 	systemd? ( sys-apps/systemd )
 	update-drivedb? (
