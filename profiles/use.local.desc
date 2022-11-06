@@ -171,6 +171,9 @@ net-misc/tigervnc:drm - Build with DRM support
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 sys-apps/man-db:manpager - Enable manpager wrapper for colorizing output
+sys-apps/smartmontools:caps - Build against sys-libs/libcap-ng to allow smartd to drop its privileges.
+sys-apps/smartmontools:daemon - Install the monitoring daemon (smartd) and associated scripts.
+sys-apps/smartmontools:update-drivedb - Install a script to update the drivedb file.
 sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
 sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesystem built on top of ceph
 sys-cluster/ceph:diskprediction - Enable local diskprediction module to predict disk failures
