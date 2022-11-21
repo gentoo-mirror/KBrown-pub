@@ -13,7 +13,7 @@ SRC_URI="ftp://sourceware.org/pub/lvm2/${PN/lvm/LVM}.${PV}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="readline static static-libs systemd +lvm lvm2create-initrd sanlock selinux +udev +thin"
 REQUIRED_USE="!lvm? ( !lvm2create-initrd !sanlock !thin )
 	static? ( !systemd !udev )
@@ -103,6 +103,10 @@ src_prepare() {
 	# Users without systemd get no auto-activation of any logical volume
 	if ! use systemd ; then
 		eapply "${FILESDIR}"/${PN}-2.03.14-dm_lvm_rules_no_systemd.patch
+		# Fix for Bug #822054 https://bugs.gentoo.org/822054
+        if use sanlock ; then
+            sed -i -e "s:USE_SD_NOTIFY=yes:USE_SD_NOTIFY=no:" daemons/lvmlockd/Makefile.in || die
+		fi
 	fi
 
 	sed -i \
