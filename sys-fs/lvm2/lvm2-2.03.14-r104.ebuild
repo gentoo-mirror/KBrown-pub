@@ -104,8 +104,8 @@ src_prepare() {
 	if ! use systemd ; then
 		eapply "${FILESDIR}"/${PN}-2.03.14-dm_lvm_rules_no_systemd.patch
 		# Fix for Bug #822054 https://bugs.gentoo.org/822054
-        if use sanlock ; then
-            sed -i -e "s:USE_SD_NOTIFY=yes:USE_SD_NOTIFY=no:" daemons/lvmlockd/Makefile.in || die
+		if use sanlock ; then
+			sed -i -e "s:USE_SD_NOTIFY=yes:USE_SD_NOTIFY=no:" daemons/lvmlockd/Makefile.in || die
 		fi
 	fi
 

@@ -4,7 +4,7 @@
 
 EAPI=7
 
-inherit eutils flag-o-matic user
+inherit eutils flag-o-matic
 
 DESCRIPTION="Server for Secure Internet Live Conferencing"
 #SRC_URI="http://www.silcnet.org/download/server/sources/${P}.tar.bz2"
@@ -18,12 +18,10 @@ IUSE="gmp ipv6 debug"
 
 RDEPEND=">=net-im/silc-toolkit-1.1.12
 	!<=net-im/silc-client-1.1.11
-	gmp? ( dev-libs/gmp )"
-
-pkg_setup() {
-	enewuser silcd
-}
-
+	gmp? ( dev-libs/gmp )
+	acct-group/silcd
+	acct-user/silcd
+	"
 src_configure() {
 	econf \
 		--datadir=/usr/share/${PN} \
