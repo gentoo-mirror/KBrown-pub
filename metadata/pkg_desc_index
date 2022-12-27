@@ -28,6 +28,7 @@ gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libgnome 2.32.1-r1: Essential Gnome Libraries
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
+mail-filter/pyzor 1.0.0-r21 9999: A distributed, collaborative spam detection and filtering network
 media-video/darwin-streaming-server 6.0.3: 
 media-video/ffmpeg 4.2.3 9999: Complete solution to record/convert/stream audio and video. Includes libavcodec
 media-video/sn9c1xx 1.50-r1: A driver for sn9c1xx (webcam) devices, like the Sweex Mini cam
