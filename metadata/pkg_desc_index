@@ -8,7 +8,6 @@ app-arch/libarchive 3.3.1-r100: BSD tar command
 app-benchmarks/jmeter-bin 2.4 2.5 2.5.1 2.13 3.0 3.3 4.0 5.0 5.2 5.4 5.4.1: Load test and measure performance on HTTP/FTP services and databases.
 app-emulation/libvirt 7.7.0-r102 8.2.0-r100 8.4.0-r100 8.7.0-r100: C toolkit to manipulate virtual machines
 app-office/wps-office 11.1.0.8372-r100 11.1.0.10161: WPS Office is an office productivity suite
-dev-db/pgpool2 3.7.1-r1: Connection pool server for PostgreSQL
 dev-embedded/u-boot-tools 2018.05-r100: utilities for working with Das U-Boot
 dev-embedded/urjtag 2017.10: Tool for communicating over JTAG with flash chips, CPUs, and many more
 dev-java/oracle-jdk-bin 1.8.0.251 11.0.7: Oracle's Java SE Development Kit
