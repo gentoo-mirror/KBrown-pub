@@ -130,14 +130,6 @@ net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/g
 net-libs/liboauth:bindist - Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL.
 net-libs/liboauth:curl - If enabled, net-misc/curl is used thorugh the libcurl library; if it's not, the curl command is used instead. Some features are only available when using the library, but using it as library requires matching SSL implementations.
 net-libs/liboauth:nss - Use Mozilla NSS (dev-libs/nss) as hash library; if this is disabled, dev-libs/openssl is used instead.
-net-libs/nodejs:bundled-ssl - Use bundled openssl library instead of system's
-net-libs/nodejs:inspector - Enable V8 inspector
-net-libs/nodejs:libressl - Enable libressl support
-net-libs/nodejs:npm - Enable NPM package manager
-net-libs/nodejs:openssl - Enable openssl support
-net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
-net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
-net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
 net-mail/dbmail:doc - Enable building and installation of man pages
 net-mail/dbmail:sieve - Enable sieve filter support
 net-misc/curl:alt-svc - Enable alt-svc support
