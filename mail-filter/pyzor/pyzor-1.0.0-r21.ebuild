@@ -65,7 +65,7 @@ src_install() {
 		dodir /usr/sbin
 		mv "${D}"/usr/bin/pyzord* "${ED}/usr/sbin" \
 		   || die "failed to relocate pyzord"
-#	else
+	else
 		rm "${D}"/usr/bin/pyzord* || die "failed to remove pyzord"
 	fi
 }
