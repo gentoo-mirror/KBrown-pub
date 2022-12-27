@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 python3_9  python3_10 )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
@@ -61,9 +61,9 @@ src_install() {
 
 	if use pyzord; then
 		dodir /usr/sbin
-		mv "${D}"usr/bin/pyzord* "${ED}usr/sbin" \
+		mv "${D}"/usr/bin/pyzord* "${ED}/usr/sbin" \
 		   || die "failed to relocate pyzord"
 	else
-		rm "${D}"usr/bin/pyzord* || die "failed to remove pyzord"
+		rm "${D}"/usr/bin/pyzord* || die "failed to remove pyzord"
 	fi
 }
