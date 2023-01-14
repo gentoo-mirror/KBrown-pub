@@ -47,7 +47,6 @@ sys-apps/chpax 0.7-r1: Manages various PaX related flags for ELF32, ELF64, and a
 sys-apps/man-db 2.10.2-r1 9999: A man replacement that utilizes dbm instead of flat files
 sys-apps/smartmontools 7.3: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-block/open-isns 0.98-r1: iSNS server and client for Linux
-sys-cluster/ceph 15.2.8-r1: Ceph distributed filesystem
 sys-cluster/corosync-compat 1.4.7: Compatibility files for libcoroipcc in =sys-cluster/corosync-1.4.7
 sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
 sys-cluster/libqb 1.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
