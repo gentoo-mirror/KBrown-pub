@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=sys-devel/gettext dev-libs/libgcrypt:0/20 webp? ( media-libs/libwebp ) net-im/pidgin sys-libs/zlib
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
+_eclasses_=git-r3	c57c50c922e121043788de0b40ada60a
 _md5_=42f7386497c7b7f2d39a61eb5522d02c
