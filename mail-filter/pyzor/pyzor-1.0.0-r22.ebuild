@@ -4,16 +4,16 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_8 python3_9 python3_10 python3_11 )
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
+MY_PV="1-0-0"
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
 HOMEPAGE="https://github.com/SpamExperts/pyzor"
-EGIT_REPO_URI="https://github.com/SpamExperts/pyzor"
-EGIT_BRANCH="master"
+SRC_URI="https://github.com/SpamExperts/pyzor/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc gdbm gevent pyzord redis test"
 # The test suite is py2-only
@@ -38,10 +38,12 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 # dependencies are missing?
 REQUIRED_USE="pyzord? ( || ( gdbm redis ) )
 	test? ( gdbm redis )"
+S="${WORKDIR}/${PN}-release-${MY_PV}"
 
-#PATCHES=(
-#	"${FILESDIR}/65.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/commit-2b8d76d6b86ea2e9076a9c34ffd4651909d214b7.diff"
+	"${FILESDIR}/65.patch"
+)
 
 python_test() {
 	PYTHONPATH=. "${PYTHON}" ./tests/unit/__init__.py
