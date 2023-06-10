@@ -1,17 +1,17 @@
-BDEPEND=python_targets_python3_10? ( >=dev-lang/python-3.10.11:3.10 ) python_targets_python3_11? ( >=dev-lang/python-3.11.3:3.11 ) >=dev-python/setuptools-65.7.0[python_targets_python3_10(-)?,python_targets_python3_11(-)?] >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install prepare test unpack
+BDEPEND=python_targets_python3_10? ( >=dev-lang/python-3.10.11:3.10 ) python_targets_python3_11? ( >=dev-lang/python-3.11.3:3.11 ) >=dev-python/setuptools-65.7.0[python_targets_python3_10(-)?,python_targets_python3_11(-)?]
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/setuptools[python_targets_python3_10(-)?,python_targets_python3_11(-)?] doc? ( dev-python/sphinx[python_targets_python3_10(-)?,python_targets_python3_11(-)?] ) test? ( pyzord? ( gdbm? ( python_targets_python3_10? ( >=dev-lang/python-3.10.11:3.10[gdbm] ) python_targets_python3_11? ( >=dev-lang/python-3.11.3:3.11[gdbm] ) ) redis? ( dev-python/redis-py[python_targets_python3_10(-)?,python_targets_python3_11(-)?] ) gevent? ( dev-python/gevent[python_targets_python3_10(-)?,python_targets_python3_11(-)?] ) ) )
 DESCRIPTION=A distributed, collaborative spam detection and filtering network
 EAPI=7
 HOMEPAGE=https://github.com/SpamExperts/pyzor
-INHERIT=distutils-r1 git-r3
+INHERIT=distutils-r1
 IUSE=doc gdbm gevent pyzord redis test python_targets_python3_10 python_targets_python3_11
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-PROPERTIES=live
 RDEPEND=pyzord? ( gdbm? ( python_targets_python3_10? ( >=dev-lang/python-3.10.11:3.10[gdbm] ) python_targets_python3_11? ( >=dev-lang/python-3.11.3:3.11[gdbm] ) ) redis? ( dev-python/redis-py[python_targets_python3_10(-)?,python_targets_python3_11(-)?] ) gevent? ( dev-python/gevent[python_targets_python3_10(-)?,python_targets_python3_11(-)?] ) ) python_targets_python3_10? ( >=dev-lang/python-3.10.11:3.10 ) python_targets_python3_11? ( >=dev-lang/python-3.11.3:3.11 )
 REQUIRED_USE=pyzord? ( || ( gdbm redis ) ) test? ( gdbm redis ) || ( python_targets_python3_10 python_targets_python3_11 )
 RESTRICT=test
 SLOT=0
-_eclasses_=out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	bddcb51b74f4a76724ff7cf8e7388869	multilib	c19072c3cd7ac5cb21de013f7e9832e0	toolchain-funcs	513c31b3346458ed1f3878b57da6d61c	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	76050953ad5b70d7e09a6ca55558db92	eapi8-dosym	5ac4857ad078256d939c44f7c64197a9	python-utils-r1	ba15b8b81f30ca448294d759a9f7902c	python-r1	3c6cd0f418ba702c186a9865b85e704d	distutils-r1	2d32e797ee29a8ffdd452f4a85860666	git-r3	27e13c09a4c7e4c78ac812f74727e676
-_md5_=2ff8ca42bc80e1b6cbc58bc549bd37d3
+SRC_URI=https://github.com/SpamExperts/pyzor/archive/release-1-0-0.tar.gz -> pyzor-1.0.0.tar.gz
+_eclasses_=out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	bddcb51b74f4a76724ff7cf8e7388869	multilib	c19072c3cd7ac5cb21de013f7e9832e0	toolchain-funcs	513c31b3346458ed1f3878b57da6d61c	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	76050953ad5b70d7e09a6ca55558db92	eapi8-dosym	5ac4857ad078256d939c44f7c64197a9	python-utils-r1	ba15b8b81f30ca448294d759a9f7902c	python-r1	3c6cd0f418ba702c186a9865b85e704d	distutils-r1	2d32e797ee29a8ffdd452f4a85860666
+_md5_=ee864d6fd0d8d58c28d63a85c7d1425f
