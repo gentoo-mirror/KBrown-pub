@@ -51,7 +51,6 @@ sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
 sys-cluster/libqb 1.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/openais 1.1.4-r1 1.1.4-r2: Open Application Interface Specification cluster framework
 sys-cluster/util-vserver 0.30.216_pre3120-r2 0.30.216_pre3120-r3 0.30.216_pre3120-r4 0.30.216_pre3120-r5 0.30.216_pre3120-r6 0.30.216_pre3131: Linux-VServer admin utilities
-sys-devel/gcc 7.5.0-r1: The GNU Compiler Collection
 sys-fs/libudev-zero 1.0.1: Drop-in replacement for libudev intended to work with any device manager
 sys-fs/lvm2 2.03.14-r104: User-land utilities for LVM2 (device-mapper) software
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
