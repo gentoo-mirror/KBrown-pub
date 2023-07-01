@@ -41,6 +41,7 @@ dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:xslt - Enable the XSL extension
 dev-libs/libp11:doc - Generate and install API documentation for the package.
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
+mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
 mail-filter/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
 mail-filter/pyzor:gevent - Use dev-python/gevent to enable asynchronous operation
 mail-filter/pyzor:pyzord - Enable the pyzord server daemon
