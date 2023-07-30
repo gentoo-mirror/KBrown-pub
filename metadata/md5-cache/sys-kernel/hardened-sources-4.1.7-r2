@@ -10,5 +10,5 @@ RDEPEND=>=sys-devel/gcc-4.5 !build? ( app-arch/cpio dev-lang/perl sys-devel/bc s
 RESTRICT=binchecks strip
 SLOT=4.1.7-r2
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.1.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.1-gnu/deblob-4.1 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//4.1-gnu/deblob-check -> deblob-check-4.1 ) http://dev.gentoo.org/~blueness/hardened-sources/hardened-patches/hardened-patches-4.1.7-2.extras.tar.bz2 https://dev.gentoo.org/~alicef/dist/genpatches/genpatches-4.1-11.base.tar.xz https://dev.gentoo.org/~mpagano/dist/genpatches/genpatches-4.1-11.base.tar.xz
-_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	8e3fb781f3258ae2757d1dfc2c7c170e	multilib	c19072c3cd7ac5cb21de013f7e9832e0	kernel-2	552a82e0738a2db29ddba6e36373405b
+_eclasses_=estack	c61c368a76fdf3a82fdf8dbaebea3804	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	e356bb9aa600fd4b0dc539d33513bba7	multilib	c19072c3cd7ac5cb21de013f7e9832e0	kernel-2	552a82e0738a2db29ddba6e36373405b
 _md5_=eaec7ae5c8fdce50084565d62a926fef
