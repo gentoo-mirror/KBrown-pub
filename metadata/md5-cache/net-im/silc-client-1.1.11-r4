@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=perl? ( dev-lang/perl ) sys-libs/ncurses >=dev-libs/glib-2.8 >=net-im/silc-toolkit-1.1.12 virtual/pkgconfig
+DESCRIPTION=IRSSI-based text client for Secure Internet Live Conferencing
+EAPI=8
+HOMEPAGE=http://silcnet.org/
+INHERIT=multilib
+IUSE=ipv6 perl debug
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=perl? ( dev-lang/perl ) sys-libs/ncurses >=dev-libs/glib-2.8 >=net-im/silc-toolkit-1.1.12 perl? ( !net-irc/irssi !net-irc/irssi-svn )
+SLOT=0
+SRC_URI=mirror://sourceforge/silc/silc-client-1.1.11.tar.gz
+_eclasses_=multilib	c19072c3cd7ac5cb21de013f7e9832e0	toolchain-funcs	862d337d98edb576796827be2c6b11ca
+_md5_=8d91e75652d88029b8ca5c44e656d72c
