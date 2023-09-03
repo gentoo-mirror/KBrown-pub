@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-im/silc-client/Attic/silc-client-1.1.8.ebuild,v 1.9 2012/05/04 06:22:11 jdhore Exp $
 
-EAPI=7
+EAPI=8
 
-inherit eutils multilib
+inherit multilib
 
 DESCRIPTION="IRSSI-based text client for Secure Internet Live Conferencing"
 HOMEPAGE="http://silcnet.org/"
