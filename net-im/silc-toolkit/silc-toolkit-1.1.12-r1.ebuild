@@ -4,8 +4,6 @@
 
 EAPI=8
 
-inherit eutils
-
 DESCRIPTION="SDK for the SILC protocol"
 HOMEPAGE="http://silcnet.org/"
 #SRC_URI="http://silcnet.org/download/toolkit/sources/${P}.tar.bz2"
