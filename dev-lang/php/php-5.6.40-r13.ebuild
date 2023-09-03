@@ -35,11 +35,11 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	coverage crypt +ctype curl debug
 	enchant exif +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +hash +iconv imap inifile
-	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit
+	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
 	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
-	+simplexml snmp soap sockets spell sqlite
+	+simplexml snmp soap sockets spell sqlite ssl
 	sysvipc systemd tidy +tokenizer truetype unicode vpx wddx
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
@@ -78,7 +78,7 @@ COMMON_DEPEND="
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
-	imap? ( >=virtual/imap-c-client-2[kerberos=] )
+	imap? ( >=virtual/imap-c-client-2[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -101,6 +101,10 @@ COMMON_DEPEND="
 	soap? ( >=dev-libs/libxml2-2.6.8 )
 	spell? ( >=app-text/aspell-0.50 )
 	sqlite? ( >=dev-db/sqlite-3.7.6.3 )
+	ssl? (
+		!libressl? ( <dev-libs/openssl-3.0:= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	tidy? ( app-text/htmltidy )
 	truetype? (
 		=media-libs/freetype-2*
@@ -226,11 +230,14 @@ src_unpack() {
 		unpack ${A}
 	fi
 	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
+	cp -vf "${FILESDIR}/00030_openssl-1.1-compatibility.patch" "${patchdir}/"
 }
 
 src_prepare() {
+	dos2unix ext/openssl/tests/bug66501.phpt
 	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
 	eapply "${patchdir}/"
+	eapply "${FILESDIR}/php-5.6-libressl.patch"
 	eapply "${FILESDIR}/php-5.6.40-intl-bool.patch"
 	eapply "${FILESDIR}/php-5.6.40-icu.patch"
 	eapply "${FILESDIR}/php-5.6.40-tidy.patch"
@@ -329,6 +336,8 @@ src_configure() {
 		$(use_with crypt mcrypt "${EPREFIX}/usr")
 		$(use_with mssql mssql "${EPREFIX}/usr")
 		$(use_with unicode onig "${EPREFIX}/usr")
+		$(use_with ssl openssl "${EPREFIX}/usr")
+		$(use_with ssl openssl-dir "${EPREFIX}/usr")
 		$(use_enable pcntl pcntl)
 		$(use_enable phar phar)
 		$(use_enable pdo pdo)
@@ -391,6 +400,7 @@ src_configure() {
 	if use imap ; then
 		our_conf+=(
 			$(use_with imap imap "${EPREFIX}/usr")
+			$(use_with ssl imap-ssl "${EPREFIX}/usr")
 		)
 	fi
 

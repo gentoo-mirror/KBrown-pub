@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=7
-
-inherit eutils
+EAPI=8
 
 DESCRIPTION="SDK for the SILC protocol"
 HOMEPAGE="http://silcnet.org/"

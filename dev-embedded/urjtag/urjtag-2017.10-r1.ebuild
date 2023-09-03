@@ -3,9 +3,9 @@
 
 # TODO: figure out htf to make python.eclass work
 
-EAPI="7"
+EAPI="8"
 
-inherit eutils multilib
+inherit multilib
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.code.sf.net/p/urjtag/git"
 	inherit git-r3 autotools
