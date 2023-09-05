@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 multilib-minimal virtualx
+inherit autotools gnome2 multilib-minimal virtualx
 
 DESCRIPTION="Gnome Virtual Filesystem"
 HOMEPAGE="https://www.gnome.org/"
