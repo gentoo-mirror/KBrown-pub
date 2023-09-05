@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 GNOME_ORG_MODULE="ORBit2"
 GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
 
-inherit eutils gnome2 toolchain-funcs autotools multilib-minimal
+inherit gnome2 toolchain-funcs autotools multilib-minimal
 
 DESCRIPTION="ORBit2 is a high-performance CORBA ORB"
 HOMEPAGE="https://projects.gnome.org/ORBit2/"

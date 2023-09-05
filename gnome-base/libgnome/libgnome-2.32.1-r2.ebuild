@@ -1,11 +1,11 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit gnome2 eutils
+inherit gnome2 
 
 DESCRIPTION="Essential Gnome Libraries"
 HOMEPAGE="https://library.gnome.org/devel/libgnome/stable/"
