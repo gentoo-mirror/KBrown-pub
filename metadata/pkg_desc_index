@@ -10,7 +10,7 @@ app-office/wps-office 11.1.0.8372-r100 11.1.0.10161: WPS Office is an office pro
 dev-embedded/u-boot-tools 2018.05-r100: utilities for working with Das U-Boot
 dev-embedded/urjtag 2017.10-r1: Tool for communicating over JTAG with flash chips, CPUs, and many more
 dev-java/oracle-jdk-bin 1.8.0.251 11.0.7: Oracle's Java SE Development Kit
-dev-lang/php 5.6.40-r7 5.6.40-r8 5.6.40-r9 5.6.40-r10 5.6.40-r11 5.6.40-r13: The PHP language runtime engine
+dev-lang/php 5.6.40-r7 5.6.40-r8 5.6.40-r9 5.6.40-r10 5.6.40-r11 5.6.40-r13 7.4.33-r4 7.4.33-r5 7.4.33-r6 7.4.33-r7: The PHP language runtime engine
 dev-libs/libp11 0.4.11: Abstraction layer to simplify PKCS#11 API
 dev-libs/libressl 3.0.2-r100 3.1.3-r100 3.1.4-r100 3.1.5-r100 3.2.0 3.2.1 3.2.2 3.2.3 3.2.7 3.3.0 3.3.5: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/openssl 9998: This is a fake ebuild to support libressl
@@ -21,9 +21,14 @@ dev-php/PHP-FFMpeg 9999: An Object Oriented library to convert video/audio files
 dev-php/ffmpeg-php 0.6.0-r6: PHP extension that provides access to movie info
 dev-php/pecl-PDO_DBLIB 1.0-r2 1.0-r3 1.0-r4: PHP bindings for the Free TDS library
 dev-util/staruml-bin 2.8.1 4.0.0: A sophisticated software modeler
+gnome-base/gconf 3.2.6-r6: GNOME configuration system and daemon
+gnome-base/gnome-mime-data 2.18.0-r1: MIME data for Gnome
+gnome-base/gnome-vfs 2.24.4-r6: Gnome Virtual Filesystem
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
+gnome-base/libgnome 2.32.1-r2: Essential Gnome Libraries
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
+gnome-base/orbit 2.14.19-r6: ORBit2 is a high-performance CORBA ORB
 mail-client/sylpheed 3.7.0-r5 3.7.0-r6: A lightweight email client and newsreader
 mail-filter/pyzor 1.0.0-r21 1.0.0-r22 9999: A distributed, collaborative spam detection and filtering network
 net-analyzer/gsa 21.4.4: Greenbone Security Assistant
@@ -52,6 +57,7 @@ sys-kernel/dappersec-sources 4.9.135: Dapper's version of the last public grsecu
 sys-kernel/hardened-sources 4.1.7-r2 4.3.3-r5: Hardened kernel sources (kernel series 4.3)
 sys-kernel/omap4-sources 3.2.0.1462.82: OMAP4 sources
 virtual/libudev 232-r8 251: Virtual for libudev providers
+virtual/yacc 0: Virtual for yacc (yet another compiler compiler)
 www-client/dillo 3.0.5-r3 3.1_pre20181005: Lean FLTK based web browser
 www-servers/cherokee 1.2.104-r3: An extremely fast and tiny web server
 x11-drivers/xf86-video-armsoc 0.6.0-r101 9999-r102: Open-source X.org graphics driver for ARM graphics

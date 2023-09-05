@@ -40,6 +40,7 @@ dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:xslt - Enable the XSL extension
 dev-libs/libp11:doc - Generate and install API documentation for the package.
+gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
 mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
 mail-filter/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord
