@@ -90,6 +90,8 @@ sys-apps/smartmontools:update-drivedb - Install a script to update the drivedb f
 sys-cluster/util-vserver:beecrypt - Use dev-libs/beecrypt for cryptography
 sys-cluster/util-vserver:dietlibc - Compile against dev-libs/dietlibc
 sys-cluster/util-vserver:nss - Use dev-libs/nss for cryptography
+sys-fs/eudev:kmod - enable module loading through libkmod
+sys-fs/eudev:rule-generator - install legacy rule generator rules and support scripts - note that the functionality within was dropped from sys-fs/udev as it is not stable in all cases; use at your own risk
 sys-fs/lvm2:lvm - Build all of LVM2, not just device-mapper
 sys-fs/lvm2:lvm2create-initrd - Install lvm2create_initrd script and pull in sys-apps/makedev for the /sbin/MAKEDEV command
 sys-fs/lvm2:sanlock - Enable lvmlockd with support for sanlock

@@ -51,13 +51,14 @@ sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
 sys-cluster/libqb 1.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/openais 1.1.4-r1 1.1.4-r2: Open Application Interface Specification cluster framework
 sys-cluster/util-vserver 0.30.216_pre3120-r2 0.30.216_pre3120-r3 0.30.216_pre3120-r4 0.30.216_pre3120-r5 0.30.216_pre3120-r6 0.30.216_pre3131: Linux-VServer admin utilities
+sys-fs/eudev 3.2.11-r4 3.2.11-r5 3.2.12-r1 3.2.12-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/libudev-zero 1.0.1: Drop-in replacement for libudev intended to work with any device manager
 sys-fs/lvm2 2.03.14-r104: User-land utilities for LVM2 (device-mapper) software
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-kernel/dappersec-sources 4.9.135: Dapper's version of the last public grsecurity patch plus Gentoo patchset
 sys-kernel/hardened-sources 4.1.7-r2 4.3.3-r5: Hardened kernel sources (kernel series 4.3)
 sys-kernel/omap4-sources 3.2.0.1462.82: OMAP4 sources
-virtual/libudev 232-r8 251: Virtual for libudev providers
+virtual/libudev 232-r8 251 251-r1: Virtual for libudev providers
 virtual/yacc 0: Virtual for yacc (yet another compiler compiler)
 www-client/dillo 3.0.5-r3 3.1_pre20181005: Lean FLTK based web browser
 www-servers/cherokee 1.2.104-r3: An extremely fast and tiny web server
