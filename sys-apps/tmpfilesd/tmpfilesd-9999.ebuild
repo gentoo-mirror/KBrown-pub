@@ -28,7 +28,7 @@ src_install() {
 	emake DESTDIR="${ED}" install
 	einstalldocs
 	cd misc
-	# dotmpfiles tmpfiles-d/etc.conf # changes /etc/localtime
+	dotmpfiles tmpfiles-d/etc.conf # Sets /etc/localtime to UTC
 	dotmpfiles tmpfiles-d/legacy.conf # Not sure if this is needed
 	dotmpfiles tmpfiles-d/sap.conf # harmless if not using sap; Consider USE=sap
 	#dotmpfiles tmpfiles-d/systemd-nologin.conf # should be provided by systemd
@@ -54,7 +54,7 @@ add_service() {
 }
 
 pkg_postinst() {
-	# tmpfiles_process etc.conf # changes /etc/localtime
+	tmpfiles_process etc.conf
 	tmpfiles_process legacy.conf
 	tmpfiles_process sap.conf
 	#tmpfiles_process systemd-nologin.conf # should be provided by systemd
