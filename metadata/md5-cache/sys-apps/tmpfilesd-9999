@@ -1,11 +1,12 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install postinst unpack
+DEFINED_PHASES=configure install postinst prepare unpack
 DESCRIPTION=systemd-tmpfiles replacement; includes support for sysvinit style enviroments
 EAPI=8
 HOMEPAGE=https://github.com/juur/tmpfilesd
-INHERIT=prefix git-r3
+INHERIT=tmpfiles git-r3
 LICENSE=MIT
 PROPERTIES=live
+RDEPEND=virtual/tmpfiles
 SLOT=0
-_eclasses_=prefix	eab3c99d77fe00506c109c8a736186f7	git-r3	2358a7b20091609e24bd3a83b3ac5991
-_md5_=e8fafbdcba59e116eeddefcd62ef485b
+_eclasses_=tmpfiles	216aa76c3a6fcb5d893c23a0de86048f	git-r3	2358a7b20091609e24bd3a83b3ac5991
+_md5_=06cea4db22ba059381a9aaa380e2f434
