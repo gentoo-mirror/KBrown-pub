@@ -10,5 +10,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=dev-lang/php:* media-video/ffmpeg dev-php/fedora-autoloader
 SLOT=0
-_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991
+_eclasses_=git-r3	5133e393e8717a3a093660f990801dc1
 _md5_=0e17bcd9ba59b730cf4b22798cc13af2
