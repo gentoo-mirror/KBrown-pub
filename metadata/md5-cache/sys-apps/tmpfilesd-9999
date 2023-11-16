@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=virtual/tmpfiles
 SLOT=0
 _eclasses_=tmpfiles	216aa76c3a6fcb5d893c23a0de86048f	git-r3	5133e393e8717a3a093660f990801dc1
-_md5_=06cea4db22ba059381a9aaa380e2f434
+_md5_=6732ba7583eb54d2c10c6a0b7cf45831

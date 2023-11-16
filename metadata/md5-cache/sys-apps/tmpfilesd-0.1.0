@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DESCRIPTION=systemd-tmpfiles replacement; includes support for sysvinit style enviroments
+EAPI=8
+HOMEPAGE=https://github.com/juur/tmpfilesd
+INHERIT=tmpfiles
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=virtual/tmpfiles
+SLOT=0
+SRC_URI=https://github.com/juur/tmpfilesd/archive/refs/tags/v0.1.0.tar.gz -> tmpfilesd-0.1.0.tar.gz
+_eclasses_=tmpfiles	216aa76c3a6fcb5d893c23a0de86048f
+_md5_=73db209b7b65ee634355ff37f313fa80

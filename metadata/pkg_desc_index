@@ -46,7 +46,7 @@ sys-apps/chpax 0.7-r1: Manages various PaX related flags for ELF32, ELF64, and a
 sys-apps/hardenedtmpfiles 0.4 0.5.3 0.5.3-r1: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/man-db 2.10.2-r1 9999: A man replacement that utilizes dbm instead of flat files
 sys-apps/smartmontools 7.3: Tools to monitor storage systems to provide advanced warning of disk degradation
-sys-apps/tmpfilesd 9999: systemd-tmpfiles replacement; includes support for sysvinit style enviroments
+sys-apps/tmpfilesd 0.1.0 0.1.1 0.1.2 9999: systemd-tmpfiles replacement; includes support for sysvinit style enviroments
 sys-block/open-isns 0.98-r1: iSNS server and client for Linux
 sys-cluster/corosync-compat 1.4.7: Compatibility files for libcoroipcc in =sys-cluster/corosync-1.4.7
 sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
