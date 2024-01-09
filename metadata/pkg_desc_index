@@ -20,6 +20,7 @@ dev-perl/UUID-URandom 0.001: UUIDs based on /dev/urandom or the Windows Crypto A
 dev-php/PHP-FFMpeg 9999: An Object Oriented library to convert video/audio files with FFmpeg / AVConv.
 dev-php/ffmpeg-php 0.6.0-r6: PHP extension that provides access to movie info
 dev-php/pecl-PDO_DBLIB 1.0-r2 1.0-r3 1.0-r4: PHP bindings for the Free TDS library
+dev-php/pecl-imagick 3.7.0-r2 3.7.0-r3: PHP wrapper for the ImageMagick library
 dev-util/staruml-bin 2.8.1 4.0.0: A sophisticated software modeler
 gnome-base/gconf 3.2.6-r6: GNOME configuration system and daemon
 gnome-base/gnome-mime-data 2.18.0-r1: MIME data for Gnome
