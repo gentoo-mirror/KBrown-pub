@@ -40,6 +40,15 @@ dev-lang/php:xmlreader - Enable XMLReader support
 dev-lang/php:xmlwriter - Enable XMLWriter support
 dev-lang/php:xslt - Enable the XSL extension
 dev-libs/libp11:doc - Generate and install API documentation for the package.
+dev-libs/openssl:bindist - Disable/Restrict EC algorithms (as they seem to be patented) -- note: changes the ABI
+dev-libs/openssl:fips - Enable FIPS provider
+dev-libs/openssl:ktls - Enable support for Kernel implementation of TLS (kTLS)
+dev-libs/openssl:rfc3779 - Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)
+dev-libs/openssl:sslv2 - Support for the old/insecure SSLv2 protocol -- note: not required for TLS/https
+dev-libs/openssl:sslv3 - Support for the old/insecure SSLv3 protocol -- note: not required for TLS/https
+dev-libs/openssl:tls-compression - Enable support for discouraged TLS compression
+dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
+dev-libs/openssl:weak-ssl-ciphers - Build support for SSL/TLS ciphers that are considered "weak"
 gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
 mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
