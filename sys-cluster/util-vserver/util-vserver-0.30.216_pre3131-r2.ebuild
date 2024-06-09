@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit eutils bash-completion-r1
+inherit bash-completion-r1
 
 MY_P="${P/_/-}"
 
@@ -14,25 +14,39 @@ SRC_URI="http://people.linux-vserver.org/~dhozac/t/uv-testing/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
+IUSE="beecrypt +dietlibc +nss"
 
 CDEPEND="
 	net-misc/vconfig
-	dev-libs/beecrypt
+	beecrypt? ( dev-libs/beecrypt )
+	nss? ( dev-libs/nss )
 	sys-apps/iproute2
 	net-firewall/iptables"
 
 DEPEND="
 	${CDEPEND}
-	>dev-libs/dietlibc-0.33"
+	dietlibc? ( >dev-libs/dietlibc-0.33 )"
 
 RDEPEND="
 	${CDEPEND}"
 
+REQUIRED_USE="
+	?? ( 
+		beecrypt
+		nss
+	)"
+	
 S="${WORKDIR}/${MY_P}"
 
-PATCHES="
-	${FILESDIR}/util-vserver-0.30.216-pre3120-dietlibc.patch 
-	${FILESDIR}/util-vserver-install-paths.patch "
+DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
+
+src_prepare() {
+	if use dietlibc ; then
+		eapply "${FILESDIR}/${P}-dietlibc.patch"
+	fi
+	eapply "${FILESDIR}/${PN}-install-paths.patch"
+	eapply_user
+}
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -56,13 +70,21 @@ src_test() {
 }
 
 src_configure() {
-	local myeconf=(
-		--with-vrootdir="${VDIRBASE}"
-		--with-initscripts=gentoo
-		--localstatedir=/var
-	)
+	local myeconf=" --with-vrootdir=${VDIRBASE} --with-initscripts=gentoo --localstatedir=/var"
 
-	econf "${myeconf[@]}"
+	if ! use dietlibc ; then
+		myeconf+=" --disable-dietlibc"
+	fi
+	
+	if use nss ; then
+		myeconf+=" --with-crypto-api=nss"
+	elif use beecrypt ; then
+		myeconf+=" --with-crypto-api=beecrypt"
+	else
+		myeconf+=" --with-crypto-api=none"
+	fi
+		
+	econf ${myeconf} 
 }
 
 src_compile() {
@@ -82,11 +104,24 @@ src_install() {
 
 	# bash-completion
 	newbashcomp "${FILESDIR}"/bash_completion ${PN}
-
-	dodoc README ChangeLog NEWS AUTHORS THANKS util-vserver.spec
 }
 
 pkg_postinst() {
+	if ! use dietlibc ; then
+		ewarn "dietlibc isn't just used to replace glibc, it is used to"
+		ewarn "build static binaries which are actually 'static'"
+		ewarn "note that glibc cannot build self contained binaries"
+		ewarn "anymore, even if you build them 'statically' they will"
+		ewarn "dynamically load resolver libraries, which in the case"
+		ewarn "of guest management might be from the host or from the"
+		ewarn "guest."
+		ewarn "Anytime you start or enter the guest, you"
+		ewarn "have a certain chance that the host will execute some"
+		ewarn "code from the guest system (nss) which in turn gives"
+		ewarn "guest root a good chance to do evil things on the host"
+		ewarn "and even if security is not a concern in your case, you"
+		ewarn "might end up with unexpected failures"
+	fi
 	# Create VDIRBASE in postinst, so it is (a) not unmerged and (b) also
 	# present when merging.
 	mkdir -p "${VDIRBASE}" || die
