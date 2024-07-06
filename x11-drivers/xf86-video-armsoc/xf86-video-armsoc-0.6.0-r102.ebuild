@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=8
 
 XORG_DRI="always"
 XORG_EAUTORECONF="yes"
 XORG_CONFIGURE_OPTIONS="--with-drmmode=exynos --disable-selective-werror"
+AUTOTOOLS_AUTO_DEPEND="no"
 
 inherit autotools xorg-3 
 
