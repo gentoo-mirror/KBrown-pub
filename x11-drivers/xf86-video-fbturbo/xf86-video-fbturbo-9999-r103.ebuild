@@ -2,13 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=8
 XORG_DRI=always
 
 #EGIT_REPO_URI="https://github.com/ssvb/xf86-video-fbturbo.git"
 #EGIT_REPO_URI="https://github.com/schaal/xf86-video-fbturbo.git"
 EGIT_REPO_URI="https://github.com/KenjiBrown/xf86-video-fbturbo.git"
 EGIT_BRANCH="aarch64-gentoo"
+AUTOTOOLS_AUTO_DEPEND="no"
 
 inherit autotools xorg-3 git-r3
 
