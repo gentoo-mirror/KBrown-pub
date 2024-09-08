@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-im/silc-toolkit-1.1.12 !<=net-im/silc-client-1.1.11 gmp? ( dev-libs/gmp ) acct-group/silcd acct-user/silcd
 SLOT=0
 SRC_URI=mirror://sourceforge/silc/silc-server-1.1.19.tar.gz
-_eclasses_=toolchain-funcs	333970c740aa7b1a92e4fcdc52f612bd	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	e503ea5acc20410237ba33ec3f7c857d
+_eclasses_=toolchain-funcs	948855ec7ad9f11351edf9066708dfa9	multilib	7e1347c006a76bb812f3a9f663b79991	flag-o-matic	fa33e3696fe4689dda7e9affe92e2c94
 _md5_=008279af95f8f3567c7d64f1a34df4f3
