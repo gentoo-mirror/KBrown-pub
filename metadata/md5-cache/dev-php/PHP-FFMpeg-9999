@@ -1,0 +1,15 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install prepare test unpack
+DEPEND=dev-lang/php:* media-video/ffmpeg dev-php/fedora-autoloader
+DESCRIPTION=An Object Oriented library to convert video/audio files with FFmpeg / AVConv.
+EAPI=8
+HOMEPAGE=https://github.com/PHP-FFMpeg/PHP-FFMpeg
+INHERIT=git-r3
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=dev-lang/php:* media-video/ffmpeg dev-php/fedora-autoloader
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81
+_md5_=47f627edd68e8e2e4cdf65321ee40182
