@@ -12,5 +12,5 @@ LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=net-libs/liblockfile x11-libs/gtk+:2 crypt? ( app-crypt/gpgme:= ) ldap? ( net-nds/openldap:= ) nls? ( sys-devel/gettext ) oniguruma? ( dev-libs/oniguruma:= ) spell? ( app-text/gtkspell:2 dev-libs/dbus-glib ) ssl? ( dev-libs/openssl-compat:1.1.1= ) app-misc/mime-types net-misc/curl
 SLOT=0
 SRC_URI=http://sylpheed.sraoss.jp/sylpheed/v3.7/sylpheed-3.7.0.tar.bz2
-_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6	xdg-utils	5465aed08f1dfc2a75f14cbea4272961	xdg	8d7d90c01b1b1c2602dab6fc6b177097
+_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6	xdg-utils	5465aed08f1dfc2a75f14cbea4272961	xdg	854eae304447322625df5991e20ed18f
 _md5_=5817784027de620448f160491b9558aa
