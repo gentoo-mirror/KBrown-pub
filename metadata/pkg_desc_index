@@ -45,11 +45,9 @@ sys-apps/hardenedtmpfiles 0.4 0.5.3 0.5.3-r1: A standalone utility to process sy
 sys-apps/man-db 2.10.2-r1 9999: A man replacement that utilizes dbm instead of flat files
 sys-apps/smartmontools 7.3: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/tmpfilesd 0.1.0 0.1.1 0.1.2 9999: systemd-tmpfiles replacement; includes support for sysvinit style enviroments
-sys-block/open-isns 0.98-r1: iSNS server and client for Linux
 sys-cluster/corosync-compat 1.4.7: Compatibility files for libcoroipcc in =sys-cluster/corosync-1.4.7
 sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
 sys-cluster/libqb 1.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
-sys-cluster/openais 1.1.4-r1 1.1.4-r2: Open Application Interface Specification cluster framework
 sys-cluster/util-vserver 0.30.216_pre3131-r2: Linux-VServer admin utilities
 sys-fs/eudev 3.2.11-r4 3.2.11-r5 3.2.12-r1 3.2.12-r2 3.2.14 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/libudev-zero 1.0.1: Drop-in replacement for libudev intended to work with any device manager
