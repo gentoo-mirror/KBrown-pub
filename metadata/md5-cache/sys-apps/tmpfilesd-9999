@@ -8,5 +8,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=virtual/tmpfiles
 SLOT=0
-_eclasses_=tmpfiles	abdfd90f8841c1cb4b94575d5d109952	git-r3	875eb471682d3e1f18da124be97dcc81
+_eclasses_=tmpfiles	9a9814db5a3fbd4f1e921c05297e7735	git-r3	875eb471682d3e1f18da124be97dcc81
 _md5_=6732ba7583eb54d2c10c6a0b7cf45831
