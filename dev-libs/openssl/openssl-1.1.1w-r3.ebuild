@@ -14,7 +14,7 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="openssl"
-SLOT="0/1.1" # .so version of libssl/libcrypto
+SLOT="0/3" # for satisfying with newer compatible wbuilds requiring slot 3
 if [[ ${PV} != *_pre* ]] ; then
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 sparc x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 fi
@@ -32,7 +32,7 @@ BDEPEND="
 		app-alternatives/bc
 		kernel_linux? ( sys-process/procps )
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-openssl-20230801 )"
+	verify-sig? ( =sec-keys/openpgp-keys-openssl-20230801 )"
 PDEPEND="app-misc/ca-certificates"
 
 # force upgrade to prevent broken login, bug #696950
