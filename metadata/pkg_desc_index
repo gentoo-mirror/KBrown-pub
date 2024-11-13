@@ -40,7 +40,7 @@ net-misc/curl 7.76.1: A Client that groks URLs
 net-misc/tigervnc 1.12.0-r6: Remote desktop viewer display system
 sec-keys/openpgp-keys-openssl 20220316-r1 20221101 20230207 20230801 20240424 20240920: OpenPGP keys used by OpenSSL
 sys-apps/chpax 0.7-r1: Manages various PaX related flags for ELF32, ELF64, and a.out binaries.
-sys-apps/hardenedtmpfiles 0.4 0.5.3 0.5.3-r1: A standalone utility to process systemd-style tmpfiles.d files
+sys-apps/hardenedtmpfiles 0.5.3-r1: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/man-db 2.10.2-r1 9999: A man replacement that utilizes dbm instead of flat files
 sys-apps/smartmontools 7.3: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/tmpfilesd 0.1.0 0.1.1 0.1.2 9999: systemd-tmpfiles replacement; includes support for sysvinit style enviroments
