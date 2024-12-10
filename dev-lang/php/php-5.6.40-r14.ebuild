@@ -280,7 +280,7 @@ src_prepare() {
 
 	mv configure.in configure.ac || die
 
-	eautoreconf
+	#eautoreconf
 
 	if [[ ${CHOST} == *-darwin* ]] ; then
 		# http://bugs.php.net/bug.php?id=48795, bug #343481
