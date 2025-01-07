@@ -1,0 +1,23 @@
+diff -uriNp quagga-1.2.2.orig/lib/zebra.h quagga-1.2.2/lib/zebra.h
+--- quagga-1.2.2.orig/lib/zebra.h	2017-10-03 09:57:10.000000000 -0500
++++ quagga-1.2.2/lib/zebra.h	2018-01-22 05:13:55.000000000 -0600
+@@ -131,6 +131,9 @@ typedef int socklen_t;
+ #endif /* !C99 */
+ 
+ 
++#ifdef HAVE_NETINET_IN_H
++#include <netinet/in.h>
++#endif /* HAVE_NETINET_IN_H */
+ #ifdef HAVE_LCAPS
+ #include <sys/capability.h>
+ #include <sys/prctl.h>
+@@ -152,9 +155,6 @@ typedef int socklen_t;
+ #define __APPLE_USE_RFC_3542
+ #endif
+ 
+-#ifdef HAVE_NETINET_IN_H
+-#include <netinet/in.h>
+-#endif /* HAVE_NETINET_IN_H */
+ #include <netinet/in_systm.h>
+ #include <netinet/ip.h>
+ #include <netinet/tcp.h>
