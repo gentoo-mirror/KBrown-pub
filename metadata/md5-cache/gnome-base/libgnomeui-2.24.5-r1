@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20240116
+BDEPEND=>=app-portage/elt-patches-20250306
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=dev-libs/atk >=dev-libs/glib-2.16:2 >=dev-libs/libxml2-2.4.20:2 >=dev-libs/popt-1.5 >=gnome-base/gconf-2:2 >=gnome-base/gnome-keyring-0.4 >=gnome-base/gnome-vfs-2.7.3:2 >=gnome-base/libgnome-2.13.7 >=gnome-base/libgnomecanvas-2 gnome-base/libgnome-keyring >=gnome-base/libbonoboui-2.13.1 >=gnome-base/libglade-2:2.0 media-libs/libart_lgpl x11-libs/gdk-pixbuf:2 >=x11-libs/gtk+-2.14:2 >=x11-libs/pango-1.1.2 x11-libs/libICE x11-libs/libSM dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig >=dev-util/intltool-0.40 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=User Interface routines for Gnome
@@ -13,5 +13,5 @@ RDEPEND=dev-libs/atk >=dev-libs/glib-2.16:2 >=dev-libs/libxml2-2.4.20:2 >=dev-li
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnome/sources/libgnomeui/2.24/libgnomeui-2.24.5.tar.bz2
-_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	libtool	6b28392a775f807c8be5fc7ec9a605b9	gnome.org	e1b4f392dbfedfb8974b71b017937f08	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	gnome2-utils	a8cf148ec7f5ae0b1f1d33ae5f7f9e88	xdg	3ef49a87c52c8b77c476351195dfe575	gnome2	26fd01914b36038dc8e964ff4bd03a95
+_eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	libtool	8bb566b2a31c1b6cfd9cb194fa74835c	gnome.org	e1b4f392dbfedfb8974b71b017937f08	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	gnome2-utils	a8cf148ec7f5ae0b1f1d33ae5f7f9e88	xdg	3ef49a87c52c8b77c476351195dfe575	gnome2	26fd01914b36038dc8e964ff4bd03a95
 _md5_=a14f0dd5ec6b5e57616fec617d8185d8
