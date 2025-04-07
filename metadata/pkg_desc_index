@@ -7,7 +7,7 @@ acct-user/silcd 0: user for silc server
 app-benchmarks/jmeter-bin 2.4 2.5 2.5.1 2.13 3.0 3.3 4.0 5.0 5.2 5.4 5.4.1: Load test and measure performance on HTTP/FTP services and databases.
 app-office/wps-office 11.1.0.8372-r100 11.1.0.10161: WPS Office is an office productivity suite
 dev-embedded/urjtag 2017.10-r1: Tool for communicating over JTAG with flash chips, CPUs, and many more
-dev-lang/php 5.6.40-r14 7.4.33-r4 7.4.33-r5 7.4.33-r6 7.4.33-r7: The PHP language runtime engine
+dev-lang/php 5.6.40-r14 7.4.33-r4 7.4.33-r5 7.4.33-r6 7.4.33-r7 8.1.29 8.1.29-r1: The PHP language runtime engine
 dev-libs/libp11 0.4.11: Abstraction layer to simplify PKCS#11 API
 dev-libs/libressl 3.0.2-r100 3.1.3-r100 3.1.4-r100 3.1.5-r100 3.2.0 3.2.1 3.2.2 3.2.3 3.2.7 3.3.0 3.3.5: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/openssl 1.1.1w-r1 1.1.1w-r3: Full-strength general purpose cryptography library (including SSL and TLS)
