@@ -46,7 +46,6 @@ sys-apps/man-db 2.10.2-r1 9999: A man replacement that utilizes dbm instead of f
 sys-apps/smartmontools 7.3: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/tmpfilesd 0.1.0 0.1.1 0.1.2 9999: systemd-tmpfiles replacement; includes support for sysvinit style enviroments
 sys-cluster/corosync-compat 1.4.7: Compatibility files for libcoroipcc in =sys-cluster/corosync-1.4.7
-sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
 sys-cluster/libqb 1.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/util-vserver 0.30.216_pre3131-r2: Linux-VServer admin utilities
 sys-fs/eudev 3.2.11-r4 3.2.11-r5 3.2.12-r1 3.2.12-r2 3.2.14 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
