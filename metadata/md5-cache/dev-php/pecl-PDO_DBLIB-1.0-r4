@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20250306 || ( >=dev-build/automake-1.17-r1:1.17 >=dev-build/automake-1.16.5:1.16 ) || ( >=dev-build/autoconf-2.72-r1:2.72 ) >=dev-build/libtool-2.4.7-r3 sys-devel/m4 dev-build/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20250306 || ( >=dev-build/automake-1.18:1.18 >=dev-build/automake-1.17-r1:1.17 ) || ( >=dev-build/autoconf-2.72-r1:2.72 ) >=dev-build/libtool-2.4.7-r3 sys-devel/m4 dev-build/libtool php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-db/freetds-0.91:=[iodbc,mssql] php_targets_php5-6? ( dev-lang/php:5.6[pdo] ) php_targets_php7-0? ( dev-lang/php:7.0[pdo] ) php_targets_php7-1? ( dev-lang/php:7.1[pdo] ) php_targets_php7-2? ( dev-lang/php:7.2[pdo] ) php_targets_php7-3? ( dev-lang/php:7.3[pdo] ) php_targets_php7-4? ( dev-lang/php:7.4[pdo] ) php_targets_php5-6? ( dev-lang/php:5.6 ) php_targets_php7-0? ( dev-lang/php:7.0 ) php_targets_php7-1? ( dev-lang/php:7.1 ) php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 )
 DESCRIPTION=PHP bindings for the Free TDS library
@@ -12,5 +12,5 @@ RDEPEND=>=dev-db/freetds-0.91:=[iodbc,mssql] php_targets_php5-6? ( dev-lang/php:
 REQUIRED_USE=|| ( php_targets_php5-6 php_targets_php7-0 php_targets_php7-1 php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 )
 SLOT=0
 SRC_URI=https://pecl.php.net/get/PDO_DBLIB-1.0.tgz
-_eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	35f9bf6198bb538e28dcdea5fda274f2	php-ext-source-r3	57493651a3540d6ef7bff5e1c97c8dd3	php-ext-pecl-r3	4ca93611caa4190394eb13cc22aedbd0
+_eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	216128ca9bbff45fbea22427005310c7	php-ext-source-r3	57493651a3540d6ef7bff5e1c97c8dd3	php-ext-pecl-r3	4ca93611caa4190394eb13cc22aedbd0
 _md5_=616097da0debdb53a38a7f5655c34f79
