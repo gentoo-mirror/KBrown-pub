@@ -12,5 +12,5 @@ RDEPEND=>=app-eselect/eselect-php-0.9.1[apache2?,fpm?] >=dev-libs/libpcre-8.32[u
 REQUIRED_USE=|| ( cli cgi fpm apache2 embed ) cli? ( ^^ ( readline libedit ) ) truetype? ( gd zlib ) cjk? ( gd zlib ) exif? ( gd zlib ) xpm? ( gd zlib ) gd? ( zlib ) simplexml? ( xml ) soap? ( xml ) wddx? ( xml ) xmlrpc? ( || ( xml iconv ) ) xmlreader? ( xml ) xslt? ( xml ) ldap-sasl? ( ldap ) mhash? ( hash ) phar? ( hash ) recode? ( !imap !mysql !mysqli ) || ( mysql mysqli pdo ) qdbm? ( !gdbm ) readline? ( !libedit ) sharedmem? ( !threads )
 SLOT=5.6
 SRC_URI=https://php.net/distributions/php-5.6.40.tar.xz https://gitweb.gentoo.org/proj/php-patches.git/snapshot/php-patches-7.1.33bp.tar.bz2
-_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	systemd	a964c0cbe818b5729da1dbfcee5be861	gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	216128ca9bbff45fbea22427005310c7
+_eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	955b29ccd82c1df4755e5f37748d2fa6	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	systemd	a964c0cbe818b5729da1dbfcee5be861
 _md5_=0fed6a86e3c307184a4a91860fe19a40
