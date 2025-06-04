@@ -27,7 +27,6 @@ gnome-base/libgnome 2.32.1-r2: Essential Gnome Libraries
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/orbit 2.14.19-r6: ORBit2 is a high-performance CORBA ORB
 mail-client/sylpheed 3.7.0-r5 3.7.0-r6: A lightweight email client and newsreader
-mail-filter/pyzor 1.0.0-r22 9999: A distributed, collaborative spam detection and filtering network
 net-analyzer/gsa 21.4.4: Greenbone Security Assistant
 net-analyzer/pinger 0.33-r103: Cyclic multi ping utility for selected adresses using GTK/ncurses
 net-analyzer/pnp4nagios 0.6.25-r4: A performance data analyzer for nagios
