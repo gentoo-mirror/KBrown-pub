@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=ftdi? ( dev-embedded/libftdi ) ftd2xx? ( dev-embedded/libftd2xx ) readline? ( sys-libs/readline:= ) usb? ( virtual/libusb:0 ) !dev-embedded/jtag
 SLOT=0
 SRC_URI=mirror://sourceforge/urjtag/urjtag-2017.10.tar.xz
-_eclasses_=toolchain-funcs	a6df79c1e9bc84369dbf3d44206ac772	multilib	b2a329026f2e404e9e371097dda47f96
+_eclasses_=toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0	multilib	b2a329026f2e404e9e371097dda47f96
 _md5_=2abf9add99545c10311d3ca001c4dab7
