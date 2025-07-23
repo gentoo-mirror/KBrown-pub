@@ -43,6 +43,8 @@ dev-libs/openssl:weak-ssl-ciphers - Build support for SSL/TLS ciphers that are c
 gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
 mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
+mate-base/caja:mate - Install x11-themes/mate-icon-theme which is needed when this package is used in the MATE desktop environment.
+mate-base/mate-control-center:accountsservice - Add support for AccountsService
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
 net-libs/liboauth:bindist - Alias for the nss USE flag, since there are license compliancy trouble when using OpenSSL.
