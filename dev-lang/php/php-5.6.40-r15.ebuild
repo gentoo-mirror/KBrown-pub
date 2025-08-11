@@ -135,7 +135,7 @@ RDEPEND="${COMMON_DEPEND}
 		selinux? ( sec-policy/selinux-phpfpm )
 		systemd? ( sys-apps/systemd ) )"
 
-DEPEND="${COMMON_DEPEND}
+BDEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	app-text/dos2unix
 	>=sys-devel/bison-3.0.1
