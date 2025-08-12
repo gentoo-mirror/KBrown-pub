@@ -5,6 +5,7 @@ acct-user/cherokee 0: A user for www-servers/cherokee
 acct-user/dbmail 0: user for dbmail daemons
 acct-user/silcd 0: user for silc server
 app-benchmarks/jmeter-bin 2.4 2.5 2.5.1 2.13 3.0 3.3 4.0 5.0 5.2 5.4 5.4.1: Load test and measure performance on HTTP/FTP services and databases.
+app-office/libreoffice 25.2.5.2: A full office productivity suite
 app-office/wps-office 11.1.0.8372-r100 11.1.0.10161: WPS Office is an office productivity suite
 dev-embedded/urjtag 2017.10-r1: Tool for communicating over JTAG with flash chips, CPUs, and many more
 dev-lang/php 5.6.40-r14 5.6.40-r15 7.4.33-r4 7.4.33-r5 7.4.33-r6 7.4.33-r7 8.1.29-r1: The PHP language runtime engine
@@ -47,6 +48,7 @@ sys-apps/man-db 2.10.2-r1 9999: A man replacement that utilizes dbm instead of f
 sys-apps/smartmontools 7.3: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/tmpfilesd 0.1.0 0.1.1 0.1.2 9999: systemd-tmpfiles replacement; includes support for sysvinit style enviroments
 sys-cluster/corosync-compat 1.4.7: Compatibility files for libcoroipcc in =sys-cluster/corosync-1.4.7
+sys-cluster/fence-agents 4.8.0: Cluster Fencing Agents
 sys-cluster/libqb 1.0.1-r1: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/util-vserver 0.30.216_pre3131-r2: Linux-VServer admin utilities
 sys-fs/eudev 3.2.11-r4 3.2.11-r5 3.2.12-r1 3.2.12-r2 3.2.14 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
