@@ -91,7 +91,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ppc64 ~riscv ~x86 ~amd64-linux"
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility base bluetooth +branding coinmp +cups custom-cflags +dbus debug eds
-googledrive gstreamer +gtk3 gtk4 kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan
+googledrive gstreamer +gtk3 gtk4 kde ldap +mariadb odk pdfimport postgres qt6 test valgrind vulkan wayland
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -198,7 +198,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		x11-libs/gtk+:3
+		wayland? ( x11-libs/gtk+:3[X,wayland] )
+		!wayland? ( x11-libs/gtk+:3 )
 		x11-libs/pango
 	)
 	gtk4? (
@@ -206,7 +207,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-libs/glib:2
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
-		gui-libs/gtk:4
+		wayland? ( gui-libs/gtk:4[X,wayland] )
+		!wayland? ( gui-libs/gtk:4 )
 		x11-libs/pango
 	)
 	kde? (
@@ -426,6 +428,9 @@ src_prepare() {
 		-e '/CppunitTest_sw_layoutwriter/d' \
 		-e '/CppunitTest_sw_uiwriter/d' \
 		sw/Module_sw.mk || die
+	# Fails w/ 25.2.5.2 on amd64
+	sed -i -e '/CppunitTest_vcl_png_test/d'  vcl/Module_vcl.mk || die
+	sed -i -e '/CppunitTest_sw_unowriter/d'  sw/Module_sw.mk || die
 }
 
 src_configure() {

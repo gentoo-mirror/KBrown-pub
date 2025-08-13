@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..12} )
 
 inherit autotools multilib python-any-r1 git-r3
 
@@ -37,6 +37,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable libvirt libvirt-plugin) \
+		$(use_enable libvirt cpg-plugin) \
+		--disable-libvirt-qmf-plugin \
+		$(use_enable libvirt serial-plugin ) \
 		--docdir=/usr/share/doc/${P} \
 		--libdir=/usr/$(get_libdir) \
 		--localstatedir=/var
