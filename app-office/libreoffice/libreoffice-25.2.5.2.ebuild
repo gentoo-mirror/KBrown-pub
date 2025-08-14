@@ -623,7 +623,7 @@ src_configure() {
 	tc-is-lto && myeconfargs+=( --enable-lto )
 
 	# defang automagic dependencies
-	use X || append-flags -DGENTOO_GTK_HIDE_X11
+	#use X || append-flags -DGENTOO_GTK_HIDE_X11
 	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	MARIADBCONFIG="$(type -p $(usex mariadb mariadb mysql)_config)" \
