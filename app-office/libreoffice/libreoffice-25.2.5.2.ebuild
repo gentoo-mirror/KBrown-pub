@@ -102,6 +102,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	libreoffice_extensions_scripting-beanshell? ( java )
 	libreoffice_extensions_scripting-javascript? ( java )
 	libreoffice_extensions_wiki-publisher? ( java )
+	wayland? ( || ( gtk3 gtk4 ) )
 "
 
 RESTRICT="!test? ( test )"
@@ -199,7 +200,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
 		wayland? ( x11-libs/gtk+:3[X,wayland] )
-		!wayland? ( x11-libs/gtk+:3 )
+		!wayland? ( x11-libs/gtk+:3[X] )
 		x11-libs/pango
 	)
 	gtk4? (
@@ -208,7 +209,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		media-libs/mesa[egl(+)]
 		wayland? ( gui-libs/gtk:4[X,wayland] )
-		!wayland? ( gui-libs/gtk:4 )
+		!wayland? ( gui-libs/gtk:4[X] )
 		x11-libs/pango
 	)
 	kde? (
@@ -620,6 +621,10 @@ src_configure() {
 	fi
 
 	tc-is-lto && myeconfargs+=( --enable-lto )
+
+	# defang automagic dependencies
+	#use X || append-flags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-flags -DGENTOO_GTK_HIDE_WAYLAND
 
 	MARIADBCONFIG="$(type -p $(usex mariadb mariadb mysql)_config)" \
 	econf "${myeconfargs[@]}"
