@@ -86,10 +86,6 @@ net-misc/curl:telnet - Enable Telnet protocol support
 net-misc/curl:tftp - Enable TFTP support
 net-misc/curl:winssl - Enable winssl ssl backend
 net-misc/curl:zstd - Enable zstd compression
-net-misc/tigervnc:dri3 - Build with DRI3 support
-net-misc/tigervnc:drm - Build with DRM support
-net-misc/tigervnc:server - Build TigerVNC server
-net-misc/tigervnc:xorgmodule - Build the Xorg module
 sys-apps/man-db:manpager - Enable manpager wrapper for colorizing output
 sys-apps/smartmontools:caps - Build against sys-libs/libcap-ng to allow smartd to drop its privileges.
 sys-apps/smartmontools:daemon - Install the monitoring daemon (smartd) and associated scripts.
